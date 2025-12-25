@@ -6,220 +6,88 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Blood Donation System</title>
   <link rel="stylesheet" href="asset/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
 <body>
-  <header>
-    <h1>Blood Donation System</h1>
-    <p>Donate Blood, Save Lives</p>
 
+  <header>
+    <div class="image header-logo">
+      <img src="asset/img/blood.png" alt="Logo">
+      <span>Lifeline</span>
+    </div>
     <nav>
       <a href="#home">Home</a>
       <a href="#about">About</a>
       <a href="#services">Services</a>
-      <a onclick="showPage('register')">Register</a>
-      <a onclick="showPage('checkBlood')">Check Blood</a>
       <a href="#contact">Contact</a>
+      <a onclick="showPage('register')" class="register">Register</a>
       <a onclick="showPage('admin')" style="display:none;">Admin Donors</a>
     </nav>
-  </header>
+  </header> 
 
   <!-- Login Page -->
-  <div class="container active" id="login">
-    <div class="login-section">
-      <h2>Login</h2>
-      <form onsubmit="login(event)">
-        <div class="form-contain">
-          <label>Username:</label>
-          <input type="text" id="loginUser" required>
+ <div class="login-container active" id="login">
+  <div class="login-wrapper">
 
-          <label>Password:</label>
-          <input type="password" id="loginPass" required>
+      <div class="login-content">
+        <div class="login-intro">
+          <span>___ SECURE ACCESS</span>
+          <h2>Welcome Back</h2>
+          <p>Enter your credentials to manage your appointments and view your donation history</p>
+        </div>
+        <div class="login-input-section">
+          <form onsubmit="login(event)" class="form-contain">
+            <div class="login-input">
+              <span>Email</span>
+              <div class="input-section">
+                <i class="fa-solid fa-user"></i>
+                <input type="email" id="loginUser" placeholder="name@domain.com" required>
+              </div>
+
+              <span>Password</span>
+              <div class="input-section">
+                <i class="fa-solid fa-lock"></i>
+                <input type="password" id="loginPass" placeholder="******" required>
+                <i class="fa-solid fa-eye-slash"></i>
+              </div>
+
+            </div>
+            <div class="login-additonal">
+              <div class="remember">
+                <input type="checkbox" id="remember">
+                <label for="remember">Remember me</label>
+              </div>
+              <a href="#">Forgot Password?</a>
+            </div>
+            <div class="form-button">
+            <button type="submit">Sign In</button>
+            </div>
+          </form>
+        </div>
+        <div class="login-footer">
+          <p>Don't have an account? <a href="#">Create an account</a></p>
+
+          <div class="login-with-other">
+            <p>Or login with</p>
+            <div class="login-with-other-icons">
+              <i class="fa-brands fa-google"></i>
+              <i class="fa-brands fa-facebook"></i>
+              <i class="fa-brands fa-twitter"></i>
+            </div>
+          </div>
         </div>
 
-        <div class="form-button">
-          <button type="submit">Login</button>
-        </div>
-      </form>
-    </div>
-  </div>
-
-  <!-- Main Content Page (Home, About, Services, Contact Combined) -->
-  <div class="container" id="home">
-    <!-- Home Section -->
-    <section class="home" id="home-section">
-      <div class="home-content">
-        <h1 class="home-title">Save Lives Through Blood Donation</h1>
-        <p class="home-subtitle">Every Drop Counts. Every Donor Matters.</p>
-        <p class="home-description">
-          Join our community of life-savers. We connect voluntary blood donors with patients in critical need—quickly,
-          safely, and reliably. Your single donation can save up to three lives.
-        </p>
-        <div class="home-buttons">
-          <button class="btn-primary" onclick="showPage('register')">Become a Donor</button>
-          <button class="btn-secondary" onclick="showPage('checkBlood')">Find Blood</button>
-        </div>
       </div>
-      <div class="home-image">
-        <div class="home-img-wrapper">
-          <img src="asset/img/blood.png" alt="Blood Donation">
+      <div class="login-image-container">
+        <div class="login-image">
+          <img src="asset/img/login.png" alt="">
         </div>
+
       </div>
-    </section>
-
-    <!-- About Section -->
-    <section class="about-section" id="about">
-      <div class="about-content">
-        <h2>About Us</h2>
-        <p>This platform helps patients find compatible blood donors nearby.
-          We believe every drop counts and every donor matters.</p>
-
-        <p>Our platform was developed with a simple goal—to make blood donation faster, easier, and more accessible for
-          everyone. Whether it's a medical emergency or a scheduled procedure, we aim to
-          bridge the gap between donors and patients in need.</p>
-
-        <p>We believe that a strong community can save countless lives.
-          By encouraging regular blood donation and creating awareness, we hope to build a society where no
-          patient struggles to find a compatible donor. Every donor who joins our system contributes
-          to a healthier and more supportive nation.</p>
-
-        <p>Our team continuously works on improving the system by integrating user-friendly features,
-          secure data handling, and accurate matching processes. We are committed to ensuring reliability,
-          trust, and safety for both donors and recipients.</p>
-      </div>
-    </section>
-
-    <!-- Services Section -->
-    <section class="services-section" id="services">
-      <h2>Our Services</h2>
-      <ul>
-        <li>Blood Donor Registration</li>
-        <li>Blood Request Matching</li>
-        <li>Emergency Blood Needs</li>
-        <li>Awareness Campaigns</li>
-        <li>Donor Eligibility Check to ensure safe and healthy blood donation.</li>
-        <li>Blood Bank Directory with contact details and available blood units.</li>
-        <li>Real-time Blood Availability updates from nearby hospitals.</li>
-        <li>SMS and Email Notifications for urgent blood requirements.</li>
-        <li>Donor History & Tracking to monitor previous donations.</li>
-        <li>Emergency Alert System for critical and immediate blood needs.</li>
-        <li>Information on Awareness Programs, Donation Camps, and Events.</li>
-      </ul>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="contact-section" id="contact">
-      <h2>Contact Us</h2>
-      <p>Email: support@blooddonation.org</p>
-      <p>Phone: +977-9800000000</p>
-      <p>Address: Kathmandu, Nepal</p>
-    </section>
-  </div>
-
-  <!-- Register Page -->
-  <div class="container" id="register">
-    <h2>Registration Form</h2>
-
-    <div class="register-form">
-      <form onsubmit="saveData(event)">
-
-        <div class="register-option">
-          <label for="userType">Choose your purpose:</label>
-          <select id="userType" name="userType" required>
-            <option value="">--Select--</option>
-            <option value="Donor">I want to Donate Blood</option>
-            <option value="Receiver">I want to Receive Blood</option>
-            <option value="CheckAvailability">I want to Check Blood Availability</option>
-          </select>
-        </div>
-
-        <div class="register-input">
-          <label for="name">Full Name:</label>
-          <input type="text" id="name" name="name" required />
-
-          <label for="age">Age:</label>
-          <input type="number" id="age" name="age" required />
-        </div>
-
-        <div class="register-option">
-          <label for="blood">Blood Group:</label>
-          <select id="blood" name="blood" required>
-            <option value="">--Select--</option>
-            <option value="A+">A+</option>
-            <option value="A−">A−</option>
-            <option value="B+">B+</option>
-            <option value="B−">B−</option>
-            <option value="AB+">AB+</option>
-            <option value="AB−">AB−</option>
-            <option value="O+">O+</option>
-            <option value="O−">O−</option>
-          </select>
-        </div>
-
-        <div class="register-input">
-          <label for="phone">Phone Number:</label>
-          <input type="tel" id="phone" name="phone" required />
-
-          <label for="location">Location:</label>
-          <input type="text" id="location" name="location" required />
-        </div>
-
-        <div class="form-button">
-          <button type="submit">Submit</button>
-        </div>
-      </form>
-    </div>
-  </div>
-
-  <!-- Check Blood Page -->
-  <div class="container" id="checkBlood">
-    <div class="checkblood-wrapper">
-      <h2>Check Blood Availability</h2>
-      <label for="searchBlood">Select Blood Type:</label>
-      <select id="searchBlood">
-        <option value="">--Select--</option>
-        <option value="A+">A+</option>
-        <option value="A−">A−</option>
-        <option value="B+">B+</option>
-        <option value="B−">B−</option>
-        <option value="AB+">AB+</option>
-        <option value="AB−">AB−</option>
-        <option value="O+">O+</option>
-        <option value="O−">O−</option>
-      </select>
     </div>
 
-    <div class="form-button checkblood">
-      <button onclick="checkBloodAvailability()">Check</button>
-    </div>
-
-    <div id="availableDonors"></div>
   </div>
-
-  <!-- Admin Donor List -->
-  <div class="container" id="admin">
-    <h2>Registered Donors</h2>
-    <table id="donorTable">
-      <thead>
-        <tr>
-          <th>User Type</th>
-          <th>Name</th>
-          <th>Age</th>
-          <th>Blood Group</th>
-          <th>Phone</th>
-          <th>Location</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- Donors will appear here -->
-      </tbody>
-    </table>
-    <button onclick="clearDonors()">Clear All Donors</button>
-  </div>
-
-  <footer>
-    <p>&copy; 2025 Blood Donation System | All rights reserved.</p>
-  </footer>
 
   <script src="asset/js/main.js"></script>
 </body>

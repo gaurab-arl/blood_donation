@@ -1,0 +1,59 @@
+:root {
+    --primary-color: #D90429;
+    --secondary-color: #2B2D42;
+    --accent-color: #EF233C;
+    --background-color: #F8F9FA;
+    --card-bg: #FFFFFF;
+    --text-color: #FFFFFF;
+    --border-color: #CDD3DD;
+
+    --header-height: 80px;
+}
+
+/* ==================== Global Styles ==================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+body {
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    background-color: #1C0A0A;
+}
+
+.active {
+    display: block;
+}
+
+h2 {
+    font-size: 1.5rem;
+    color: var(--accent-color);
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+button {
+    background: transparent;
+    color: var(--secondary-color);
+    padding: 10px 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: 2px solid var(--primary-color);
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background: var(--primary-color);
+    color: var(--text-color);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(217, 4, 41, 0.3);
+}
