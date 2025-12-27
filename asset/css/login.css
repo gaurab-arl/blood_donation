@@ -1,14 +1,14 @@
 .page-container {
-   
+
     padding-top: var(--header-height);
 
     min-height: calc(100vh - var(--header-height));
- background: radial-gradient(circle at top left, #2a0e0e 0%, #140707 45%, #0b0303 100%);
+    background: radial-gradient(circle at top left, #2a0e0e 0%, #140707 45%, #0b0303 100%);
 }
 
-.page-container.active {
+/* .page-container.active {
     display: block;
-}
+} */
 
 .page-wrapper {
     height: calc(100vh - var(--header-height));
@@ -18,7 +18,7 @@
 }
 
 .page-content {
-    
+
     padding: 2rem 4rem;
     display: flex;
     flex-direction: column;
@@ -35,7 +35,7 @@
     content: "";
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle at top, rgba(255,77,77,0.15), transparent 45%);
+    background: radial-gradient(circle at top, rgba(255, 77, 77, 0.15), transparent 45%);
     pointer-events: none;
 }
 
@@ -142,7 +142,8 @@
     cursor: pointer;
     color: #000;
     background: linear-gradient(90deg, #ff4d4d, #ff2f2f);
-    box-shadow: 0 0 15px rgba(255, 77, 77, 0.35);    transition: 0.3s;
+    box-shadow: 0 0 15px rgba(255, 77, 77, 0.35);
+    transition: 0.3s;
 }
 
 .form-button button:hover {
@@ -154,15 +155,15 @@
 
 .page-footer {
     margin-top: 3rem;
- border-top: 1px solid rgba(255,77,77,0.4);
+    border-top: 1px solid rgba(255, 77, 77, 0.4);
     padding: 1rem;
- color: rgba(255,255,255,0.7);
+    color: rgba(255, 255, 255, 0.7);
     font-size: 0.9rem;
     text-align: center;
 }
 
 .page-footer a {
-     color: #ff6b6b;
+    color: #ff6b6b;
     font-weight: 600;
     text-decoration: none;
 }
@@ -175,7 +176,7 @@
 
 .page-image {
     top: var(--header-height);
-    height: calc(100vh - var(--header-height)); 
+    height: calc(100vh - var(--header-height));
     width: 100%;
     position: sticky;
 
@@ -221,10 +222,11 @@
     font-size: 0.85rem;
 } */
 
- /*   ----------*/ 
+/*   ----------*/
 
 .login-with-other {
-    margin-top: 1rem;;
+    margin-top: 1rem;
+    ;
     text-align: center;
     padding-top: 1.5rem;
 }
@@ -300,10 +302,11 @@
     border-color: #1DA1F2;
 }
 
-.login-with-register p::after , 
+.login-with-register p::after,
 .login-with-register p::before {
     display: none;
 }
+
 /* for scroll bar */
 
 .page-content::-webkit-scrollbar {
@@ -314,7 +317,7 @@
     background: rgba(255, 255, 255, 0.03);
 }
 
-.page-content::-webkit-scrollbar-thumb { 
+.page-content::-webkit-scrollbar-thumb {
     background: linear-gradient(180deg, #ff4d4d, #ff2f2f);
     border-radius: 10px;
 }

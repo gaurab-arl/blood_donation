@@ -5,19 +5,11 @@
 @import url('setup.css');
 @import url('regester.css');
 @import url('header.css');
-
+@import url('home.css');
+@import url('about.css');
 
 
 /* ==================== Home Section ==================== */
-#home {
-    display: none;
-    padding: 0;
-}
-
-#home.active {
-    display: block;
-}
-
 .home {
     display: flex;
     min-height: 100vh;
