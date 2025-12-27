@@ -27,33 +27,34 @@
   </header> 
 
   <!-- Login Page -->
- <div class="login-container active" id="login">
-  <div class="login-wrapper">
+ <div class="page-container active" id="login">
+  <div class="page-wrapper">
 
-      <div class="login-content">
-        <div class="login-intro">
-          <span>___ SECURE ACCESS</span>
+      <div class="page-content">
+        <div class="page-intro">
+          <span>____ SECURE ACCESS</span>
           <h2>Welcome Back</h2>
           <p>Enter your credentials to manage your appointments and view your donation history</p>
         </div>
-        <div class="login-input-section">
+        <div class="page-input-section">
           <form onsubmit="login(event)" class="form-contain">
-            <div class="login-input">
+            <div class="page-input">
+
               <span>Email</span>
               <div class="input-section">
                 <i class="fa-solid fa-user"></i>
-                <input type="email" id="loginUser" placeholder="name@domain.com" required>
+                <input type="email" id="loginUser" placeholder="name@domain.com" required id="loginUser">
               </div>
 
               <span>Password</span>
               <div class="input-section">
                 <i class="fa-solid fa-lock"></i>
-                <input type="password" id="loginPass" placeholder="******" required>
+                <input type="password" id="loginPass" placeholder="******" required id="loginPass">
                 <i class="fa-solid fa-eye-slash"></i>
               </div>
 
             </div>
-            <div class="login-additonal">
+            <div class="page-additonal">
               <div class="remember">
                 <input type="checkbox" id="remember">
                 <label for="remember">Remember me</label>
@@ -65,8 +66,8 @@
             </div>
           </form>
         </div>
-        <div class="login-footer">
-          <p>Don't have an account? <a href="#">Create an account</a></p>
+        <div class="page-footer">
+          <p>Don't have an account? <a href="asset/pages/regester.html">Create an account</a></p>
 
           <div class="login-with-other">
             <p>Or login with</p>
@@ -79,8 +80,8 @@
         </div>
 
       </div>
-      <div class="login-image-container">
-        <div class="login-image">
+      <div class="page-image-container">
+        <div class="page-image">
           <img src="asset/img/login.png" alt="">
         </div>
 

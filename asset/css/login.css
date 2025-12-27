@@ -1,28 +1,23 @@
-.login-container {
-    display: none;
+.page-container {
+   
     padding-top: var(--header-height);
 
     min-height: calc(100vh - var(--header-height));
  background: radial-gradient(circle at top left, #2a0e0e 0%, #140707 45%, #0b0303 100%);
 }
 
-.login-container.active {
+.page-container.active {
     display: block;
 }
 
-
-.login-container.active {
-    display: block;
-}
-
-.login-wrapper {
+.page-wrapper {
     height: calc(100vh - var(--header-height));
     display: grid;
     grid-template-columns: 1fr 1.5fr;
     align-items: stretch;
 }
 
-.login-content {
+.page-content {
     
     padding: 2rem 4rem;
     display: flex;
@@ -36,7 +31,7 @@
     overflow-y: auto;
 }
 
-.login-content::before {
+.page-content::before {
     content: "";
     position: absolute;
     inset: 0;
@@ -44,35 +39,33 @@
     pointer-events: none;
 }
 
-.login-intro {
+.page-intro {
     margin: 1rem;
 }
 
-.login-intro span {
+.page-intro span {
     color: #ffffff;
     font-size: 0.85rem;
     letter-spacing: 1px;
 }
 
-.login-intro h2 {
+.page-intro h2 {
     font-size: 2.6rem;
     color: #ffffff;
     margin: 0.5rem 0;
 }
 
-.login-intro p {
+.page-intro p {
     color: #c9a3a3;
     max-width: 420px;
 }
 
-
-
-.login-input-section {
+.page-input-section {
     background-color: transparent;
     padding-top: 1rem;
 }
 
-.login-input span {
+.page-input span {
     font-size: 0.9rem;
     color: #ffffff;
 }
@@ -108,7 +101,7 @@
 
 /*        ------------------       */
 
-.login-additonal {
+.page-additonal {
     margin-top: 1rem;
     display: flex;
     justify-content: space-between;
@@ -130,7 +123,7 @@
     font-size: 0.85rem;
 }
 
-.login-additonal a {
+.page-additonal a {
     color: #ff4d4d;
     font-size: 0.85rem;
     text-decoration: none;
@@ -159,7 +152,7 @@
 
 
 
-.login-footer {
+.page-footer {
     margin-top: 3rem;
  border-top: 1px solid rgba(255,77,77,0.4);
     padding: 1rem;
@@ -168,19 +161,19 @@
     text-align: center;
 }
 
-.login-footer a {
+.page-footer a {
      color: #ff6b6b;
     font-weight: 600;
     text-decoration: none;
 }
 
-.login-image-container {
+.page-image-container {
     width: 100%;
     height: 100%;
     display: flex;
 }
 
-.login-image {
+.page-image {
     top: var(--header-height);
     height: calc(100vh - var(--header-height)); 
     width: 100%;
@@ -190,7 +183,7 @@
 
 }
 
-.login-image img {
+.page-image img {
     max-width: 100%;
     height: 100%;
     padding-left: 1rem;
@@ -202,15 +195,15 @@
 }
 
 
-
-.login-image-text {
+/* 
+.page-image-text {
     position: absolute;
     bottom: 20%;
     text-align: center;
     color: white;
 }
 
-.login-image-text span {
+.page-image-text span {
     display: inline-flex;
     width: 70px;
     height: 70px;
@@ -221,12 +214,12 @@
     box-shadow: 0 0 30px rgba(255, 77, 77, 0.6);
 }
 
-.login-image-text label {
+.page-image-text label {
     display: block;
     margin-top: 0.8rem;
     letter-spacing: 1px;
     font-size: 0.85rem;
-}
+} */
 
  /*   ----------*/ 
 
@@ -307,26 +300,42 @@
     border-color: #1DA1F2;
 }
 
+.login-with-register p::after , 
+.login-with-register p::before {
+    display: none;
+}
 /* for scroll bar */
 
-.login-content::-webkit-scrollbar {
+.page-content::-webkit-scrollbar {
     width: 8px;
 }
 
-.login-content::-webkit-scrollbar-track {
+.page-content::-webkit-scrollbar-track {
     background: rgba(255, 255, 255, 0.03);
 }
 
-.login-content::-webkit-scrollbar-thumb {
+.page-content::-webkit-scrollbar-thumb { 
     background: linear-gradient(180deg, #ff4d4d, #ff2f2f);
     border-radius: 10px;
 }
 
-.login-content::-webkit-scrollbar-thumb:hover {
+.page-content::-webkit-scrollbar-thumb:hover {
     background: linear-gradient(180deg, #ff6b6b, #ff3f3f);
 }
 
-.login-content {
+.page-content {
     scrollbar-width: thin;
     scrollbar-color: #ff4d4d rgba(255, 255, 255, 0.03);
+}
+
+/* Add this to login.css after .input-section input::placeholder */
+/* Add this to login.css */
+.input-section input:-webkit-autofill,
+.input-section input:-webkit-autofill:hover,
+.input-section input:-webkit-autofill:focus,
+.input-section input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px transparent inset !important;
+    -webkit-text-fill-color: white !important;
+    caret-color: white;
+    transition: background-color 5000s ease-in-out 0s;
 }
