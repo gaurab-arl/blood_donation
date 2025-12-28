@@ -1,4 +1,4 @@
-/* About Section - REDESIGNED */
+/* About Section  */
 .about {
     min-height: 100vh;
     padding: 80px 20px;
@@ -86,7 +86,7 @@
     font-size: 1.1rem;
 }
 
-/* About Second Section - REDESIGNED */
+
 .about-second-section {
     margin-top: 100px;
 }
@@ -119,7 +119,7 @@
     line-height: 1.6;
 }
 
-/* About Second Wrapper - COMPLETELY REDESIGNED */
+/* About Second Wrapper  */
 .about-second-wrapper {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -178,7 +178,7 @@
     transform: scale(1.1);
 }
 
-/* Process Icon - REDESIGNED */
+/* Process Icon  */
 .process-icon {
     position: relative;
     z-index: 2;
@@ -207,7 +207,7 @@
     display: none;
 }
 
-/* Process Content - REDESIGNED */
+/* Process Content  */
 .process-content {
     flex: 1;
 }
