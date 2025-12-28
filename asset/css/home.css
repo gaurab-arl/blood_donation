@@ -108,27 +108,16 @@
 .home-image-container::before {
     content: "";
     position: absolute;
-    left: 73%;
-    top: 47%;
+    left: 75%;
+    top: 44%;
     transform: translate(-50%, -50%);
     width: 150px;
     height: 150px;
     border-radius: 50%;
     background: radial-gradient(circle, rgba(217, 4, 41, 0.6), rgba(217, 4, 41, 0.3), transparent);
     z-index: 0;
-    animation: pulse 3s ease-in-out infinite;
 }
 
-@keyframes pulse {
-    0%, 100% {
-        transform: translate(-50%, -50%) scale(0.95);
-        opacity: 0.6;
-    }
-    50% {
-        transform: translate(-50%, -50%) scale(1.1);
-        opacity: 0.9;
-    }
-}
 
 .home-image-container img {
     width: 100%;
