@@ -10,6 +10,9 @@
 @import url('services.css');
 
 
+@import url('info.css');
+
+
 /* ==================== Home Section ==================== */
 .home {
     display: flex;

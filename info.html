@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lifeline - Blood Donation</title>
+    <link rel="stylesheet" href="asset/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <header class="info-header">
+        <div class="header-logo">
+            <img src="asset/img/blood.png" alt="Lifeline Blood Donation Logo">
+            <span>Lifeline</span>
+        </div>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#contact">Contact</a>
+        </nav>
+
+        <div class="user-info">
+            <i class="fa-solid fa-bell"></i>
+            <div class="user-info-image">
+                <img src="asset/img/user.png" alt="User Profile Picture">
+            </div>
+            <span>Ghost Girl</span>
+        </div>
+    </header>
+
+    <div class="info-section">
+        <div class="info-wrapper">
+            <div class="info-intro-section grid-container">
+                <div class="info-intro">
+                    <span>Learn About Blood Donation</span>
+                    <p>
+                        Everything you need to know about eligibility, donation process, and benefits of blood donation.
+                    </p>
+                    <div class="info-button">
+                        <a href="#eligibility" class="tertiary-btn">Eligibility</a>
+                        <a href="#faq" class="tertiary-btn">FAQ</a>
+                        <a href="#tips" class="tertiary-btn">Donation Tips</a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="info-image grid-container">
+                <img src="asset/img/supply.png" alt="Blood Donation Supplies">
+            </div>
+
+            <!-- <se class="content-eligibilty" id="eligibility"> -->
+
+
+                <div class="eligibility grid-container">
+                    <div class="eligibility-intro">
+
+                        <div class="eligibility-card">
+                            <div class="eligibility-card-image">
+                                <i class="fa-solid fa-user"></i>
+
+                                <div class="eligibility-intro">
+                                    <h3>Who can donate?</h3>
+                                    <span>Age: 18 to 66 years old</span>
+                                    <span>Weight: 50 kg or more</span>
+                                    <span>Health: In good health</span>
+                                </div>
+                            </div>
+                            <div class="eligibility-card-content">
+                                <p><span>NOTE:</span> Requirements may vary slightly depending on local regulations</p>
+                                <p>
+                                    Frequency: Minimum 3 months gap between donations.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="eligibility-card">
+                            <div class="eligibility-card-image">
+                                <i class="fa-solid fa-user-slash"></i>
+
+                                <div class="eligibility-intro">
+                                    <h3>Who should not donate?</h3>
+
+                                    <span>Recent illness or infection</span>
+                                    <span>Chronic diseases</span>
+                                    <span>Recent surgery</span>
+                                    <span>Pregnant or breastfeeding</span>
+                                </div>
+                            </div>
+
+                            <div class="eligibility-card-content">
+                                <p><span>NOTE:</span> Requirements may vary slightly depending on local regulations</p>
+                                <p>
+                                    If unsure, consult with medical staff before donating.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="eligibility-end grid-container">
+                    <div class="eligibility-end-wrapper">
+
+                        <i class="fa-solid fa-heart-pulse"></i>
+                        <div class="eligibility-end-first">
+                            <span class="eligibility-title">Donation Process</span>
+
+                            <div class="eligibility-end-content">
+
+
+                                <span> Registration and health screening</span>
+                                <span> Mini physical examination</span>
+                                <span> Blood donation (10-15 minutes)</span>
+                                <span> Rest and refreshments</span>
+                                <span> Resume normal activities</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="eligibility-end-second">
+                        <h3>Benefits of Donating Blood</h3>
+                        <div class="eligibility-end-second-content">
+
+                            <span>Save up to 3 lives with one donation</span>
+                            <span>Free health check-up</span>
+                            <span>Reduce risk of heart disease</span>
+                            <span>Burn calories</span>
+                            <span>Boost your mental well-being</span>
+                        </div>
+
+                    </div>
+                    <div class="eligibility-end-fotter">
+                        <p>Feel good knowing you're making a difference!</p>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="content-faq" >
+
+            </div>
+            <div class="content-tips" >
+
+            </div>
+
+
+            <div class="eligibility-ending">
+                <span>Ready to donate?</span>
+                <a href="#" class="primary-btn">Find a Donor Center</a>
+            </div>
+
+        </div>
+
+
+    </div>
+
+    <script>
+        const eligibility = document.getElementById('eligibility');
+        const faq = document.getElementById('faq');
+        const tips = document.getElementById('tips');
+
+        eligibility.style.display = "block";
+        faq.style.display = "none";
+        tips.style.display = "none";
+    </script>
+</body>
+
+</html>
