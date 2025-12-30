@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Lifeline - Blood Donation</title>
-    <link rel="stylesheet" href="asset/css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -14,23 +14,23 @@
 
     <header class="info-header">
         <div class="header-logo">
-            <img src="asset/img/blood.png">
+            <img src="../img/blood.png">
             <span>Lifeline</span>
         </div>
         <nav>
-            <a href="#">Home</a>
-            <a href="#">About</a>
+            <a href="#">Dashboard</a>
+            <a href="#info">Info</a>
             <a href="#">Services</a>
-            <a href="#">Contact</a>
+            <a href="#">Settings</a>
         </nav>
         <div class="user-info">
             <i class="fa-solid fa-bell"></i>
-            <img src="asset/img/user.png" style="width: 40px; height: 40px;">
+            <img src="../img/user.png" style="width: 40px; height: 40px;">
             <span>Ghost Girl</span>
         </div>
     </header>
 
-    <div class="info-section">
+    <div class="info-section" id="info">
         <div class="info-wrapper">
 
             <div class="info-intro-section grid-container">
@@ -46,7 +46,7 @@
             </div>
 
             <div class="info-image grid-container">
-                <img src="asset/img/supply.png">
+                <img src="../img/supply.png">
             </div>
 
             <div class="tab-wrapper">
@@ -184,49 +184,49 @@
                 <div id="tips" class="tab">
                     <div class="tips grid-container">
 
-  <h2 class="tips-title">Donation Tips</h2>
+                        <h2 class="tips-title">Donation Tips</h2>
 
-  <div class="tips-grid">
+                        <div class="tips-grid">
 
-    <div class="tip-card">
-      <i class="fa-solid fa-glass-water"></i>
-      <h3>Stay Hydrated</h3>
-      <p>Drink plenty of water before and after donation.</p>
-    </div>
+                            <div class="tip-card">
+                                <i class="fa-solid fa-glass-water"></i>
+                                <h3>Stay Hydrated</h3>
+                                <p>Drink plenty of water before and after donation.</p>
+                            </div>
 
-    <div class="tip-card">
-      <i class="fa-solid fa-utensils"></i>
-      <h3>Eat Well</h3>
-      <p>Have a healthy meal before donating blood.</p>
-    </div>
+                            <div class="tip-card">
+                                <i class="fa-solid fa-utensils"></i>
+                                <h3>Eat Well</h3>
+                                <p>Have a healthy meal before donating blood.</p>
+                            </div>
 
-    <div class="tip-card">
-      <i class="fa-solid fa-bed"></i>
-      <h3>Get Rest</h3>
-      <p>Sleep well the night before your donation.</p>
-    </div>
+                            <div class="tip-card">
+                                <i class="fa-solid fa-bed"></i>
+                                <h3>Get Rest</h3>
+                                <p>Sleep well the night before your donation.</p>
+                            </div>
 
-    <div class="tip-card">
-      <i class="fa-solid fa-ban-smoking"></i>
-      <h3>Avoid Smoking</h3>
-      <p>Do not smoke at least 1 hour before and after donation.</p>
-    </div>
+                            <div class="tip-card">
+                                <i class="fa-solid fa-ban-smoking"></i>
+                                <h3>Avoid Smoking</h3>
+                                <p>Do not smoke at least 1 hour before and after donation.</p>
+                            </div>
 
-    <div class="tip-card">
-      <i class="fa-solid fa-heart-pulse"></i>
-      <h3>Relax</h3>
-      <p>Stay calm and breathe normally during the process.</p>
-    </div>
+                            <div class="tip-card">
+                                <i class="fa-solid fa-heart-pulse"></i>
+                                <h3>Relax</h3>
+                                <p>Stay calm and breathe normally during the process.</p>
+                            </div>
 
-    <div class="tip-card">
-      <i class="fa-solid fa-person-walking"></i>
-      <h3>Post Donation Care</h3>
-      <p>Avoid heavy exercise and liftings for 24 hours.</p>
-    </div>
+                            <div class="tip-card">
+                                <i class="fa-solid fa-person-walking"></i>
+                                <h3>Post Donation Care</h3>
+                                <p>Avoid heavy exercise and liftings for 24 hours.</p>
+                            </div>
 
-  </div>
+                        </div>
 
-</div>
+                    </div>
 
                 </div>
 
@@ -251,12 +251,12 @@
             });
         });
 
-    
-document.querySelectorAll('.faq-question').forEach(q => {
-  q.addEventListener('click', () => {
-    q.parentElement.classList.toggle('active');
-  });
-});
+
+        document.querySelectorAll('.faq-question').forEach(q => {
+            q.addEventListener('click', () => {
+                q.parentElement.classList.toggle('active');
+            });
+        });
 
     </script>
 

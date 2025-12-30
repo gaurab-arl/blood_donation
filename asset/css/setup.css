@@ -1,5 +1,5 @@
 :root {
-    --primary-color: #D90429;
+
     --secondary-color: #2B2D42;
     --accent-color: #EF233C;
     --background-color: #F8F9FA;
@@ -8,6 +8,17 @@
     --border-color: #CDD3DD;
 
     --header-height: 80px;
+
+    --primary-color: #dc2626;
+    --bg-dark: #1a0b0b;
+    --card-bg: rgba(30, 15, 15, 0.6);
+    --card-border: rgba(255, 255, 255, 0.1);
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.7);
+    --text-muted: rgba(255, 255, 255, 0.5);
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
 }
 
 /* ==================== Global Styles ==================== */

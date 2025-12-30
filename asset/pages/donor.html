@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LifeFlow - Blood Donation Dashboard</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+
+</head>
+
+<body>
+
+    <header class="info-header">
+        <div class="header-logo">
+            <img src="../img/blood.png" alt="Lifeline Logo">
+            <span>Lifeline</span>
+        </div>
+        <nav>
+            <a href="#">Dashboard</a>
+            <a href="#info">Info</a>
+            <a href="#">Services</a>
+            <a href="#">Settings</a>
+        </nav>
+        <div class="user-info">
+            <i class="fa-solid fa-bell"></i>
+            <img src="../img/user.png" alt="User" style="width: 40px; height: 40px;">
+            <span>Ghost Girl</span>
+        </div>
+    </header>
+
+    <div class="donor-container">
+        <div class="donor-wrapper">
+            <div class="welcome-section">
+                <div class="welcome-intro">
+                    <h1>Welcome back, Alex</h1>
+                    <p>Your generous contributions have saved <span class="lives-saved">12 lives</span> so far.</p>
+                </div>
+                <button class="share-stats">
+                    <i class="fas fa-share-alt"></i>
+                    <span>Share Stats</span>
+                </button>
+            </div>
+
+            <div class="main-grid">
+                <div class="card blood-type-card">
+                    <div class="blood-type-header">
+                        <span class="active-donor-badge">ACTIVE DONOR</span>
+                        <h2>Blood Type: A+</h2>
+
+                        <p class="demand-text">Your specific blood type is currently in high demand at local centers.</p>
+
+                        <div class="donation-stats">
+                            <div class="donation-stats-content">
+                                <div class="stat-item">
+                                    <h4>Total Donations</h4>
+                                    <div class="stat-number">15</div>
+                                </div>
+                                <div class="stat-item">
+                                    <h4>Next Eligible</h4>
+                                    <div class="available-status">Available<br>Now</div>
+                                </div>
+                            </div>
+                            <button class="book-btn">Book Appointment</button>
+                        </div>
+                    </div>
+
+                    <div class="blood-drop">
+                        <!-- Use the new SVG blood drop -->
+                        <img src="../img/blood.png" alt="Blood Drop">
+                    </div>
+                </div>
+
+                <div class="card upcoming-card">
+                    <h3>
+                        <i class="far fa-calendar"></i>
+                        <span>Upcoming</span>
+                    </h3>
+
+                    <div class="no-appointments">
+                        <h4>NO UPCOMING APPOINTMENTS</h4>
+                        <p>You haven't scheduled your next donation yet.</p>
+                        <a href="#" class="find-center-link">Find a center near you →</a>
+                    </div>
+
+                    <div class="map-container-box">
+                        <h4>Nearest Center</h4>
+                        <div class="map">
+                            <img src="../img/background.png" alt="Map">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bottom-grid">
+                <div class="card history-card">
+                    <div class="bottom-grid-intro">
+                        <span>History</span>
+                        <a href="#" class="view-all">VIEW ALL</a>
+                    </div>
+
+                    <div class="history-item">
+                        <div class="history-icon">
+                            <i class="fas fa-tint"></i>
+                        </div>
+                        <div class="history-details">
+                            <h4>Whole Blood Donation</h4>
+                            <div class="date">July 12, 2023 • 450ml</div>
+                            <div class="location">City General Hospital</div>
+                        </div>
+                    </div>
+
+                    <div class="history-item">
+                        <div class="history-icon">
+                            <i class="fas fa-tint"></i>
+                        </div>
+                        <div class="history-details">
+                            <h4>Whole Blood Donation</h4>
+                            <div class="date">Mar 15, 2023 • 450ml</div>
+                            <div class="location">Downtown Clinic</div>
+                        </div>
+                    </div>
+
+                    <div class="history-item">
+                        <div class="history-icon">
+                            <i class="fas fa-tint"></i>
+                        </div>
+                        <div class="history-details">
+                            <h4>Whole Blood Donation</h4>
+                            <div class="date">Nov 02, 2022 • 450ml</div>
+                            <div class="location">Mobile Unit 4</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card vital-stats-card">
+                    <div class="vital-stats-card-intro">
+                        <span>Vital Stats</span>
+                        <span class="time-period">Last 6 Months</span>
+                    </div>
+
+                    <div class="chart">
+                        <div class="chart-bar" style="height: 40%;"></div>
+                        <div class="chart-bar" style="height: 55%;"></div>
+                        <div class="chart-bar" style="height: 70%;"></div>
+                        <div class="chart-bar active" style="height: 85%;">
+                            <span class="chart-value">15.0</span>
+                        </div>
+                    </div>
+
+                    <div class="vital-readings">
+                        <div class="vital-item">
+                            <div class="vital-label">
+                                <i class="fas fa-heartbeat"></i>
+                                <span>Hemoglobin</span>
+                            </div>
+                            <div class="vital-value">15.0 g/dL</div>
+                        </div>
+
+                        <div class="vital-item">
+                            <div class="vital-label">
+                                <i class="fas fa-heart"></i>
+                                <span>Pulse</span>
+                            </div>
+                            <div class="vital-value">72 bpm</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card achievements-card">
+                    <div class="achievements-card-intro">
+                        <span>Achievements</span>
+                        <span class="level-badge">Level 3</span>
+                    </div>
+
+                    <div class="progress-section">
+                        <div class="progress-header">
+                            <span>Progress to Gold Tier</span>
+                            <span class="progress-percent">80%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill"></div>
+                        </div>
+                    </div>
+
+                    <div class="badges-grid">
+                        <div class="badge-item">
+                            <div class="badge-icon bronze">
+                                <i class="fas fa-trophy"></i>
+                            </div>
+                            <div class="badge-label">Bronze Donor</div>
+                        </div>
+
+                        <div class="badge-item">
+                            <div class="badge-icon silver">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div class="badge-label">Silver Star</div>
+                        </div>
+
+                        <div class="badge-item">
+                            <div class="badge-icon gold">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <div class="badge-label">Life Saver</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>
