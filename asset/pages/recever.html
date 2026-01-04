@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BloodLink - Live Blood Inventory</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">
+            <i class="fas fa-tint"></i>
+            <span>BloodLink</span>
+        </div>
+        
+        <nav class="nav">
+            <a href="#">Dashboard</a>
+            <a href="#" class="active">Inventory</a>
+            <a href="#">Donors</a>
+            <a href="#">Requests</a>
+            <a href="#">Reports</a>
+        </nav>
+        
+        <div class="user-section">
+            <i class="fas fa-bell"></i>
+            <div class="user-info">
+                <img src="user-avatar.jpg" alt="User">
+                <div class="user-details">
+                    <span class="user-name">Dr. Sarah Cole</span>
+                    <span class="user-role">Chief Hematologist</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Critical Alert -->
+    <div class="alert-banner">
+        <i class="fas fa-exclamation-triangle"></i>
+        <span>CRITICAL ALERT: O- reserves at critical low in Sector 4. Immediate attention required.</span>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Page Header -->
+        <div class="page-header">
+            <div class="header-content">
+                <h1>Live Blood Inventory</h1>
+                <p>Real-time tracking of blood availability across regional centers.</p>
+            </div>
+            <div class="header-actions">
+                <button class="btn-secondary">
+                    <i class="fas fa-download"></i>
+                    Export Report
+                </button>
+                <button class="btn-primary">
+                    <i class="fas fa-sync"></i>
+                    Sync Data
+                </button>
+            </div>
+        </div>
+
+        <!-- Main Content Grid -->
+        <div class="main-grid">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <!-- Filters -->
+                <div class="filters-card">
+                    <h3>
+                        <i class="fas fa-filter"></i>
+                        Filters
+                    </h3>
+                    
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search Hospital, ID, or Region...">
+                    </div>
+
+                    <!-- Blood Type Filters -->
+                    <div class="filter-section">
+                        <h4>BLOOD TYPE</h4>
+                        <div class="blood-type-buttons">
+                            <button class="blood-btn active">All</button>
+                            <button class="blood-btn">A+</button>
+                            <button class="blood-btn">A-</button>
+                            <button class="blood-btn">B+</button>
+                            <button class="blood-btn">B-</button>
+                            <button class="blood-btn">O+</button>
+                            <button class="blood-btn">O-</button>
+                            <button class="blood-btn">AB+</button>
+                        </div>
+                    </div>
+
+                    <!-- Quantity Slider -->
+                    <div class="filter-section">
+                        <h4>MIN. QUANTITY (UNITS)</h4>
+                        <input type="range" class="quantity-slider" min="0" max="500" value="0">
+                        <div class="slider-labels">
+                            <span>0</span>
+                            <span>500+</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stats Cards -->
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-tint"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h4>TOTAL UNITS</h4>
+                        <div class="stat-number">12,450</div>
+                        <div class="stat-change positive">
+                            <i class="fas fa-arrow-up"></i>
+                            +5% today
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stat-card critical">
+                    <div class="stat-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h4>CRITICAL LOW</h4>
+                        <div class="stat-number">O- / AB-</div>
+                        <div class="stat-status">Immediate action</div>
+                    </div>
+                </div>
+
+                <!-- Incoming Batches -->
+                <div class="incoming-batches">
+                    <div class="section-header">
+                        <h3>Incoming Batches</h3>
+                        <a href="#" class="view-all">View All</a>
+                    </div>
+
+                    <div class="batch-item">
+                        <div class="blood-type-badge">A+</div>
+                        <div class="batch-details">
+                            <h4>City General</h4>
+                            <p>In Transit • 25 Units</p>
+                        </div>
+                        <div class="batch-time">14m</div>
+                    </div>
+
+                    <div class="batch-item">
+                        <div class="blood-type-badge">O+</div>
+                        <div class="batch-details">
+                            <h4>North Wing</h4>
+                            <p>Processing • 12 Units</p>
+                        </div>
+                        <div class="batch-time">32m</div>
+                    </div>
+
+                    <div class="batch-item">
+                        <div class="blood-type-badge">B-</div>
+                        <div class="batch-details">
+                            <h4>Mobile Unit 4</h4>
+                            <p>Collected • 8 Units</p>
+                        </div>
+                        <div class="batch-time">1h</div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="main-content">
+                <!-- Globe Visualization -->
+                <div class="globe-card">
+                    <div class="globe-header">
+                        <div class="status-badge">
+                            <span class="status-dot green"></span>
+                            <div>
+                                <div class="status-label">GLOBAL STATUS</div>
+                                <div class="status-value">Operational</div>
+                            </div>
+                        </div>
+                        <div class="nodes-info">
+                            <div class="nodes-label">ACTIVE NODES</div>
+                            <div class="nodes-value">42 Locations</div>
+                        </div>
+                    </div>
+                    
+                    <div class="globe-container">
+                        <canvas id="globe"></canvas>
+                        <!-- Location markers -->
+                        <div class="location-marker central">
+                            <div class="marker-label">Central Hub<br><span>Normal</span></div>
+                        </div>
+                        <div class="location-marker critical">
+                            <div class="marker-label">Sector 4<br><span>CRITICAL</span></div>
+                        </div>
+                    </div>
+
+                    <div class="globe-controls">
+                        <button class="control-btn"><i class="fas fa-plus"></i></button>
+                        <button class="control-btn"><i class="fas fa-minus"></i></button>
+                        <button class="control-btn"><i class="fas fa-crosshairs"></i></button>
+                    </div>
+                </div>
+
+                <!-- Regional Inventory Table -->
+                <div class="inventory-section">
+                    <div class="section-header">
+                        <h2>Regional Inventory</h2>
+                        <a href="#" class="full-report">Full Report <i class="fas fa-arrow-right"></i></a>
+                    </div>
+
+                    <table class="inventory-table">
+                        <thead>
+                            <tr>
+                                <th>BLOOD TYPE</th>
+                                <th>BATCH ID</th>
+                                <th>LOCATION</th>
+                                <th>QUANTITY</th>
+                                <th>EXPIRY</th>
+                                <th>STATUS</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="blood-type-cell">
+                                        <span class="blood-icon a-positive">A+</span>
+                                        A Positive
+                                    </div>
+                                </td>
+                                <td>#88392-AX</td>
+                                <td>Central Hospital</td>
+                                <td><strong>45 Units</strong></td>
+                                <td>24 Days</td>
+                                <td><span class="status-badge available">Available</span></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="blood-type-cell">
+                                        <span class="blood-icon o-negative">O-</span>
+                                        O Negative
+                                    </div>
+                                </td>
+                                <td>#99210-BZ</td>
+                                <td>Sector 4 Clinic</td>
+                                <td><strong class="critical-qty">2 Units</strong></td>
+                                <td>12 Days</td>
+                                <td><span class="status-badge low-stock">Low Stock</span></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="blood-type-cell">
+                                        <span class="blood-icon b-positive">B+</span>
+                                        B Positive
+                                    </div>
+                                </td>
+                                <td>#77219-XY</td>
+                                <td>West Wing Lab</td>
+                                <td><strong>120 Units</strong></td>
+                                <td>30 Days</td>
+                                <td><span class="status-badge reserved">Reserved</span></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="blood-type-cell">
+                                        <span class="blood-icon ab-positive">AB+</span>
+                                        AB Positive
+                                    </div>
+                                </td>
+                                <td>#66120-CC</td>
+                                <td>St. Mary's</td>
+                                <td><strong>15 Units</strong></td>
+                                <td>18 Days</td>
+                                <td><span class="status-badge available">Available</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </main>
+        </div>
+    </div>
+</body>
+</html>
