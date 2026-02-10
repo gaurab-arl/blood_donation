@@ -1,19 +1,27 @@
-function showPage(page) {
-  const loginPage = document.getElementById('login');
-  const homePage = document.getElementById('home');
-  
-  if (page === 'login') {
-    // Show login, hide home
+function showPage(page = 'home') {
+  const loginPage = document.querySelector('#login');
+  const homePage = document.querySelector('.home-page-switching');
+  const registerPage = document.querySelector('#register-page');
+
+  // Hide all sections first if they exist
+  if (loginPage) loginPage.style.display = 'none';
+  if (homePage) homePage.style.display = 'none';
+  if (registerPage) registerPage.style.display = 'none';
+
+  // Show the requested section
+  if (page === 'login' && loginPage) {
     loginPage.style.display = 'block';
-    homePage.style.display = 'none';
-  } else {
-    // For any other page (like 'home'), show home and hide login
-    loginPage.style.display = 'none';
+  } else if (page === 'home' && homePage) {
     homePage.style.display = 'block';
+  } else if (page === 'register' && registerPage) {
+    registerPage.style.display = 'block';
   }
 }
 
-let user = "home";
-showPage(user);
-
-
+// Initialization: Only call showPage automatically if we are on the index page
+// We determine this by checking if the home page container exists
+if (document.querySelector('.home-page-switching')) {
+  // Check if we should start on login or home
+  // By default, index.html has 'active' class on #login, so maybe show login?
+  showPage('login');
+}

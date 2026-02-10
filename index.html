@@ -17,10 +17,10 @@
       <span>Lifeline</span>
     </div>
     <nav>
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#services">Services</a>
-      <a href="#contact">Contact</a>
+      <a href="#home" onclick="showPage('home')">Home</a>
+      <a href="#about" onclick="showPage('home')">About</a>
+      <a href="#services" onclick="showPage('home')">Services</a>
+      <a href="#contact" onclick="showPage('home')">Contact</a>
       <a href="asset/pages/regester.html" class="register">Register</a>
       <a onclick="showPage('admin')" style="display:none;">Admin Donors</a>
     </nav>
@@ -90,9 +90,7 @@
 
   </div>
 
-  <div class="home-page-switching" id="home" style="display: none;">
-
-
+  <div class="home-page-switching" id="home">
     <section class="home-page page-container">
       <div class="home-wrapper">
         <div class="home-content">
@@ -198,7 +196,7 @@
     </section>
 
 
-    <section class="services" id="services" >
+    <section class="services" id="services">
       <div class="services-wrapper">
         <div class="services-header">
           <span>-- SERVICES --</span>
@@ -384,52 +382,52 @@
 
 
 
-  <footer class="site-footer">
-  <div class="footer-wrapper">
+    <footer class="site-footer">
+      <div class="footer-wrapper">
 
-    <div class="footer-brand">
-      <div class="footer-logo">
-        <img src="asset/img/blood.png" alt="Lifeline">
-        <span>Lifeline</span>
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <img src="asset/img/blood.png" alt="Lifeline">
+            <span>Lifeline</span>
+          </div>
+          <p>Connecting donors with those in need through advanced technology and community care.</p>
+        </div>
+
+        <div class="footer-links">
+          <h4>For Donors</h4>
+          <a href="#">Why Donate?</a>
+          <a href="#">Eligibility Requirements</a>
+          <a href="#">Types of Donation</a>
+          <a href="#">Find a Center</a>
+        </div>
+
+        <div class="footer-links">
+          <h4>Organization</h4>
+          <a href="#">Partner With Us</a>
+          <a href="#">Host a Blood Drive</a>
+          <a href="#">Volunteer</a>
+          <a href="#">Careers</a>
+        </div>
+
+        <div class="footer-links">
+          <h4>Support</h4>
+          <a href="#">Contact Us</a>
+          <a href="#">FAQ</a>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+
       </div>
-      <p>Connecting donors with those in need through advanced technology and community care.</p>
-    </div>
 
-    <div class="footer-links">
-      <h4>For Donors</h4>
-      <a href="#">Why Donate?</a>
-      <a href="#">Eligibility Requirements</a>
-      <a href="#">Types of Donation</a>
-      <a href="#">Find a Center</a>
-    </div>
-
-    <div class="footer-links">
-      <h4>Organization</h4>
-      <a href="#">Partner With Us</a>
-      <a href="#">Host a Blood Drive</a>
-      <a href="#">Volunteer</a>
-      <a href="#">Careers</a>
-    </div>
-
-    <div class="footer-links">
-      <h4>Support</h4>
-      <a href="#">Contact Us</a>
-      <a href="#">FAQ</a>
-      <a href="#">Privacy Policy</a>
-      <a href="#">Terms of Service</a>
-    </div>
-
-  </div>
-
-  <div class="footer-bottom">
-    <span>© 2024 Lifeline Blood Donation System. All rights reserved.</span>
-    <div class="footer-social">
-      <i class="fa-brands fa-facebook-f"></i>
-      <i class="fa-brands fa-twitter"></i>
-      <i class="fa-brands fa-instagram"></i>
-    </div>
-  </div>
-</footer>
+      <div class="footer-bottom">
+        <span>© 2024 Lifeline Blood Donation System. All rights reserved.</span>
+        <div class="footer-social">
+          <i class="fa-brands fa-facebook-f"></i>
+          <i class="fa-brands fa-twitter"></i>
+          <i class="fa-brands fa-instagram"></i>
+        </div>
+      </div>
+    </footer>
 
   </div>
 
