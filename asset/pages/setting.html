@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lifeline - Settings</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/setting.css">
+</head>
+
+<body>
+    <header class="info-header">
+        <div class="header-logo">
+            <img src="../img/blood.png" alt="Lifeline Logo">
+            <span>Lifeline</span>
+        </div>
+        <nav id="topNav">
+            <a href="admin.html" class="role-admin">Dashboard</a>
+            <a href="donor.html" class="role-donor">Dashboard</a>
+            <a href="../../index.html">Home</a>
+        </nav>
+        <div class="user-info">
+            <i class="fa-solid fa-bell"></i>
+            <img src="../img/user.png" alt="User" style="width: 40px; height: 40px;">
+            <span id="userNameDisplay">Dr. Sarah Cole</span>
+        </div>
+    </header>
+
+    <div class="setting-container">
+        <div class="page-header">
+            <div class="header-content">
+                <h1>Settings</h1>
+                <p>Manage your account preferences and security settings.</p>
+            </div>
+        </div>
+
+        <div class="setting-wrapper">
+            <!-- Sidebar -->
+            <aside class="setting-sidebar">
+                <nav class="sidebar-nav">
+                    <a class="nav-item active" data-target="profile">
+                        <i class="fas fa-user-circle"></i>
+                        Profile
+                    </a>
+                    <a class="nav-item" data-target="security">
+                        <i class="fas fa-shield-alt"></i>
+                        Security
+                    </a>
+                    <a class="nav-item" data-target="notifications">
+                        <i class="fas fa-bell"></i>
+                        Notifications
+                    </a>
+                    <a class="nav-item" data-target="preferences">
+                        <i class="fas fa-cog"></i>
+                        Preferences
+                    </a>
+                </nav>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="setting-content">
+                <!-- Profile Section -->
+                <section class="setting-section active" id="profile">
+                    <div class="section-header">
+                        <h2>Personal Information</h2>
+                        <p>Update your profile details and contact information.</p>
+                    </div>
+
+                    <div class="profile-upload">
+                        <img src="../img/user.png" alt="Avatar" class="avatar-preview">
+                        <div class="upload-info">
+                            <h4>Profile Picture</h4>
+                            <p>JPG, GIF or PNG. Max size of 800K</p>
+                            <div class="button-group" style="margin-top: 1rem; justify-content: flex-start;">
+                                <button class="btn btn-primary btn-sm">Upload New</button>
+                                <button class="btn btn-ghost btn-sm">Remove</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <form class="form-grid">
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-user"></i>
+                                <input type="text" id="fullName" value="Dr. Sarah Cole">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-envelope"></i>
+                                <input type="email" id="email" value="sarah.cole@lifeline.org">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Phone Number</label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-phone"></i>
+                                <input type="tel" id="phoneNumber" value="+1 (555) 123-4567">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Blood Group</label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-tint"></i>
+                                <select id="bloodGroup">
+                                    <option value="A+">A+</option>
+                                    <option value="A-">A-</option>
+                                    <option value="B+">B+</option>
+                                    <option value="B-">B-</option>
+                                    <option value="AB+">AB+</option>
+                                    <option value="AB-">AB-</option>
+                                    <option value="O+">O+</option>
+                                    <option value="O-">O-</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group full-width">
+                            <label>Location / Address</label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <input type="text" id="location" value="88 Central Ave, Sector 4">
+                            </div>
+                        </div>
+                    </form>
+
+                    <div class="button-group">
+                        <button class="btn btn-ghost">Discard Changes</button>
+                        <button class="btn btn-primary" onclick="showToast('Profile updated successfully!')">Save
+                            Changes</button>
+                    </div>
+                </section>
+
+                <!-- Security Section -->
+                <section class="setting-section" id="security">
+                    <div class="section-header">
+                        <h2>Security Settings</h2>
+                        <p>Change your password and manage login sessions.</p>
+                    </div>
+
+                    <form class="form-grid">
+                        <div class="form-group full-width">
+                            <label>Current Password</label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-lock"></i>
+                                <input type="password" placeholder="••••••••">
+                                <i class="fas fa-eye-slash toggle-password"></i>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>New Password</label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-key"></i>
+                                <input type="password" placeholder="••••••••">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Confirm New Password</label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-key"></i>
+                                <input type="password" placeholder="••••••••">
+                            </div>
+                        </div>
+                    </form>
+
+                    <div class="button-group">
+                        <button class="btn btn-primary" onclick="showToast('Password changed successfully!')">Update
+                            Password</button>
+                    </div>
+
+                    <div class="section-header" style="margin-top: 3rem;">
+                        <h2>Two-Factor Authentication</h2>
+                        <p>Add an extra layer of security to your account.</p>
+                    </div>
+
+                    <div class="setting-item">
+                        <div class="item-info">
+                            <h4>2FA Status</h4>
+                            <p>Secure your account with 2FA verification.</p>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </section>
+
+                <!-- Notifications Section -->
+                <section class="setting-section" id="notifications">
+                    <div class="section-header">
+                        <h2>Notifications</h2>
+                        <p>Choose how you want to be notified about blood requests and updates.</p>
+                    </div>
+
+                    <div class="setting-item">
+                        <div class="item-info">
+                            <h4>Email Notifications</h4>
+                            <p>Receive updates about requests via email.</p>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+
+                    <div class="setting-item">
+                        <div class="item-info">
+                            <h4>SMS Notifications</h4>
+                            <p>Get instant alerts on your mobile phone.</p>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+
+                    <div class="setting-item">
+                        <div class="item-info">
+                            <h4>Critical Low Alerts</h4>
+                            <p>Be notified when specific blood types are critically low.</p>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </section>
+
+                <!-- Preferences Section -->
+                <section class="setting-section" id="preferences">
+                    <div class="section-header">
+                        <h2>System Preferences</h2>
+                        <p>Customize the application display and behavior.</p>
+                    </div>
+
+                    <div class="setting-item">
+                        <div class="item-info">
+                            <h4>Dark Mode</h4>
+                            <p>Switch between dark and light themes.</p>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+
+                    <div class="setting-item">
+                        <div class="item-info">
+                            <h4>Language</h4>
+                            <p>Select your preferred application language.</p>
+                        </div>
+                        <div class="input-wrapper" style="width: 200px;">
+                            <select>
+                                <option>English (US)</option>
+                                <option>Nepali</option>
+                                <option>Spanish</option>
+                                <option>French</option>
+                            </select>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast"
+        style="position: fixed; bottom: 2rem; right: 2rem; background: var(--primary-color); color: white; padding: 1rem 2rem; border-radius: 0.75rem; box-shadow: var(--shadow-lg); display: none; z-index: 1000; animation: slideInUp 0.3s ease;">
+        Message goes here
+    </div>
+
+    <style>
+        @keyframes slideInUp {
+            from {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    </style>
+
+    <script>
+        // Tab Switching Logic
+        const navItems = document.querySelectorAll('.nav-item');
+        const sections = document.querySelectorAll('.setting-section');
+
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const target = item.getAttribute('data-target');
+
+                // Update nav
+                navItems.forEach(i => i.classList.remove('active'));
+                item.classList.add('active');
+
+                // Update sections
+                sections.forEach(s => s.classList.remove('active'));
+                document.getElementById(target).classList.add('active');
+            });
+        });
+
+        // Toggle Password Visibility
+        document.querySelectorAll('.toggle-password').forEach(toggle => {
+            toggle.addEventListener('click', function () {
+                const input = this.previousElementSibling;
+                if (input.type === 'password') {
+                    input.type = 'text';
+                    this.classList.replace('fa-eye-slash', 'fa-eye');
+                } else {
+                    input.type = 'password';
+                    this.classList.replace('fa-eye', 'fa-eye-slash');
+                }
+            });
+        });
+
+        // Simple Toast Notification
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.style.display = 'block';
+            setTimeout(() => {
+                toast.style.display = 'none';
+            }, 3000);
+        }
+
+        // Role Detection (Simulated for Demo)
+        function applyRoleStyles() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const role = urlParams.get('role') || 'admin'; // Default to admin for demo
+
+            document.querySelectorAll('.role-admin').forEach(el => {
+                el.style.display = (role === 'admin') ? 'block' : 'none';
+            });
+            document.querySelectorAll('.role-donor').forEach(el => {
+                el.style.display = (role === 'donor') ? 'block' : 'none';
+            });
+
+            if (role === 'donor') {
+                document.getElementById('userNameDisplay').textContent = 'Alex Rivera';
+                document.getElementById('fullName').value = 'Alex Rivera';
+                document.getElementById('email').value = 'alex.r@example.com';
+            }
+        }
+
+        window.onload = applyRoleStyles;
+    </script>
+</body>
+
+</html>
