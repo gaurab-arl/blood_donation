@@ -1,0 +1,403 @@
+/* ==================== Receiver Page - Live Blood Inventory ==================== */
+
+/* Layout */
+.container {
+    padding-top: calc(var(--header-height) + 20px);
+    max-width: 1400px;
+    margin: 0 auto;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.main-grid {
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+/* Header Sections */
+.alert-banner {
+    background: linear-gradient(90deg, #D90429, #EF233C);
+    color: white;
+    padding: 15px 30px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(217, 4, 41, 0.3);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.01); }
+    100% { transform: scale(1); }
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 20px;
+    color: var(--text-primary);
+}
+
+.page-header h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 5px;
+}
+
+.page-header p {
+    color: var(--text-secondary);
+}
+
+.header-actions {
+    display: flex;
+    gap: 15px;
+}
+
+/* Sidebar Styling */
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.filters-card, .stat-card, .incoming-batches {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 24px;
+    backdrop-filter: blur(12px);
+}
+
+.filters-card h3, .incoming-batches h3 {
+    color: var(--text-primary);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.search-box {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.search-box i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+}
+
+.search-box input {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+    padding: 12px 15px 12px 45px;
+    color: white;
+    font-size: 0.95rem;
+}
+
+.filter-section {
+    margin-bottom: 25px;
+}
+
+.filter-section h4 {
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+}
+
+.blood-type-buttons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.blood-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--card-border);
+    color: white;
+    padding: 8px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.blood-btn.active, .blood-btn:hover {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+/* Stats Cards */
+.stat-card {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.stat-icon {
+    width: 50px;
+    height: 50px;
+    background: rgba(217, 4, 41, 0.1);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-color);
+    font-size: 1.5rem;
+}
+
+.stat-number {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: white;
+}
+
+.stat-change.positive {
+    color: #4ade80;
+    font-size: 0.85rem;
+    margin-top: 5px;
+}
+
+.stat-card.critical .stat-icon {
+    background: rgba(239, 35, 60, 0.2);
+    color: #EF233C;
+}
+
+/* Batch Items */
+.batch-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 0;
+    border-bottom: 1px solid var(--card-border);
+}
+
+.batch-item:last-child {
+    border-bottom: none;
+}
+
+.blood-type-badge {
+    width: 40px;
+    height: 40px;
+    background: var(--primary-color);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: white;
+}
+
+.batch-details h4 {
+    font-size: 0.95rem;
+    color: white;
+}
+
+.batch-details p {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.batch-time {
+    margin-left: auto;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+/* Globe Visualization */
+.globe-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    padding: 30px;
+    margin-bottom: 30px;
+    position: relative;
+    overflow: hidden;
+}
+
+.globe-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.status-badge {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.status-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.status-dot.green {
+    background: #4ade80;
+    box-shadow: 0 0 10px #4ade80;
+}
+
+.globe-container {
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background: radial-gradient(circle, rgba(217, 4, 41, 0.05) 0%, transparent 70%);
+}
+
+#globe {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.location-marker {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 0 15px white;
+    cursor: pointer;
+}
+
+.location-marker.central { top: 40%; left: 45%; }
+.location-marker.critical { 
+    top: 60%; 
+    left: 65%; 
+    background: #EF233C;
+    box-shadow: 0 0 15px #EF233C;
+}
+
+.marker-label {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+}
+
+.location-marker:hover .marker-label {
+    opacity: 1;
+}
+
+/* Inventory Table */
+.inventory-section {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    padding: 30px;
+}
+
+.inventory-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+    margin-top: 20px;
+}
+
+.inventory-table th {
+    background: transparent;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    text-align: left;
+    padding: 15px 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: none;
+}
+
+.inventory-table tr {
+    background: rgba(255, 255, 255, 0.02);
+    transition: transform 0.2s, background 0.2s;
+}
+
+.inventory-table tr:hover {
+    background: rgba(255, 255, 255, 0.05);
+    transform: translateY(-2px);
+}
+
+.inventory-table td {
+    padding: 20px;
+    color: white;
+    border: none;
+    border-top: 1px solid var(--card-border);
+    border-bottom: 1px solid var(--card-border);
+}
+
+.inventory-table td:first-child {
+    border-left: 1px solid var(--card-border);
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+}
+
+.inventory-table td:last-child {
+    border-right: 1px solid var(--card-border);
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+
+.blood-type-cell {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 600;
+}
+
+.blood-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+}
+
+.a-positive { background: rgba(255, 107, 107, 0.2); color: #ff6b6b; }
+.o-negative { background: rgba(239, 35, 60, 0.2); color: #EF233C; }
+.b-positive { background: rgba(72, 202, 228, 0.2); color: #48cae4; }
+.ab-positive { background: rgba(162, 210, 255, 0.2); color: #a2d2ff; }
+
+.status-badge {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.status-badge.available { background: rgba(74, 222, 128, 0.1); color: #4ade80; }
+.status-badge.low-stock { background: rgba(239, 35, 60, 0.1); color: #EF233C; }
+.status-badge.reserved { background: rgba(251, 191, 36, 0.1); color: #fbbf24; }
+
+.critical-qty {
+    color: #EF233C;
+    font-weight: 800;
+}
+
+/* Responsive */
+@media (max-width: 1100px) {
+    .main-grid {
+        grid-template-columns: 1fr;
+    }
+}

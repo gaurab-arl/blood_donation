@@ -18,10 +18,6 @@ function showPage(page = 'home') {
   }
 }
 
-// Initialization: Only call showPage automatically if we are on the index page
-// We determine this by checking if the home page container exists
 if (document.querySelector('.home-page-switching')) {
-  // Check if we should start on login or home
-  // By default, index.html has 'active' class on #login, so maybe show login?
   showPage('login');
 }
