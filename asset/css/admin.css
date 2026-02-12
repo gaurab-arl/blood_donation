@@ -2,7 +2,7 @@
 
 /* Layout */
 .container {
-    padding-top: calc(var(--header-height) + 20px);
+    padding-top: 20px;
     max-width: 1400px;
     margin: 0 auto;
     padding-left: 20px;
@@ -47,7 +47,8 @@ header nav a.active {
     display: flex;
     align-items: center;
     gap: 15px;
-    margin: calc(var(--header-height) + 20px) 20px 30px;
+    max-width: 1400px;
+    margin: calc(var(--header-height) + 20px) auto 30px;
     font-weight: 600;
     box-shadow: var(--shadow-md);
     animation: pulse 2s infinite;
@@ -487,6 +488,13 @@ header nav a.active {
 .ab-positive {
     background: rgba(162, 210, 255, 0.2);
     color: #a2d2ff;
+}
+
+.a-negative,
+.b-negative,
+.ab-negative {
+    background: rgba(220, 38, 38, 0.1);
+    color: var(--danger);
 }
 
 .status-badge {
