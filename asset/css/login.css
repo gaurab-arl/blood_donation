@@ -3,7 +3,7 @@
     padding-top: var(--header-height);
 
     min-height: calc(100vh - var(--header-height));
-    background: radial-gradient(circle at top left, #2a0e0e 0%, #140707 45%, #0b0303 100%);
+    background: radial-gradient(circle at top left, #0a1929 0%, #0d2137 45%, #050b14 100%);
 }
 
 /* .page-container.active {
@@ -35,7 +35,7 @@
     content: "";
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle at top, rgba(255, 77, 77, 0.15), transparent 45%);
+    background: radial-gradient(circle at top, rgba(0, 102, 204, 0.15), transparent 45%);
     pointer-events: none;
 }
 
@@ -79,11 +79,11 @@
     background: rgba(255, 255, 255, 0.05);
     padding: 0.9rem 1rem;
     border-radius: 12px;
-    border: 1px solid color-mix(in srgb, var(--primary-red) 30%, transparent);
+    border: 1px solid rgba(0, 102, 204, 0.3);
 }
 
 .input-section i {
-    color: #ff4d4d;
+    color: var(--primary-color);
 }
 
 .input-section input {
@@ -115,7 +115,7 @@
 }
 
 .remember input {
-    accent-color: #ff4d4d;
+    accent-color: var(--primary-color);
 }
 
 .remember label {
@@ -124,7 +124,7 @@
 }
 
 .page-additonal a {
-    color: #ff4d4d;
+    color: var(--primary-color);
     font-size: 0.85rem;
     text-decoration: none;
 }
@@ -141,21 +141,21 @@
     border: none;
     cursor: pointer;
     color: #000;
-    background: linear-gradient(90deg, #ff4d4d, #ff2f2f);
-    box-shadow: 0 0 15px rgba(255, 77, 77, 0.35);
+    background: linear-gradient(90deg, var(--primary-color), var(--hover-color));
+    box-shadow: var(--shadow-sm);
     transition: 0.3s;
 }
 
 .form-button button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 0 22px rgba(255, 77, 77, 0.5);
+    box-shadow: var(--shadow-md);
 }
 
 
 
 .page-footer {
     margin-top: 3rem;
-    border-top: 1px solid rgba(255, 77, 77, 0.4);
+    border-top: 1px solid rgba(0, 102, 204, 0.4);
     padding: 1rem;
     color: rgba(255, 255, 255, 0.7);
     font-size: 0.9rem;
@@ -163,7 +163,7 @@
 }
 
 .page-footer a {
-    color: #ff6b6b;
+    color: var(--accent-color);
     font-weight: 600;
     text-decoration: none;
 }
@@ -209,10 +209,10 @@
     width: 70px;
     height: 70px;
     border-radius: 50%;
-    background: #ff4d4d;
+    background: var(--primary-color);
     align-items: center;
     justify-content: center;
-    box-shadow: 0 0 30px rgba(255, 77, 77, 0.6);
+    box-shadow: 0 0 30px rgba(0, 102, 204, 0.4);
 }
 
 .page-image-text label {
@@ -280,7 +280,7 @@
 
 .login-with-other-icons i:hover {
     transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(255, 77, 77, 0.2);
+    box-shadow: 0 5px 15px rgba(0, 102, 204, 0.2);
 }
 
 /* Individual icon colors on hover */
@@ -318,17 +318,17 @@
 }
 
 .page-content::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, #ff4d4d, #ff2f2f);
+    background: linear-gradient(180deg, var(--primary-color), var(--hover-color));
     border-radius: 10px;
 }
 
 .page-content::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(180deg, #ff6b6b, #ff3f3f);
+    background: linear-gradient(180deg, var(--primary-color), var(--hover-color));
 }
 
 .page-content {
     scrollbar-width: thin;
-    scrollbar-color: #ff4d4d rgba(255, 255, 255, 0.03);
+    scrollbar-color: var(--primary-color) rgba(255, 255, 255, 0.03);
 }
 
 /* Add this to login.css after .input-section input::placeholder */

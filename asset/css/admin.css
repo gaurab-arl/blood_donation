@@ -40,7 +40,7 @@ header nav a.active {
 
 /* Header Sections */
 .alert-banner {
-    background: linear-gradient(90deg, #D90429, #EF233C);
+    background: linear-gradient(90deg, var(--primary-color), var(--hover-color));
     color: white;
     padding: 15px 30px;
     border-radius: 8px;
@@ -49,14 +49,22 @@ header nav a.active {
     gap: 15px;
     margin: calc(var(--header-height) + 20px) 20px 30px;
     font-weight: 600;
-    box-shadow: 0 4px 15px rgba(217, 4, 41, 0.3);
+    box-shadow: var(--shadow-md);
     animation: pulse 2s infinite;
 }
 
 @keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.01); }
-    100% { transform: scale(1); }
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.01);
+    }
+
+    100% {
+        transform: scale(1);
+    }
 }
 
 .page-header {
@@ -89,7 +97,9 @@ header nav a.active {
     gap: 25px;
 }
 
-.filters-card, .stat-card, .incoming-batches {
+.filters-card,
+.stat-card,
+.incoming-batches {
     background: var(--card-bg);
     border: 1px solid var(--card-border);
     border-radius: 16px;
@@ -97,7 +107,8 @@ header nav a.active {
     backdrop-filter: blur(12px);
 }
 
-.filters-card h3, .incoming-batches h3 {
+.filters-card h3,
+.incoming-batches h3 {
     color: var(--text-primary);
     margin-bottom: 20px;
     display: flex;
@@ -132,7 +143,7 @@ header nav a.active {
 
 .search-box input:focus {
     border-color: var(--primary-color);
-    box-shadow: 0 0 10px rgba(220, 38, 38, 0.2);
+    box-shadow: 0 0 10px rgba(0, 102, 204, 0.2);
 }
 
 .filter-section {
@@ -168,7 +179,7 @@ header nav a.active {
     background: var(--primary-color);
     border-radius: 50%;
     cursor: pointer;
-    box-shadow: 0 0 10px rgba(220, 38, 38, 0.5);
+    box-shadow: 0 0 10px rgba(0, 102, 204, 0.5);
 }
 
 .quantity-slider::-moz-range-thumb {
@@ -178,7 +189,7 @@ header nav a.active {
     border-radius: 50%;
     cursor: pointer;
     border: none;
-    box-shadow: 0 0 10px rgba(220, 38, 38, 0.5);
+    box-shadow: 0 0 10px rgba(0, 102, 204, 0.5);
 }
 
 .slider-labels {
@@ -214,7 +225,7 @@ header nav a.active {
 }
 
 .blood-btn:hover {
-    background: rgba(220, 38, 38, 0.3);
+    background: rgba(0, 102, 204, 0.3);
     border-color: var(--primary-color);
     transform: translateY(-2px);
 }
@@ -229,7 +240,7 @@ header nav a.active {
 .stat-icon {
     width: 50px;
     height: 50px;
-    background: rgba(217, 4, 41, 0.1);
+    background: rgba(0, 102, 204, 0.1);
     border-radius: 12px;
     display: flex;
     align-items: center;
@@ -251,8 +262,8 @@ header nav a.active {
 }
 
 .stat-card.critical .stat-icon {
-    background: rgba(239, 35, 60, 0.2);
-    color: #EF233C;
+    background: rgba(220, 38, 38, 0.1);
+    color: var(--danger);
 }
 
 /* Batch Items */
@@ -336,7 +347,7 @@ header nav a.active {
     justify-content: center;
     align-items: center;
     position: relative;
-    background: radial-gradient(circle, rgba(217, 4, 41, 0.05) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(0, 102, 204, 0.1) 0%, transparent 70%);
 }
 
 #globe {
@@ -354,12 +365,16 @@ header nav a.active {
     cursor: pointer;
 }
 
-.location-marker.central { top: 40%; left: 45%; }
-.location-marker.critical { 
-    top: 60%; 
-    left: 65%; 
-    background: #EF233C;
-    box-shadow: 0 0 15px #EF233C;
+.location-marker.central {
+    top: 40%;
+    left: 45%;
+}
+
+.location-marker.critical {
+    top: 60%;
+    left: 65%;
+    background: var(--danger);
+    box-shadow: 0 0 15px var(--danger);
 }
 
 .marker-label {
@@ -454,10 +469,25 @@ header nav a.active {
     font-size: 0.8rem;
 }
 
-.a-positive { background: rgba(255, 107, 107, 0.2); color: #ff6b6b; }
-.o-negative { background: rgba(239, 35, 60, 0.2); color: #EF233C; }
-.b-positive { background: rgba(72, 202, 228, 0.2); color: #48cae4; }
-.ab-positive { background: rgba(162, 210, 255, 0.2); color: #a2d2ff; }
+.a-positive {
+    background: rgba(0, 102, 204, 0.1);
+    color: var(--primary-color);
+}
+
+.o-negative {
+    background: rgba(220, 38, 38, 0.1);
+    color: var(--danger);
+}
+
+.b-positive {
+    background: rgba(72, 202, 228, 0.2);
+    color: #48cae4;
+}
+
+.ab-positive {
+    background: rgba(162, 210, 255, 0.2);
+    color: #a2d2ff;
+}
 
 .status-badge {
     padding: 6px 12px;
@@ -466,17 +496,29 @@ header nav a.active {
     font-weight: 600;
 }
 
-.status-badge.available { background: rgba(74, 222, 128, 0.1); color: #4ade80; }
-.status-badge.low-stock { background: rgba(239, 35, 60, 0.1); color: #EF233C; }
-.status-badge.reserved { background: rgba(251, 191, 36, 0.1); color: #fbbf24; }
+.status-badge.available {
+    background: rgba(74, 222, 128, 0.1);
+    color: #4ade80;
+}
+
+.status-badge.low-stock {
+    background: rgba(220, 38, 38, 0.1);
+    color: var(--danger);
+}
+
+.status-badge.reserved {
+    background: rgba(251, 191, 36, 0.1);
+    color: #fbbf24;
+}
 
 .critical-qty {
-    color: #EF233C;
+    color: var(--danger);
     font-weight: 800;
 }
 
 /* Button Styles */
-.btn-primary, .btn-secondary {
+.btn-primary,
+.btn-secondary {
     padding: 12px 24px;
     border-radius: 10px;
     font-size: 0.9rem;
@@ -495,9 +537,9 @@ header nav a.active {
 }
 
 .btn-primary:hover {
-    background: #b91c1c;
+    background: var(--hover-color);
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(220, 38, 38, 0.4);
+    box-shadow: var(--shadow-lg);
 }
 
 .btn-secondary {
@@ -548,12 +590,14 @@ header nav a.active {
     margin-bottom: 20px;
 }
 
-.section-header h2, .section-header h3 {
+.section-header h2,
+.section-header h3 {
     color: var(--text-primary);
     font-size: 1.5rem;
 }
 
-.full-report, .view-all {
+.full-report,
+.view-all {
     color: var(--primary-color);
     text-decoration: none;
     font-size: 0.9rem;
@@ -561,8 +605,9 @@ header nav a.active {
     transition: all 0.3s ease;
 }
 
-.full-report:hover, .view-all:hover {
-    color: #b91c1c;
+.full-report:hover,
+.view-all:hover {
+    color: var(--hover-color);
     transform: translateX(5px);
 }
 
@@ -625,7 +670,8 @@ header nav a.active {
         gap: 10px;
     }
 
-    .btn-primary, .btn-secondary {
+    .btn-primary,
+    .btn-secondary {
         width: 100%;
         justify-content: center;
     }

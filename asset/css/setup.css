@@ -1,24 +1,53 @@
 :root {
+    /* ==================== Brand Colors ==================== */
+    --primary-color: #0066CC;
+    /* Main Blue */
+    --hover-color: #0052A3;
+    /* Darker Blue for hovers */
+    --secondary-color: #003D82;
+    /* Deep Blue */
+    --accent-color: #FF6B35;
+    /* Warm Orange */
+    --accent-hover: #E85A2A;
+    /* Darker Orange */
 
-    --secondary-color: #2B2D42;
-    --accent-color: #EF233C;
-    --background-color: #F8F9FA;
-    --card-bg: #FFFFFF;
-    --text-color: #FFFFFF;
-    --border-color: #CDD3DD;
+    /* ==================== Neutrals ==================== */
+    --white: #FFFFFF;
+    --gray-100: #F8F9FA;
+    --gray-200: #F0F4F8;
+    --gray-300: #E1E8ED;
+    --gray-400: #B8D4E8;
+    --gray-500: #8899A6;
+    --gray-600: #5B7083;
+    --black: #000000;
 
+    /* ==================== Dark Theme / Semantic ==================== */
+    --bg-dark: #0a1929;
+    --card-bg: rgba(15, 45, 85, 0.7);
+    --card-border: rgba(255, 255, 255, 0.15);
+
+    /* Status Colors */
+    --success: #28a745;
+    --danger: #dc2626;
+    /* Keeping red for critical issues */
+    --warning: #ffc107;
+    --info: #17a2b8;
+
+    /* Text Colors */
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.8);
+    --text-muted: rgba(255, 255, 255, 0.6);
+    --text-dark: #1F2937;
+
+    /* Interface Elements */
+    --background-color: var(--gray-200);
+    --border-color: var(--gray-400);
     --header-height: 80px;
 
-    --primary-color: #dc2626;
-    --bg-dark: #1a0b0b;
-    --card-bg: rgba(30, 15, 15, 0.6);
-    --card-border: rgba(255, 255, 255, 0.1);
-    --text-primary: #ffffff;
-    --text-secondary: rgba(255, 255, 255, 0.7);
-    --text-muted: rgba(255, 255, 255, 0.5);
-    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
-    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
-    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
+    /* Shadows */
+    --shadow-sm: 0 2px 8px rgba(0, 102, 204, 0.15);
+    --shadow-md: 0 4px 16px rgba(0, 102, 204, 0.25);
+    --shadow-lg: 0 8px 32px rgba(0, 102, 204, 0.35);
 }
 
 /* ==================== Global Styles ==================== */
@@ -67,5 +96,5 @@ button:hover {
     background: var(--primary-color);
     color: var(--text-color);
     transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(217, 4, 41, 0.3);
+    box-shadow: 0 6px 20px rgba(0, 102, 204, 0.2);
 }

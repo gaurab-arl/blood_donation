@@ -1,18 +1,4 @@
-/* ==================== Setting Page Root ==================== */
-:root {
-    --header-height: 80px;
-    --primary-color: #D90429;
-    --secondary-color: #2B2D42;
-    --accent-color: #EF233C;
-    --background-color: #0F111A;
-    --card-bg: rgba(255, 255, 255, 0.03);
-    --card-border: rgba(255, 255, 255, 0.08);
-    --text-primary: #FFFFFF;
-    --text-secondary: #B0B3B8;
-    --text-muted: #6C757D;
-    --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.3);
-    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.4);
-}
+/* ==================== Setting Page Body ==================== */
 
 body {
     background-color: var(--background-color);
@@ -78,7 +64,7 @@ body {
 .nav-item.active {
     background: var(--primary-color);
     color: white;
-    box-shadow: 0 4px 15px rgba(217, 4, 41, 0.3);
+    box-shadow: var(--shadow-md);
 }
 
 .nav-item i {
@@ -195,7 +181,7 @@ body {
 .input-wrapper textarea:focus {
     border-color: var(--primary-color);
     background: rgba(0, 0, 0, 0.3);
-    box-shadow: 0 0 0 4px rgba(217, 4, 41, 0.1);
+    box-shadow: 0 0 0 4px rgba(0, 102, 204, 0.1);
 }
 
 .input-wrapper .toggle-password {
@@ -238,13 +224,13 @@ body {
 .btn-primary {
     background: var(--primary-color);
     color: white;
-    box-shadow: 0 4px 15px rgba(217, 4, 41, 0.3);
+    box-shadow: var(--shadow-md);
 }
 
 .btn-primary:hover {
-    background: #FF0530;
+    background: var(--hover-color);
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(217, 4, 41, 0.4);
+    box-shadow: var(--shadow-md);
 }
 
 /* ==================== Profile Avatar ==================== */

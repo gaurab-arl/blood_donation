@@ -29,7 +29,6 @@
     flex: 1;
     width: 50%;
     flex-direction: row;
-    animation: slideInLeft 0.8s ease-out;
 }
 
 .home-title {
@@ -54,7 +53,7 @@
 
 .home-description {
     font-size: 1.1rem;
-    color: #495057;
+    color: var(--text-dark);
     line-height: 1.8;
     margin-bottom: 30px;
 }
@@ -75,12 +74,12 @@
     border-radius: 50px;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(217, 4, 41, 0.3);
+    box-shadow: var(--shadow-sm);
 }
 
 .btn-primary:hover {
     transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(217, 4, 41, 0.4);
+    box-shadow: var(--shadow-md);
 }
 
 .btn-secondary {
@@ -99,14 +98,13 @@
     background: var(--primary-color);
     color: white;
     transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(217, 4, 41, 0.3);
+    box-shadow: var(--shadow-sm);
 }
 
 .home-image {
     flex: 1;
     width: 50%;
     flex-direction: row;
-    animation: slideInRight 0.8s ease-out;
 }
 
 .home-img-wrapper {
@@ -117,10 +115,9 @@
     align-items: center;
     border-radius: 50%;
     overflow: hidden;
-    box-shadow: 0 20px 60px rgba(217, 4, 41, 0.2);
+    box-shadow: var(--shadow-lg);
     border: 8px solid white;
     position: relative;
-    animation: float 3s ease-in-out infinite;
 }
 
 .home-img-wrapper::before {
@@ -145,43 +142,6 @@
     transform: scale(1.05);
 }
 
-/* ==================== Animations ==================== */
-@keyframes slideInLeft {
-    from {
-        opacity: 0;
-        transform: translateX(-50px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-@keyframes slideInRight {
-    from {
-        opacity: 0;
-        transform: translateX(50px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-@keyframes float {
-
-    0%,
-    100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-20px);
-    }
-}
-
 /* ==================== About Section ==================== */
 .about-section {
     padding: 60px;
@@ -195,7 +155,7 @@
 
 .about-content p {
     font-size: 1.1rem;
-    color: #495057;
+    color: var(--text-dark);
     line-height: 1.8;
     margin-bottom: 20px;
 }
@@ -219,7 +179,7 @@
 
 .services-section li {
     font-size: 1.1rem;
-    color: #495057;
+    color: var(--text-dark);
     line-height: 1.8;
     margin-bottom: 15px;
     padding-left: 10px;
@@ -239,7 +199,7 @@
 
 .contact-section p {
     font-size: 1.2rem;
-    color: #495057;
+    color: var(--text-dark);
     margin-bottom: 15px;
 }
 

@@ -1,76 +1,76 @@
 /* ==================== Header & Navigation ==================== */
 
 header {
-     background-color: rgba(255, 255, 255, 0.1);
-     backdrop-filter: blur(10px);
-    color: var(--text-color);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.5rem;
-    border-bottom: 1px solid var(--primary-color);
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  color: var(--text-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  border-bottom: 1px solid var(--primary-color);
 
-    position: fixed;;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
 
-    height: 80px;
+  height: 80px;
 }
 
 .header-logo {
-    background-color: transparent;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .header-logo img {
-    width: 50px;
-    height: 50px;
-    object-fit: cover;
-    border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 50%;
 }
 
 .header-logo span {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: var(--text-color);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-color);
 }
 
 nav {
-    display: flex;
-    justify-content: center;
-    padding: 0;
+  display: flex;
+  justify-content: center;
+  padding: 0;
 }
 
 nav a {
-    color: var(--text-color);
-    margin: 0 .3rem;
-    padding: 15px 25px;
-    text-decoration: none;
-    transition: all 0.3s ease-in-out;
-    border-bottom: 3px solid transparent;
+  color: var(--text-color);
+  margin: 0 .3rem;
+  padding: 15px 25px;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+  border-bottom: 3px solid transparent;
 }
 
 nav a:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-    border-radius: 2rem;
-    cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 2rem;
+  cursor: pointer;
 }
 
 .register {
-    background-color: var(--primary-color);
-    color: white;
-    padding: 15px 35px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(217, 4, 41, 0.3);
+  background-color: var(--primary-color);
+  color: white;
+  padding: 15px 35px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-sm);
 }
 
 
@@ -79,10 +79,10 @@ nav a:hover {
 /* ==================== Footer ==================== */
 
 .site-footer {
-  background: linear-gradient(180deg, #120000, #050000);
+  background: linear-gradient(180deg, #0a1929, #050b14);
   padding: 80px 8% 30px;
   color: #ddd;
-  box-shadow: 0 -10px 40px rgba(193,18,31,0.15);
+  box-shadow: 0 -10px 40px rgba(0, 102, 204, 0.15);
 }
 
 .footer-wrapper {
@@ -128,11 +128,11 @@ nav a:hover {
 }
 
 .footer-links a:hover {
-  color: #ff4d4d;
+  color: var(--primary-color);
 }
 
 .footer-bottom {
-  border-top: 1px solid rgba(255,255,255,0.05);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
   padding-top: 20px;
   display: flex;
   justify-content: space-between;
@@ -149,19 +149,5 @@ nav a:hover {
 }
 
 .footer-social i:hover {
-  color: #ff4d4d;
+  color: var(--primary-color);
 }
-
-/* 
-@media (max-width: 900px) {
-  .footer-wrapper {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-
-  .footer-bottom {
-    flex-direction: column;
-    gap: 10px;
-    text-align: center;
-  }
-} */
