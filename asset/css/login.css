@@ -342,3 +342,36 @@
     caret-color: white;
     transition: background-color 5000s ease-in-out 0s;
 }
+
+/* ==================== Forget Password Section ==================== */
+
+.forget-container {
+    display: none;
+    /* Controlled by JS */
+    width: 100%;
+    height: 100%;
+}
+
+.forget-container .page-content {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 2rem 4rem;
+}
+
+.forget-container .span-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    color: #ffffff;
+}
+
+.forget-container .form-button {
+    margin-top: 2rem;
+}
+
+/* Ensure the forget container behaves like page-content when active */
+.page-wrapper .forget-container {
+    grid-column: 1 / 2;
+    z-index: 10;
+}

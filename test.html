@@ -1,183 +1,133 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lifeline - Blood Donation</title>
-    <link rel="stylesheet" href="asset/css/style.css">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-
-<body>
-
-    <header class="info-header">
-        <div class="header-logo">
-            <img src="asset/img/blood.png">
-            <span>Lifeline</span>
-        </div>
-        <nav>
-            <a href="#">Home</a>
-            <a href="#">About</a>
-            <a href="#">Services</a>
-            <a href="#">Contact</a>
-        </nav>
-        <div class="user-info">
-            <i class="fa-solid fa-bell"></i>
-            <img src="asset/img/user.png" style="width: 40px; height: 40px;">
-            <span>Ghost Girl</span>
-        </div>
-    </header>
-
-    <div class="info-section">
-        <div class="info-wrapper">
-
-            <div class="info-intro-section grid-container">
-                <div class="info-intro">
-                    <span>Learn About Blood Donation</span>
-                    <p>Everything you need to know about eligibility, donation process, and benefits.</p>
-                    <div class="info-button">
-                        <button class="tertiary-btn" data-tab="eligibility">Eligibility</button>
-                        <button class="tertiary-btn" data-tab="faq">FAQ</button>
-                        <button class="tertiary-btn" data-tab="tips">Donation Tips</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="info-image grid-container">
-                <img src="asset/img/supply.png">
-            </div>
-
-            <div class="tab-wrapper">
-
-                <div id="eligibility" class="tab active">
-
-                    <div class="eligibility grid-container">
-                        <div class="eligibility-intro">
-
-                            <div class="eligibility-card">
-                                <div class="eligibility-card-image">
-                                    <i class="fa-solid fa-user"></i>
-
-                                    <div class="eligibility-intro">
-                                        <h3>Who can donate?</h3>
-                                        <span>Age: 18 to 66 years old</span>
-                                        <span>Weight: 50 kg or more</span>
-                                        <span>Health: In good health</span>
-                                    </div>
-                                </div>
-                                <div class="eligibility-card-content">
-                                    <p><span>NOTE:</span> Requirements may vary slightly depending on local regulations
-                                    </p>
-                                    <p>
-                                        Frequency: Minimum 3 months gap between donations.
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div class="eligibility-card">
-                                <div class="eligibility-card-image">
-                                    <i class="fa-solid fa-user-slash"></i>
-
-                                    <div class="eligibility-intro">
-                                        <h3>Who should not donate?</h3>
-
-                                        <span>Recent illness or infection</span>
-                                        <span>Chronic diseases</span>
-                                        <span>Recent surgery</span>
-                                        <span>Pregnant or breastfeeding</span>
-                                    </div>
-                                </div>
-
-                                <div class="eligibility-card-content">
-                                    <p><span>NOTE:</span> Requirements may vary slightly depending on local regulations
-                                    </p>
-                                    <p>
-                                        If unsure, consult with medical staff before donating.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div class="eligibility-end grid-container">
-                        <div class="eligibility-end-wrapper">
-
-                            <i class="fa-solid fa-heart-pulse"></i>
-                            <div class="eligibility-end-first">
-                                <span class="eligibility-title">Donation Process</span>
-
-                                <div class="eligibility-end-content">
+// Removed invalid react import
 
 
-                                    <span> Registration and health screening</span>
-                                    <span> Mini physical examination</span>
-                                    <span> Blood donation (10-15 minutes)</span>
-                                    <span> Rest and refreshments</span>
-                                    <span> Resume normal activities</span>
-                                </div>
-                            </div>
+const emailInput = document.querySelector('#loginUser');
+const passwordInput = document.querySelector('#loginPass');
+const loginBtn = document.querySelector('#loginBtn');
 
-                        </div>
+const remember = document.querySelector('#remember');
+const forgetPassword = document.querySelector('#forgetPassword');
+const pagecontainer = document.querySelector('.page-image-container');
 
-                        <div class="eligibility-end-second">
-                            <h3>Benefits of Donating Blood</h3>
-                            <div class="eligibility-end-second-content">
+export function checkLoginCrenditals() {
 
-                                <span>Save up to 3 lives with one donation</span>
-                                <span>Free health check-up</span>
-                                <span>Reduce risk of heart disease</span>
-                                <span>Burn calories</span>
-                                <span>Boost your mental well-being</span>
-                            </div>
+    loginBtn.addEventListener('click', (e) => {
+        e.preventDefault();
 
-                        </div>
-                        <div class="eligibility-end-fotter">
-                            <p>Feel good knowing you're making a difference!</p>
-                        </div>
+        const email = emailInput.value.trim();
+        const password = passwordInput.value;
+        if (email === '' || password === '') {
+            alert(' please fill the emalil and password seciton')
+            return;
+        }
+        /* for back end seciotn for storing the data */
 
-                    </div>
+    });
+}
 
-                </div>
 
-                <div id="faq" class="tab">
-                    <div class="grid-container">
-                        <h2>FAQ</h2>
-                        <p>Frequently asked questions will go here.</p>
-                    </div>
-                </div>
+const forgetcontainer = document.createElement('div')
+forgetcontainer.className = 'forget-container'
+// Removing page-image-container to treat it as its own content area
+// forgetcontainer.classList.add('page-image-container') 
 
-                <div id="tips" class="tab">
-                    <div class="grid-container">
-                        <h2>Donation Tips</h2>
-                        <p>Drink water, eat well, rest after donating.</p>
-                    </div>
-                </div>
+const forgetContent = document.createElement('div')
+forgetContent.className = 'page-content'
+forgetcontainer.appendChild(forgetContent)
 
-            </div>
+const forgetIntro = document.createElement('div')
+forgetIntro.className = 'page-intro'
+forgetContent.appendChild(forgetIntro)
 
-            <div class="eligibility-ending">
-                <span>Ready to donate?</span>
-                <a href="#" class="primary-btn">Find a Donor Center</a>
-            </div>
+const forget_title = document.createElement('h2')
+forget_title.textContent = 'Forget Password'
+forgetIntro.appendChild(forget_title)
 
-        </div>
-    </div>
+const forgetDesc = document.createElement('p')
+forgetDesc.textContent = 'Enter your new password to reset your account access'
+forgetIntro.appendChild(forgetDesc)
 
-    <!-- <script>
-        const buttons = document.querySelectorAll('[data-tab]');
-        const tabs = document.querySelectorAll('.tab');
+const forgetForm = document.createElement('form')
+forgetForm.className = 'form-contain'
+forgetContent.appendChild(forgetForm)
 
-        buttons.forEach(btn => {
-            btn.addEventListener('click', () => {
-                tabs.forEach(t => t.classList.remove('active'));
-                document.getElementById(btn.dataset.tab).classList.add('active');
-            });
-        });
-    </script> -->
+function createInputGroup(label, type, placeholder, iconClass) {
+    const group = document.createElement('div')
+    group.className = 'page-input'
 
-</body>
+    const span = document.createElement('span')
+    span.textContent = label
+    group.appendChild(span)
 
-</html>
+    const section = document.createElement('div')
+    section.className = 'input-section'
+
+    const icon = document.createElement('i')
+    icon.className = `fa-solid ${iconClass}`
+    section.appendChild(icon)
+
+    const input = document.createElement('input')
+    input.type = type
+    input.placeholder = placeholder
+    section.appendChild(input)
+
+    group.appendChild(section)
+    return { group, input }
+}
+
+const otpGroup = createInputGroup('OTP', 'number', 'Enter OTP', 'fa-key')
+forgetForm.appendChild(otpGroup.group)
+const otp = otpGroup.input
+
+const passGroup = createInputGroup('New Password', 'password', 'Enter Password', 'fa-lock')
+forgetForm.appendChild(passGroup.group)
+const label_password_input = passGroup.input
+
+const conPassGroup = createInputGroup('Confirm Password', 'password', 'Enter Confirm Password', 'fa-lock')
+forgetForm.appendChild(conPassGroup.group)
+const label_conpassword_input = conPassGroup.input
+
+const buttonDiv = document.createElement('div')
+buttonDiv.className = 'form-button'
+forgetForm.appendChild(buttonDiv)
+
+const forget_button = document.createElement('button')
+forget_button.type = 'submit'
+forget_button.textContent = 'Reset Password'
+buttonDiv.appendChild(forget_button)
+
+
+const pageWrapper = document.querySelector('.page-wrapper');
+if (pageWrapper) {
+    pageWrapper.appendChild(forgetcontainer);
+}
+
+// Elements are already appended to their respective groups/forms
+
+
+// Hide forget container by default
+forgetcontainer.style.display = 'none';
+
+forget_button.addEventListener('click', (e) => {
+    e.preventDefault();
+    const password = label_password_input.value;
+    const conpassword = label_conpassword_input.value;
+    if (password === '' || conpassword === '') {
+        alert(' please fill the password and confirm password seciton')
+        return;
+    }
+    /* for back end section for storing the data */
+
+    // Switch back to login after "submit" (mocking success)
+    pagecontainer.style.display = 'block'
+    forgetcontainer.style.display = 'none'
+});
+
+
+
+forgetPassword.addEventListener('click', (e) => {
+    e.preventDefault();
+    pagecontainer.style.display = 'none'
+    forgetcontainer.style.display = 'block'
+});
+

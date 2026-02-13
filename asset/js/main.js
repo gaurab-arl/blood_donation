@@ -1,3 +1,7 @@
+import { checkLoginCrenditals } from "./login.js";
+import { togglePassword } from "./event.js";
+togglePassword();
+
 function showPage(page = 'home') {
   const loginPage = document.querySelector('#login');
   const homePage = document.querySelector('.home-page-switching');
@@ -21,3 +25,5 @@ function showPage(page = 'home') {
 if (document.querySelector('.home-page-switching')) {
   showPage('login');
 }
+
+checkLoginCrenditals();

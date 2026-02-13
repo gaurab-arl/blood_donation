@@ -19,15 +19,17 @@
         <nav id="topNav">
             <a href="admin.html" class="role-admin">Dashboard</a>
             <a href="donor.html" class="role-donor">Dashboard</a>
-            <a href="../../index.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href=" info.html">info</a>
+
+            <a href="setting.html">setting </a>
         </nav>
         <div class="user-info">
             <i class="fa-solid fa-bell"></i>
             <img src="../img/user.png" alt="User" style="width: 40px; height: 40px;">
-            <span id="userNameDisplay">Dr. Sarah Cole</span>
+            <span id="userNameDisplay">Dr. Sarah </span>
         </div>
     </header>
-
     <div class="setting-container">
         <div class="page-header">
             <div class="header-content">
@@ -286,70 +288,9 @@
         }
     </style>
 
-    <script>
-        // Tab Switching Logic
-        const navItems = document.querySelectorAll('.nav-item');
-        const sections = document.querySelectorAll('.setting-section');
-
-        navItems.forEach(item => {
-            item.addEventListener('click', () => {
-                const target = item.getAttribute('data-target');
-
-                // Update nav
-                navItems.forEach(i => i.classList.remove('active'));
-                item.classList.add('active');
-
-                // Update sections
-                sections.forEach(s => s.classList.remove('active'));
-                document.getElementById(target).classList.add('active');
-            });
-        });
-
-        // Toggle Password Visibility
-        document.querySelectorAll('.toggle-password').forEach(toggle => {
-            toggle.addEventListener('click', function () {
-                const input = this.previousElementSibling;
-                if (input.type === 'password') {
-                    input.type = 'text';
-                    this.classList.replace('fa-eye-slash', 'fa-eye');
-                } else {
-                    input.type = 'password';
-                    this.classList.replace('fa-eye', 'fa-eye-slash');
-                }
-            });
-        });
-
-        // Simple Toast Notification
-        function showToast(message) {
-            const toast = document.getElementById('toast');
-            toast.textContent = message;
-            toast.style.display = 'block';
-            setTimeout(() => {
-                toast.style.display = 'none';
-            }, 3000);
-        }
-
-        // Role Detection (Simulated for Demo)
-        function applyRoleStyles() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const role = urlParams.get('role') || 'admin'; // Default to admin for demo
-
-            document.querySelectorAll('.role-admin').forEach(el => {
-                el.style.display = (role === 'admin') ? 'block' : 'none';
-            });
-            document.querySelectorAll('.role-donor').forEach(el => {
-                el.style.display = (role === 'donor') ? 'block' : 'none';
-            });
-
-            if (role === 'donor') {
-                document.getElementById('userNameDisplay').textContent = 'Alex Rivera';
-                document.getElementById('fullName').value = 'Alex Rivera';
-                document.getElementById('email').value = 'alex.r@example.com';
-            }
-        }
-
-        window.onload = applyRoleStyles;
-    </script>
+<script src="../js/setting.js">
+</script>
+   
 </body>
 
 </html>
