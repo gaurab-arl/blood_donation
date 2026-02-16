@@ -1,0 +1,226 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Receiver Dashboard - Blood Donation System</title>
+    <link rel="stylesheet" href="../css/receiver.css">
+</head>
+<body>
+    <!-- Notification Toast -->
+    <div id="notificationToast" class="notification-toast"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="logo">🩸 Blood Donation System</h1>
+                <div class="header-actions">
+                    <button class="notification-btn" id="notificationBtn">
+                        🔔
+                        <span class="notification-badge" id="notificationBadge">0</span>
+                    </button>
+                    <div class="user-profile">
+                        <span class="user-name" id="userName">Receiver</span>
+                        <button class="logout-btn" id="logoutBtn">Logout</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Notification Panel -->
+    <div id="notificationPanel" class="notification-panel">
+        <div class="notification-header">
+            <h3>Notifications</h3>
+            <button class="close-btn" id="closeNotificationPanel">×</button>
+        </div>
+        <div class="notification-list" id="notificationList">
+            <!-- Notifications will be inserted here -->
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Status Section -->
+            <section class="status-section">
+                <h2 class="section-title">Dashboard Overview</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">📋</div>
+                        <div class="stat-info">
+                            <h3 class="stat-value" id="totalRequests">0</h3>
+                            <p class="stat-label">Total Requests</p>
+                        </div>
+                    </div>
+                    <div class="stat-card stat-active">
+                        <div class="stat-icon">⏳</div>
+                        <div class="stat-info">
+                            <h3 class="stat-value" id="activeRequests">0</h3>
+                            <p class="stat-label">Active Requests</p>
+                        </div>
+                    </div>
+                    <div class="stat-card stat-fulfilled">
+                        <div class="stat-icon">✅</div>
+                        <div class="stat-info">
+                            <h3 class="stat-value" id="fulfilledRequests">0</h3>
+                            <p class="stat-label">Fulfilled Requests</p>
+                        </div>
+                    </div>
+                    <div class="stat-card stat-cancelled">
+                        <div class="stat-icon">❌</div>
+                        <div class="stat-info">
+                            <h3 class="stat-value" id="cancelledRequests">0</h3>
+                            <p class="stat-label">Cancelled Requests</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Create New Request Section -->
+            <section class="request-section">
+                <div class="section-header">
+                    <h2 class="section-title">Create New Blood Request</h2>
+                    <button class="toggle-form-btn" id="toggleFormBtn">+ New Request</button>
+                </div>
+
+                <form id="bloodRequestForm" class="request-form">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="bloodGroup">Blood Group *</label>
+                            <select id="bloodGroup" required>
+                                <option value="">Select Blood Group</option>
+                                <option value="A+">A+</option>
+                                <option value="A-">A-</option>
+                                <option value="B+">B+</option>
+                                <option value="B-">B-</option>
+                                <option value="AB+">AB+</option>
+                                <option value="AB-">AB-</option>
+                                <option value="O+">O+</option>
+                                <option value="O-">O-</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="unitsRequired">Units Required *</label>
+                            <input type="number" id="unitsRequired" min="1" max="10" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="hospitalLocation">Hospital Location *</label>
+                            <input type="text" id="hospitalLocation" placeholder="Enter hospital name and area" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="requiredBefore">Required Before *</label>
+                            <input type="datetime-local" id="requiredBefore" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="reason">Reason *</label>
+                            <select id="reason" required>
+                                <option value="">Select Reason</option>
+                                <option value="Surgery">Surgery</option>
+                                <option value="Accident">Accident</option>
+                                <option value="Childbirth">Childbirth</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="urgencyLevel">Urgency Level *</label>
+                            <select id="urgencyLevel" required>
+                                <option value="">Select Urgency</option>
+                                <option value="Critical">Critical (Immediate)</option>
+                                <option value="High">High (Within 24 hours)</option>
+                                <option value="Medium">Medium (Within 3 days)</option>
+                                <option value="Low">Low (Within 7 days)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="prescription">Upload Prescription (Image/PDF) *</label>
+                        <div class="file-upload-wrapper">
+                            <input type="file" id="prescription" accept="image/*,.pdf" required>
+                            <div class="file-upload-display" id="fileUploadDisplay">
+                                <span class="file-icon">📄</span>
+                                <span class="file-text">Click to upload or drag and drop</span>
+                                <span class="file-hint">PNG, JPG, PDF (Max 5MB)</span>
+                            </div>
+                        </div>
+                        <div id="filePreview" class="file-preview"></div>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="additionalNotes">Additional Notes</label>
+                        <textarea id="additionalNotes" rows="3" placeholder="Any additional information..."></textarea>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Submit Request</button>
+                        <button type="reset" class="btn btn-secondary">Clear Form</button>
+                    </div>
+                </form>
+            </section>
+
+            <!-- Request Tracking Section -->
+            <section class="tracking-section">
+                <h2 class="section-title">Request Tracking</h2>
+                <div class="table-wrapper">
+                    <table class="request-table">
+                        <thead>
+                            <tr>
+                                <th>Request ID</th>
+                                <th>Blood Group</th>
+                                <th>Units</th>
+                                <th>Hospital</th>
+                                <th>Required By</th>
+                                <th>Status</th>
+                                <th>Matched Donors</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="requestTableBody">
+                            <!-- Requests will be inserted here -->
+                        </tbody>
+                    </table>
+                    <div id="noRequestsMessage" class="no-data">
+                        No blood requests found. Create your first request above.
+                    </div>
+                </div>
+            </section>
+
+            <!-- Request History Section -->
+            <section class="history-section">
+                <h2 class="section-title">Request History</h2>
+                <div class="history-list" id="historyList">
+                    <!-- History items will be inserted here -->
+                </div>
+                <div id="noHistoryMessage" class="no-data">
+                    No completed requests yet.
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Request Details Modal -->
+    <div id="requestModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Request Details</h2>
+                <button class="modal-close" id="closeModal">×</button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Details will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="receiver-dashboard.js"></script>
+</body>
+</html>
