@@ -1,35 +1,41 @@
-
-
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Receiver Dashboard - Blood Donation System</title>
-    <link rel="stylesheet" href="../css/receiver.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
+
 <body>
     <!-- Notification Toast -->
     <div id="notificationToast" class="notification-toast"></div>
 
     <!-- Header -->
-    <header class="header">
-        <div class="container">
-            <div class="header-content">
-                <h1 class="logo">🩸 Blood Donation System</h1>
+    <header class="header-receiver">
+            <div class="info-header info-header-receiver">
+                <div class="header-logo">
+                    <img src="../img/blood.png" alt="Lifeline Logo">
+                    <span>Lifeline</span>
+                </div>
+                <nav>
+                    <a href="donor.html">Dashboard</a>
+                    <a href="donor_page/info.html">Info</a>
+                    <a href="donor_page/services.html">Services</a>
+                    <a href="setting.html?role=donor">Settings</a>
+                </nav>
                 <div class="header-actions">
                     <button class="notification-btn" id="notificationBtn">
                         🔔
                         <span class="notification-badge" id="notificationBadge">0</span>
                     </button>
-                    <div class="user-profile">
-                        <span class="user-name" id="userName">Receiver</span>
+                    <div class="user-in ">
+                        <span class="user-name" id="userName">John Doe</span>
                         <button class="logout-btn" id="logoutBtn">Logout</button>
                     </div>
                 </div>
             </div>
-        </div>
     </header>
 
     <!-- Notification Panel -->
@@ -112,7 +118,8 @@
 
                         <div class="form-group">
                             <label for="hospitalLocation">Hospital Location *</label>
-                            <input type="text" id="hospitalLocation" placeholder="Enter hospital name and area" required>
+                            <input type="text" id="hospitalLocation" placeholder="Enter hospital name and area"
+                                required>
                         </div>
 
                         <div class="form-group">
@@ -223,4 +230,5 @@
 
     <script src="receiver-dashboard.js"></script>
 </body>
+
 </html>

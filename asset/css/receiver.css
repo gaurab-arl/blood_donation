@@ -1,32 +1,19 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 :root {
-    --primary-color: #dc2626;
-    --secondary-color: #ef4444;
-    --success-color: #16a34a;
-    --warning-color: #eab308;
-    --danger-color: #dc2626;
-    --info-color: #0284c7;
-    --dark-color: #1f2937;
-    --light-color: #f9fafb;
-    --border-color: #e5e7eb;
-    --text-primary: #111827;
-    --text-secondary: #6b7280;
-    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    /* Integration Variables */
+    --success-color: var(--success);
+    --warning-color: var(--warning);
+    --danger-color: var(--danger);
+    --info-color: var(--info);
+    --light-color: rgba(255, 255, 255, 0.05);
+    --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+    --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.4);
     --transition: all 0.3s ease;
 }
 
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.6;
+.main-content {
+    padding-top: calc(var(--header-height) + 2rem);
     color: var(--text-primary);
-    background-color: var(--light-color);
 }
 
 .container {
@@ -35,13 +22,26 @@ body {
     padding: 0 24px;
 }
 
-/* Header */
+.header-receiver{
+   display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+
+}
+
+.info-header-receiver {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Header Overrides/Alignment */
 .header {
-    background: white;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
     box-shadow: var(--shadow-sm);
-    position: sticky;
-    top: 0;
-    z-index: 100;
+    border-bottom: 1px solid var(--card-border);
 }
 
 .header-content {
@@ -115,7 +115,7 @@ body {
 }
 
 .logout-btn:hover {
-    background: #b91c1c;
+    background: var(--hover-color);
 }
 
 /* Notification Toast */
@@ -123,11 +123,14 @@ body {
     position: fixed;
     top: 100px;
     right: 24px;
-    background: white;
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
     padding: 16px 24px;
     border-radius: 8px;
     box-shadow: var(--shadow-lg);
+    border: 1px solid var(--card-border);
     border-left: 4px solid var(--success-color);
+    color: var(--text-primary);
     transform: translateX(400px);
     transition: transform 0.3s ease;
     z-index: 1000;
@@ -145,10 +148,12 @@ body {
     right: -400px;
     width: 400px;
     height: 100vh;
-    background: white;
+    background: var(--bg-dark);
+    border-left: 1px solid var(--card-border);
     box-shadow: var(--shadow-lg);
     transition: right 0.3s ease;
-    z-index: 1000;
+    z-index: 1001;
+    /* Above sticky header if any */
     overflow-y: auto;
 }
 
@@ -161,7 +166,8 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--card-border);
+    background: rgba(255, 255, 255, 0.02);
 }
 
 .notification-header h3 {
@@ -239,7 +245,8 @@ body {
 }
 
 .stat-card {
-    background: white;
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
     padding: 24px;
     border-radius: 12px;
     box-shadow: var(--shadow-sm);
@@ -247,7 +254,7 @@ body {
     align-items: center;
     gap: 16px;
     transition: var(--transition);
-    border: 2px solid transparent;
+    border: 1px solid var(--card-border);
 }
 
 .stat-card:hover {
@@ -314,14 +321,16 @@ body {
 }
 
 .toggle-form-btn:hover {
-    background: #b91c1c;
+    background: var(--hover-color);
 }
 
 .request-form {
-    background: white;
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
     padding: 32px;
     border-radius: 12px;
     box-shadow: var(--shadow-sm);
+    border: 1px solid var(--card-border);
     display: none;
 }
 
@@ -356,9 +365,11 @@ body {
 .form-group select,
 .form-group textarea {
     padding: 12px;
-    border: 1px solid var(--border-color);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--card-border);
     border-radius: 8px;
     font-size: 14px;
+    color: var(--text-primary);
     transition: var(--transition);
     font-family: inherit;
 }
@@ -368,7 +379,7 @@ body {
 .form-group textarea:focus {
     outline: none;
     border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+    box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.2);
 }
 
 .file-upload-wrapper {
@@ -394,7 +405,7 @@ body {
 
 .file-upload-display:hover {
     border-color: var(--primary-color);
-    background: var(--light-color);
+    background: rgba(255, 255, 255, 0.08);
 }
 
 .file-icon {
@@ -453,7 +464,7 @@ body {
 }
 
 .btn-primary:hover {
-    background: #b91c1c;
+    background: var(--hover-color);
 }
 
 .btn-secondary {
@@ -462,7 +473,7 @@ body {
 }
 
 .btn-secondary:hover {
-    background: #d1d5db;
+    background: rgba(255, 255, 255, 0.15);
 }
 
 /* Request Tracking Section */
@@ -471,9 +482,11 @@ body {
 }
 
 .table-wrapper {
-    background: white;
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
     border-radius: 12px;
     box-shadow: var(--shadow-sm);
+    border: 1px solid var(--card-border);
     overflow: hidden;
 }
 
@@ -507,7 +520,7 @@ body {
 }
 
 .request-table tbody tr:hover {
-    background: var(--light-color);
+    background: rgba(255, 255, 255, 0.03);
 }
 
 .request-table tbody tr.critical {
@@ -516,7 +529,7 @@ body {
 }
 
 .request-table tbody tr.critical:hover {
-    background: #fee2e2;
+    background: rgba(220, 38, 38, 0.1);
 }
 
 .status-badge {
@@ -615,10 +628,12 @@ body {
 }
 
 .history-item {
-    background: white;
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
     padding: 24px;
     border-radius: 12px;
     box-shadow: var(--shadow-sm);
+    border: 1px solid var(--card-border);
     border-left: 4px solid var(--success-color);
 }
 
@@ -680,13 +695,15 @@ body {
 }
 
 .modal-content {
-    background: white;
+    background: var(--bg-dark);
+    border: 1px solid var(--card-border);
     border-radius: 12px;
     max-width: 700px;
     width: 90%;
     max-height: 90vh;
     overflow-y: auto;
     box-shadow: var(--shadow-lg);
+    color: var(--text-primary);
 }
 
 .modal-header {
@@ -694,7 +711,8 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 24px;
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--card-border);
+    background: rgba(255, 255, 255, 0.02);
 }
 
 .modal-header h2 {
@@ -775,8 +793,7 @@ body {
     }
 
     .notification-panel {
-        width: 100%;
-        right: -100%;
+        z-index: 1001;
     }
 
     .detail-row {
