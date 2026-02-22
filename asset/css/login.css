@@ -196,31 +196,8 @@
 }
 
 
-/* 
-.page-image-text {
-    position: absolute;
-    bottom: 20%;
-    text-align: center;
-    color: white;
-}
 
-.page-image-text span {
-    display: inline-flex;
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    background: var(--primary-color);
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 0 30px rgba(0, 102, 204, 0.4);
-}
 
-.page-image-text label {
-    display: block;
-    margin-top: 0.8rem;
-    letter-spacing: 1px;
-    font-size: 0.85rem;
-} */
 
 /*   ----------*/
 
