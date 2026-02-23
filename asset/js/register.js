@@ -1,34 +1,48 @@
 export function register(event) {
     event.preventDefault();
 
-    const role = document.querySelector('input[name="role"]:checked')?.value;
-    const fullName = document.querySelector('#fullName').value;
-    const email = document.querySelector('#email').value;
-    const phone = document.querySelector('#phone').value;
-    const address = document.querySelector('#address').value;
-    const gender = document.querySelector('input[name="gender"]:checked')?.value;
-    const weight = document.querySelector('input[name="weight"]').value;
-    const password = document.querySelector('#password').value;
-    const conformPassword = document.querySelector('#conformPassword').value;
-    const bloodGroup = document.querySelector('select[name="blood_group"]').value;
+    const roleElement = document.querySelector('input[name="role"]:checked');
+    const fullNameElement = document.querySelector('#fullName');
+    const emailElement = document.querySelector('#email');
+    const phoneElement = document.querySelector('#phone');
+    const addressElement = document.querySelector('#address');
+    const genderElement = document.querySelector('input[name="gender"]:checked');
+    const weightElement = document.querySelector('input[name="weight"]');
+    const passwordElement = document.querySelector('#password');
+    const conformPasswordElement = document.querySelector('#conformPassword');
+    const bloodGroupElement = document.querySelector('select[name="blood_group"]');
+
+    if (!roleElement || !fullNameElement || !emailElement || !phoneElement || !addressElement || !genderElement || !weightElement || !passwordElement || !conformPasswordElement || !bloodGroupElement) {
+        alert("Some form elements are missing. Please check the form.");
+        console.error("Missing elements:", {
+            role: !!roleElement,
+            fullName: !!fullNameElement,
+            email: !!emailElement,
+            phone: !!phoneElement,
+            address: !!addressElement,
+            gender: !!genderElement,
+            weight: !!weightElement,
+            password: !!passwordElement,
+            conformPassword: !!conformPasswordElement,
+            bloodGroup: !!bloodGroupElement
+        });
+        return;
+    }
+
+    const role = roleElement.value;
+    const fullName = fullNameElement.value;
+    const email = emailElement.value;
+    const phone = phoneElement.value;
+    const address = addressElement.value;
+    const gender = genderElement.value;
+    const weight = weightElement.value;
+    const password = passwordElement.value;
+    const conformPassword = conformPasswordElement.value;
+    const bloodGroup = bloodGroupElement.value;
 
     if (password !== conformPassword) {
         alert("Passwords do not match!");
         return;
     }
 
-    const userData = {
-        role,
-        fullName,
-        email,
-        phone,
-        address,
-        gender,
-        weight,
-        password,
-        bloodGroup
-    };
-
-    console.log("Registering user:", userData);
-    alert("Registration submitted! (Check console for data)");
 }
