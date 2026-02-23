@@ -8,7 +8,6 @@ renderIndex();
 
 const forgetbtn = document.querySelector('.forget-btn');
 
-showforget();
 
 // Make sure forgetbtn exists before adding event listener
 if (forgetbtn) {
