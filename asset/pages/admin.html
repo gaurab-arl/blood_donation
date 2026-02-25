@@ -4,13 +4,613 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BloodLink - Live Blood Inventory</title>
+    <title>BloodLink - Admin Dashboard</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../css/style.css">
+    <style>
+        /* Admin Dashboard Enhanced Styles */
+        :root {
+            --admin-primary: #2563eb;
+            --admin-secondary: #1e40af;
+            --admin-success: #10b981;
+            --admin-warning: #f59e0b;
+            --admin-danger: #ef4444;
+            --admin-info: #3b82f6;
+            --admin-gradient: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+            --admin-critical: #dc2626;
+        }
+
+        .admin-dashboard {
+            padding-top: calc(var(--header-height) + 1rem);
+            max-width: 1600px;
+            margin: 0 auto;
+            padding-left: 2rem;
+            padding-right: 2rem;
+            padding-bottom: 3rem;
+        }
+
+        /* Critical Alert Banner */
+        .critical-alert {
+            background: linear-gradient(135deg, rgba(220, 38, 38, 0.2), rgba(153, 27, 27, 0.1));
+            border: 1px solid var(--admin-critical);
+            border-radius: 1rem;
+            padding: 1.25rem 2rem;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .critical-alert::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--admin-critical);
+            box-shadow: 0 0 20px var(--admin-critical);
+        }
+
+        .alert-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(220, 38, 38, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--admin-critical);
+            font-size: 1.25rem;
+        }
+
+        .alert-content {
+            flex: 1;
+        }
+
+        .alert-title {
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+            color: var(--admin-critical);
+        }
+
+        .alert-message {
+            color: var(--text-secondary);
+        }
+
+        .alert-close {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .alert-close:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Page Header */
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .header-left h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #fff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header-left p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--card-border);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.75rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--admin-primary);
+            background: rgba(37, 99, 235, 0.1);
+        }
+
+        .btn-primary {
+            background: var(--admin-gradient);
+            border: none;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.75rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.3);
+        }
+
+        /* KPI Cards */
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .kpi-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--card-border);
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .kpi-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--admin-primary);
+        }
+
+        .kpi-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .kpi-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(37, 99, 235, 0.1);
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--admin-primary);
+            font-size: 1.25rem;
+        }
+
+        .kpi-change {
+            font-size: 0.85rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 2rem;
+            background: rgba(16, 185, 129, 0.2);
+            color: #10b981;
+        }
+
+        .kpi-change.negative {
+            background: rgba(239, 68, 68, 0.2);
+            color: #ef4444;
+        }
+
+        .kpi-value {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .kpi-label {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Main Content Grid */
+        .admin-main-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Inventory Overview */
+        .inventory-overview {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--card-border);
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-header h2 {
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .section-header a {
+            color: var(--admin-primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .blood-type-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .blood-type-item {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--card-border);
+            border-radius: 1rem;
+            padding: 1rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .blood-type-item.critical {
+            border-color: var(--admin-critical);
+            background: rgba(220, 38, 38, 0.1);
+        }
+
+        .blood-type-item.low {
+            border-color: var(--admin-warning);
+        }
+
+        .blood-group {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .blood-units {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--admin-primary);
+        }
+
+        .blood-units.critical {
+            color: var(--admin-critical);
+        }
+
+        .blood-status {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 0.25rem;
+        }
+
+        .inventory-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .inventory-table th {
+            text-align: left;
+            padding: 1rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 0.85rem;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .inventory-table td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .inventory-table tr:hover {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .blood-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 2rem;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        .blood-badge.a-positive { background: rgba(37, 99, 235, 0.2); color: #60a5fa; }
+        .blood-badge.o-negative { background: rgba(220, 38, 38, 0.2); color: #f87171; }
+        .blood-badge.b-positive { background: rgba(16, 185, 129, 0.2); color: #34d399; }
+
+        .status-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 2rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .status-available {
+            background: rgba(16, 185, 129, 0.2);
+            color: #34d399;
+        }
+
+        .status-low {
+            background: rgba(245, 158, 11, 0.2);
+            color: #fbbf24;
+        }
+
+        .status-critical {
+            background: rgba(220, 38, 38, 0.2);
+            color: #f87171;
+        }
+
+        /* Alerts & Batches */
+        .alerts-panel {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--card-border);
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+        }
+
+        .alert-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.2);
+            border-left: 4px solid transparent;
+            border-radius: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .alert-item.critical {
+            border-left-color: var(--admin-critical);
+            background: rgba(220, 38, 38, 0.1);
+        }
+
+        .alert-item.warning {
+            border-left-color: var(--admin-warning);
+        }
+
+        .alert-item.info {
+            border-left-color: var(--admin-info);
+        }
+
+        .alert-icon-small {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .alert-icon-small.critical { background: rgba(220, 38, 38, 0.2); color: #f87171; }
+        .alert-icon-small.warning { background: rgba(245, 158, 11, 0.2); color: #fbbf24; }
+        .alert-icon-small.info { background: rgba(59, 130, 246, 0.2); color: #60a5fa; }
+
+        .alert-content-small {
+            flex: 1;
+        }
+
+        .alert-title-small {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .alert-time {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .batch-list {
+            margin-top: 1.5rem;
+        }
+
+        .batch-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .batch-item:last-child {
+            border-bottom: none;
+        }
+
+        .batch-type {
+            width: 40px;
+            height: 40px;
+            background: var(--admin-primary);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+
+        .batch-details {
+            flex: 1;
+        }
+
+        .batch-name {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .batch-meta {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .batch-status {
+            font-size: 0.8rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 2rem;
+            background: rgba(16, 185, 129, 0.2);
+            color: #34d399;
+        }
+
+        /* Bottom Grid */
+        .admin-bottom-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .chart-card, .requests-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--card-border);
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+        }
+
+        .chart-container {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-around;
+            height: 200px;
+            margin: 2rem 0;
+        }
+
+        .chart-bar-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            width: 40px;
+        }
+
+        .chart-bar-custom {
+            width: 100%;
+            background: var(--admin-gradient);
+            border-radius: 8px 8px 0 0;
+            transition: height 0.3s ease;
+            position: relative;
+        }
+
+        .chart-bar-custom::after {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+        }
+
+        .chart-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .request-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .request-item:last-child {
+            border-bottom: none;
+        }
+
+        .request-info h4 {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .request-meta {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .request-urgency {
+            font-size: 0.75rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 2rem;
+            font-weight: 600;
+        }
+
+        .urgency-critical {
+            background: rgba(220, 38, 38, 0.2);
+            color: #f87171;
+        }
+
+        .urgency-high {
+            background: rgba(245, 158, 11, 0.2);
+            color: #fbbf24;
+        }
+
+        .urgency-medium {
+            background: rgba(59, 130, 246, 0.2);
+            color: #60a5fa;
+        }
+
+        @media (max-width: 1200px) {
+            .kpi-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .admin-main-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .admin-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .kpi-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .admin-bottom-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .blood-type-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <!-- Header -->
     <header>
         <div class="header-logo">
             <img src="../img/blood.png" alt="Logo">
@@ -26,477 +626,348 @@
         </nav>
         <div class="user-info">
             <i class="fas fa-bell"></i>
-            <img src="../img/user.png" alt="User" style="width: 40px; height: 40px;">
-            <span>Dr. Sarah Cole</span>
+            <div class="user-avatar">
+                <img src="../img/user.png" alt="User">
+                <span class="admin-indicator"></span>
+            </div>
+            <div>
+                <div style="font-weight: 600;">Dr. Sarah Cole</div>
+                <div style="font-size: 0.8rem; color: var(--text-muted);">Admin</div>
+            </div>
         </div>
     </header>
 
-    <!-- Critical Alert -->
-    <div class="alert-banner" id="alertBanner">
-        <i class="fas fa-exclamation-triangle"></i>
-        <span>CRITICAL ALERT: O- reserves at critical low in Sector 4. Immediate attention required.</span>
-        <i class="fas fa-times" id="closeAlert" style="margin-left: auto; cursor: pointer;"></i>
-    </div>
+    <main class="admin-dashboard">
+        <!-- Critical Alert -->
+        <div class="critical-alert" id="criticalAlert">
+            <div class="alert-icon">
+                <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            <div class="alert-content">
+                <div class="alert-title">CRITICAL ALERT</div>
+                <div class="alert-message">O- blood reserves at critical low in Sector 4. Immediate attention required.</div>
+            </div>
+            <button class="alert-close" onclick="this.parentElement.style.display='none'">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
 
-    <!-- Main Container -->
-    <div class="container">
-        <!-- Page Header -->
-        <div class="page-header">
-            <div class="header-content">
-                <h1>Live Blood Inventory</h1>
-                <p>Real-time tracking of blood availability across regional centers.</p>
+        <!-- Header -->
+        <div class="admin-header">
+            <div class="header-left">
+                <h1>Blood Inventory Dashboard</h1>
+                <p>Real-time monitoring and management of blood resources across all centers.</p>
             </div>
             <div class="header-actions">
-                <button class="btn-secondary">
+                <button class="btn-outline">
                     <i class="fas fa-download"></i>
                     Export Report
                 </button>
                 <button class="btn-primary">
-                    <i class="fas fa-sync"></i>
+                    <i class="fas fa-sync-alt"></i>
                     Sync Data
                 </button>
             </div>
         </div>
 
-        <!-- Main Content Grid -->
-        <div class="main-grid">
-            <!-- Sidebar -->
-            <aside class="sidebar">
-                <!-- Filters -->
-                <div class="filters-card">
-                    <h3>
-                        <i class="fas fa-filter"></i>
-                        Filters
-                    </h3>
-
-                    <div class="search-box">
-                        <i class="fas fa-search"></i>
-                        <input type="text" id="searchInput" placeholder="Search Hospital, ID, or Region...">
-                    </div>
-
-                    <!-- Blood Type Filters -->
-                    <div class="filter-section">
-                        <h4>BLOOD TYPE</h4>
-                        <div class="blood-type-buttons">
-                            <button class="blood-btn active">All</button>
-                            <button class="blood-btn">A+</button>
-                            <button class="blood-btn">A-</button>
-                            <button class="blood-btn">B+</button>
-                            <button class="blood-btn">B-</button>
-                            <button class="blood-btn">O+</button>
-                            <button class="blood-btn">O-</button>
-                            <button class="blood-btn">AB+</button>
-                        </div>
-                    </div>
-
-                    <!-- Quantity Slider -->
-                    <div class="filter-section">
-                        <h4>MIN. QUANTITY (UNITS): <span id="sliderValue">0</span></h4>
-                        <input type="range" class="quantity-slider" id="quantitySlider" min="0" max="500" value="0">
-                        <div class="slider-labels">
-                            <span>0</span>
-                            <span>500+</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Stats Cards -->
-                <div class="stat-card">
-                    <div class="stat-icon">
+        <!-- KPI Cards -->
+        <div class="kpi-grid">
+            <div class="kpi-card">
+                <div class="kpi-header">
+                    <div class="kpi-icon">
                         <i class="fas fa-tint"></i>
                     </div>
-                    <div class="stat-content">
-                        <h4>TOTAL UNITS</h4>
-                        <div class="stat-number">12,450</div>
-                        <div class="stat-change positive">
-                            <i class="fas fa-arrow-up"></i>
-                            +5% today
-                        </div>
-                    </div>
+                    <span class="kpi-change positive">
+                        <i class="fas fa-arrow-up"></i> +5%
+                    </span>
                 </div>
-
-                <div class="stat-card critical">
-                    <div class="stat-icon">
-                        <i class="fas fa-exclamation-triangle"></i>
+                <div class="kpi-value">12,450</div>
+                <div class="kpi-label">Total Units Available</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-header">
+                    <div class="kpi-icon">
+                        <i class="fas fa-hospital"></i>
                     </div>
-                    <div class="stat-content">
-                        <h4>CRITICAL LOW</h4>
-                        <div class="stat-number">O- / AB-</div>
-                        <div class="stat-status">Immediate action</div>
-                    </div>
+                    <span class="kpi-change">
+                        <i class="fas fa-minus"></i> 0%
+                    </span>
                 </div>
-
-                <!-- Incoming Batches -->
-                <div class="incoming-batches">
-                    <div class="section-header">
-                        <h3>Incoming Batches</h3>
-                        <a href="#" class="view-all">View All</a>
+                <div class="kpi-value">24</div>
+                <div class="kpi-label">Active Centers</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-header">
+                    <div class="kpi-icon">
+                        <i class="fas fa-clock"></i>
                     </div>
-
-                    <div class="batch-item">
-                        <div class="blood-type-badge">A+</div>
-                        <div class="batch-details">
-                            <h4>City General</h4>
-                            <p>In Transit • 25 Units</p>
-                        </div>
-                        <div class="batch-time">14m</div>
-                    </div>
-
-                    <div class="batch-item">
-                        <div class="blood-type-badge">O+</div>
-                        <div class="batch-details">
-                            <h4>North Wing</h4>
-                            <p>Processing • 12 Units</p>
-                        </div>
-                        <div class="batch-time">32m</div>
-                    </div>
-
-                    <div class="batch-item">
-                        <div class="blood-type-badge">B-</div>
-                        <div class="batch-details">
-                            <h4>Mobile Unit 4</h4>
-                            <p>Collected • 8 Units</p>
-                        </div>
-                        <div class="batch-time">1h</div>
-                    </div>
+                    <span class="kpi-change positive">
+                        <i class="fas fa-arrow-up"></i> +12%
+                    </span>
                 </div>
-            </aside>
-
-            <!-- Main Content -->
-            <main class="main-content">
-                <!-- Globe Visualization -->
-                <div class="globe-card">
-                    <div class="globe-header">
-                        <div class="status-badge">
-                            <span class="status-dot green"></span>
-                            <div>
-                                <div class="status-label">GLOBAL STATUS</div>
-                                <div class="status-value">Operational</div>
-                            </div>
-                        </div>
-                        <div class="nodes-info">
-                            <div class="nodes-label">ACTIVE NODES</div>
-                            <div class="nodes-value">42 Locations</div>
-                        </div>
+                <div class="kpi-value">86</div>
+                <div class="kpi-label">Pending Requests</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-header">
+                    <div class="kpi-icon">
+                        <i class="fas fa-calendar-week"></i>
                     </div>
-
-                    <div class="globe-container">
-                        <canvas id="globe"></canvas>
-                        <!-- Location markers -->
-                        <div class="location-marker central">
-                            <div class="marker-label">Central Hub<br><span>Normal</span></div>
-                        </div>
-                        <div class="location-marker critical">
-                            <div class="marker-label">Sector 4<br><span>CRITICAL</span></div>
-                        </div>
-                    </div>
-
-                    <div class="globe-controls">
-                        <button class="control-btn"><i class="fas fa-plus"></i></button>
-                        <button class="control-btn"><i class="fas fa-minus"></i></button>
-                        <button class="control-btn"><i class="fas fa-crosshairs"></i></button>
-                    </div>
+                    <span class="kpi-change negative">
+                        <i class="fas fa-arrow-down"></i> -3%
+                    </span>
                 </div>
-
-                <!-- Regional Inventory Table -->
-                <div class="inventory-section">
-                    <div class="section-header">
-                        <h2>Regional Inventory</h2>
-                        <a href="#" class="full-report">Full Report <i class="fas fa-arrow-right"></i></a>
-                    </div>
-
-                    <table class="inventory-table">
-                        <thead>
-                            <tr>
-                                <th>BLOOD TYPE</th>
-                                <th>BATCH ID</th>
-                                <th>LOCATION</th>
-                                <th>QUANTITY</th>
-                                <th>EXPIRY</th>
-                                <th>STATUS</th>
-                            </tr>
-                        </thead>
-                        <tbody id="inventoryTableBody">
-                            <tr data-blood-type="A+" data-quantity="45" data-location="Central Hospital"
-                                data-batch="#88392-AX">
-                                <td>
-                                    <div class="blood-type-cell">
-                                        <span class="blood-icon a-positive">A+</span>
-                                        A Positive
-                                    </div>
-                                </td>
-                                <td>#88392-AX</td>
-                                <td>Central Hospital</td>
-                                <td><strong>45 Units</strong></td>
-                                <td>24 Days</td>
-                                <td><span class="status-badge available">Available</span></td>
-                            </tr>
-                            <tr data-blood-type="O-" data-quantity="2" data-location="Sector 4 Clinic"
-                                data-batch="#99210-BZ">
-                                <td>
-                                    <div class="blood-type-cell">
-                                        <span class="blood-icon o-negative">O-</span>
-                                        O Negative
-                                    </div>
-                                </td>
-                                <td>#99210-BZ</td>
-                                <td>Sector 4 Clinic</td>
-                                <td><strong class="critical-qty">2 Units</strong></td>
-                                <td>12 Days</td>
-                                <td><span class="status-badge low-stock">Low Stock</span></td>
-                            </tr>
-                            <tr data-blood-type="B+" data-quantity="120" data-location="West Wing Lab"
-                                data-batch="#77219-XY">
-                                <td>
-                                    <div class="blood-type-cell">
-                                        <span class="blood-icon b-positive">B+</span>
-                                        B Positive
-                                    </div>
-                                </td>
-                                <td>#77219-XY</td>
-                                <td>West Wing Lab</td>
-                                <td><strong>120 Units</strong></td>
-                                <td>30 Days</td>
-                                <td><span class="status-badge reserved">Reserved</span></td>
-                            </tr>
-                            <tr data-blood-type="AB+" data-quantity="15" data-location="St. Mary's"
-                                data-batch="#66120-CC">
-                                <td>
-                                    <div class="blood-type-cell">
-                                        <span class="blood-icon ab-positive">AB+</span>
-                                        AB Positive
-                                    </div>
-                                </td>
-                                <td>#66120-CC</td>
-                                <td>St. Mary's</td>
-                                <td><strong>15 Units</strong></td>
-                                <td>18 Days</td>
-                                <td><span class="status-badge available">Available</span></td>
-                            </tr>
-                            <tr data-blood-type="A-" data-quantity="30" data-location="North Medical Center"
-                                data-batch="#55301-DX">
-                                <td>
-                                    <div class="blood-type-cell">
-                                        <span class="blood-icon a-negative">A-</span>
-                                        A Negative
-                                    </div>
-                                </td>
-                                <td>#55301-DX</td>
-                                <td>North Medical Center</td>
-                                <td><strong>30 Units</strong></td>
-                                <td>15 Days</td>
-                                <td><span class="status-badge available">Available</span></td>
-                            </tr>
-                            <tr data-blood-type="O+" data-quantity="85" data-location="City General"
-                                data-batch="#44112-EY">
-                                <td>
-                                    <div class="blood-type-cell">
-                                        <span class="blood-icon o-negative">O+</span>
-                                        O Positive
-                                    </div>
-                                </td>
-                                <td>#44112-EY</td>
-                                <td>City General</td>
-                                <td><strong>85 Units</strong></td>
-                                <td>28 Days</td>
-                                <td><span class="status-badge available">Available</span></td>
-                            </tr>
-                            <tr data-blood-type="B-" data-quantity="8" data-location="East Side Hospital"
-                                data-batch="#33220-FZ">
-                                <td>
-                                    <div class="blood-type-cell">
-                                        <span class="blood-icon b-negative">B-</span>
-                                        B Negative
-                                    </div>
-                                </td>
-                                <td>#33220-FZ</td>
-                                <td>East Side Hospital</td>
-                                <td><strong class="critical-qty">8 Units</strong></td>
-                                <td>10 Days</td>
-                                <td><span class="status-badge low-stock">Low Stock</span></td>
-                            </tr>
-                            <tr data-blood-type="AB-" data-quantity="5" data-location="Metro Clinic"
-                                data-batch="#22334-GA">
-                                <td>
-                                    <div class="blood-type-cell">
-                                        <span class="blood-icon ab-negative">AB-</span>
-                                        AB Negative
-                                    </div>
-                                </td>
-                                <td>#22334-GA</td>
-                                <td>Metro Clinic</td>
-                                <td><strong class="critical-qty">5 Units</strong></td>
-                                <td>8 Days</td>
-                                <td><span class="status-badge low-stock">Low Stock</span></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </main>
+                <div class="kpi-value">45</div>
+                <div class="kpi-label">Expiring Soon</div>
+            </div>
         </div>
-    </div>
 
-    <script>
-        // Alert Banner Close
-        document.getElementById('closeAlert').addEventListener('click', function () {
-            document.getElementById('alertBanner').style.display = 'none';
-        });
+        <!-- Main Grid -->
+        <div class="admin-main-grid">
+            <!-- Inventory Overview -->
+            <div class="inventory-overview">
+                <div class="section-header">
+                    <h2><i class="fas fa-boxes" style="margin-right: 0.5rem; color: var(--admin-primary);"></i>Blood Inventory Overview</h2>
+                    <a href="#">View All <i class="fas fa-arrow-right"></i></a>
+                </div>
 
-        // Blood Type Filter Toggle
-        const bloodButtons = document.querySelectorAll('.blood-btn');
-        let activeBloodType = 'All';
+                <div class="blood-type-grid">
+                    <div class="blood-type-item critical">
+                        <div class="blood-group">O-</div>
+                        <div class="blood-units critical">2</div>
+                        <div class="blood-status">Critical Low</div>
+                    </div>
+                    <div class="blood-type-item low">
+                        <div class="blood-group">AB-</div>
+                        <div class="blood-units" style="color: var(--admin-warning);">5</div>
+                        <div class="blood-status">Low Stock</div>
+                    </div>
+                    <div class="blood-type-item">
+                        <div class="blood-group">A+</div>
+                        <div class="blood-units">45</div>
+                        <div class="blood-status">Normal</div>
+                    </div>
+                    <div class="blood-type-item">
+                        <div class="blood-group">O+</div>
+                        <div class="blood-units">85</div>
+                        <div class="blood-status">Normal</div>
+                    </div>
+                    <div class="blood-type-item">
+                        <div class="blood-group">B+</div>
+                        <div class="blood-units">120</div>
+                        <div class="blood-status">Surplus</div>
+                    </div>
+                    <div class="blood-type-item">
+                        <div class="blood-group">A-</div>
+                        <div class="blood-units">30</div>
+                        <div class="blood-status">Normal</div>
+                    </div>
+                    <div class="blood-type-item low">
+                        <div class="blood-group">B-</div>
+                        <div class="blood-units" style="color: var(--admin-warning);">8</div>
+                        <div class="blood-status">Low Stock</div>
+                    </div>
+                    <div class="blood-type-item">
+                        <div class="blood-group">AB+</div>
+                        <div class="blood-units">15</div>
+                        <div class="blood-status">Normal</div>
+                    </div>
+                </div>
 
-        bloodButtons.forEach(button => {
-            button.addEventListener('click', function () {
-                bloodButtons.forEach(btn => btn.classList.remove('active'));
-                this.classList.add('active');
-                activeBloodType = this.textContent.trim();
-                filterTable();
-            });
-        });
+                <table class="inventory-table">
+                    <thead>
+                        <tr>
+                            <th>Blood Type</th>
+                            <th>Batch ID</th>
+                            <th>Location</th>
+                            <th>Units</th>
+                            <th>Expiry</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="blood-badge a-positive">A+</span></td>
+                            <td>#88392-AX</td>
+                            <td>Central Hospital</td>
+                            <td><strong>45</strong></td>
+                            <td>24 days</td>
+                            <td><span class="status-badge status-available">Available</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="blood-badge o-negative">O-</span></td>
+                            <td>#99210-BZ</td>
+                            <td>Sector 4 Clinic</td>
+                            <td><strong style="color: var(--admin-critical);">2</strong></td>
+                            <td>12 days</td>
+                            <td><span class="status-badge status-critical">Critical</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="blood-badge b-positive">B+</span></td>
+                            <td>#77219-XY</td>
+                            <td>West Wing Lab</td>
+                            <td><strong>120</strong></td>
+                            <td>30 days</td>
+                            <td><span class="status-badge status-available">Available</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
-        // Quantity Slider
-        const quantitySlider = document.getElementById('quantitySlider');
-        const sliderValue = document.getElementById('sliderValue');
+            <!-- Alerts & Batches -->
+            <div class="alerts-panel">
+                <div class="section-header">
+                    <h2><i class="fas fa-bell" style="margin-right: 0.5rem; color: var(--admin-primary);"></i>Alerts & Notifications</h2>
+                    <a href="#">View All</a>
+                </div>
 
-        quantitySlider.addEventListener('input', function () {
-            sliderValue.textContent = this.value;
-            filterTable();
-        });
+                <div class="alert-item critical">
+                    <div class="alert-icon-small critical">
+                        <i class="fas fa-exclamation"></i>
+                    </div>
+                    <div class="alert-content-small">
+                        <div class="alert-title-small">O- Critical Low at Sector 4</div>
+                        <div class="alert-time">2 minutes ago</div>
+                    </div>
+                </div>
 
-        // Search Input
-        const searchInput = document.getElementById('searchInput');
-        searchInput.addEventListener('input', filterTable);
+                <div class="alert-item warning">
+                    <div class="alert-icon-small warning">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="alert-content-small">
+                        <div class="alert-title-small">5 batches expiring in 3 days</div>
+                        <div class="alert-time">1 hour ago</div>
+                    </div>
+                </div>
 
-        // Filter Table Function
-        function filterTable() {
-            const searchTerm = searchInput.value.toLowerCase();
-            const minQuantity = parseInt(quantitySlider.value);
-            const rows = document.querySelectorAll('#inventoryTableBody tr');
+                <div class="alert-item info">
+                    <div class="alert-icon-small info">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <div class="alert-content-small">
+                        <div class="alert-title-small">New shipment arriving at Central</div>
+                        <div class="alert-time">3 hours ago</div>
+                    </div>
+                </div>
 
-            rows.forEach(row => {
-                const bloodType = row.dataset.bloodType;
-                const quantity = parseInt(row.dataset.quantity);
-                const location = row.dataset.location.toLowerCase();
-                const batch = row.dataset.batch.toLowerCase();
+                <div class="section-header" style="margin-top: 1.5rem;">
+                    <h2><i class="fas fa-truck-loading" style="margin-right: 0.5rem; color: var(--admin-primary);"></i>Incoming Batches</h2>
+                </div>
 
-                const matchesBloodType = activeBloodType === 'All' || bloodType === activeBloodType;
-                const matchesQuantity = quantity >= minQuantity;
-                const matchesSearch = location.includes(searchTerm) || batch.includes(searchTerm);
+                <div class="batch-list">
+                    <div class="batch-item">
+                        <div class="batch-type">A+</div>
+                        <div class="batch-details">
+                            <div class="batch-name">City General Hospital</div>
+                            <div class="batch-meta">In Transit • 25 Units • ETA: 14 min</div>
+                        </div>
+                        <span class="batch-status">On Time</span>
+                    </div>
+                    <div class="batch-item">
+                        <div class="batch-type">O+</div>
+                        <div class="batch-details">
+                            <div class="batch-name">North Wing Medical</div>
+                            <div class="batch-meta">Processing • 12 Units • ETA: 32 min</div>
+                        </div>
+                        <span class="batch-status">Processing</span>
+                    </div>
+                    <div class="batch-item">
+                        <div class="batch-type">B-</div>
+                        <div class="batch-details">
+                            <div class="batch-name">Mobile Unit 4</div>
+                            <div class="batch-meta">Collected • 8 Units • ETA: 1 hour</div>
+                        </div>
+                        <span class="batch-status">Collected</span>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-                if (matchesBloodType && matchesQuantity && matchesSearch) {
-                    row.style.display = '';
-                } else {
-                    row.style.display = 'none';
-                }
-            });
-        }
+        <!-- Bottom Grid -->
+        <div class="admin-bottom-grid">
+            <!-- Stock Trend Chart -->
+            <div class="chart-card">
+                <div class="section-header">
+                    <h2><i class="fas fa-chart-line" style="margin-right: 0.5rem; color: var(--admin-primary);"></i>Stock Trends (Last 7 Days)</h2>
+                </div>
+                <div class="chart-container">
+                    <div class="chart-bar-wrapper">
+                        <div class="chart-bar-custom" style="height: 120px;"></div>
+                        <span class="chart-label">Mon</span>
+                    </div>
+                    <div class="chart-bar-wrapper">
+                        <div class="chart-bar-custom" style="height: 150px;"></div>
+                        <span class="chart-label">Tue</span>
+                    </div>
+                    <div class="chart-bar-wrapper">
+                        <div class="chart-bar-custom" style="height: 100px;"></div>
+                        <span class="chart-label">Wed</span>
+                    </div>
+                    <div class="chart-bar-wrapper">
+                        <div class="chart-bar-custom" style="height: 180px;"></div>
+                        <span class="chart-label">Thu</span>
+                    </div>
+                    <div class="chart-bar-wrapper">
+                        <div class="chart-bar-custom" style="height: 140px;"></div>
+                        <span class="chart-label">Fri</span>
+                    </div>
+                    <div class="chart-bar-wrapper">
+                        <div class="chart-bar-custom" style="height: 160px;"></div>
+                        <span class="chart-label">Sat</span>
+                    </div>
+                    <div class="chart-bar-wrapper">
+                        <div class="chart-bar-custom" style="height: 130px;"></div>
+                        <span class="chart-label">Sun</span>
+                    </div>
+                </div>
+                <div style="display: flex; justify-content: space-between; color: var(--text-muted); font-size: 0.8rem;">
+                    <span><i class="fas fa-circle" style="color: var(--admin-primary);"></i> Whole Blood</span>
+                    <span>↑ 8% from last week</span>
+                </div>
+            </div>
 
-        // Export Report Button
-        document.querySelector('.btn-secondary').addEventListener('click', function () {
-            alert('Exporting report...\nThis would generate a PDF/Excel report of the current inventory.');
-        });
+            <!-- Urgent Requests -->
+            <div class="requests-card">
+                <div class="section-header">
+                    <h2><i class="fas fa-exclamation-circle" style="margin-right: 0.5rem; color: var(--admin-primary);"></i>Urgent Requests</h2>
+                    <a href="#">Manage</a>
+                </div>
 
-        // Sync Data Button
-        document.querySelector('.btn-primary').addEventListener('click', function () {
-            const btn = this;
-            const icon = btn.querySelector('i');
+                <div class="request-item">
+                    <div class="request-info">
+                        <h4>Emergency - O- Required</h4>
+                        <div class="request-meta">City General • 2 units</div>
+                    </div>
+                    <span class="request-urgency urgency-critical">Critical</span>
+                </div>
 
-            icon.classList.add('fa-spin');
-            btn.disabled = true;
-            btn.style.opacity = '0.6';
+                <div class="request-item">
+                    <div class="request-info">
+                        <h4>Surgery - B+ Required</h4>
+                        <div class="request-meta">St. Mary's • 3 units</div>
+                    </div>
+                    <span class="request-urgency urgency-high">High</span>
+                </div>
 
-            setTimeout(() => {
-                icon.classList.remove('fa-spin');
-                btn.disabled = false;
-                btn.style.opacity = '1';
-                alert('Data synchronized successfully!');
-            }, 2000);
-        });
+                <div class="request-item">
+                    <div class="request-info">
+                        <h4>Accident - AB+ Required</h4>
+                        <div class="request-meta">Metro Hospital • 2 units</div>
+                    </div>
+                    <span class="request-urgency urgency-high">High</span>
+                </div>
 
-        // Globe Controls (Visual feedback)
-        const controlButtons = document.querySelectorAll('.control-btn');
-        controlButtons.forEach(btn => {
-            btn.addEventListener('click', function () {
-                const icon = this.querySelector('i');
-                if (icon.classList.contains('fa-plus')) {
-                    console.log('Zoom in');
-                } else if (icon.classList.contains('fa-minus')) {
-                    console.log('Zoom out');
-                } else if (icon.classList.contains('fa-crosshairs')) {
-                    console.log('Reset view');
-                }
-
-                this.style.transform = 'scale(0.9)';
-                setTimeout(() => {
-                    this.style.transform = 'scale(1)';
-                }, 100);
-            });
-        });
-
-        // Location Marker Click
-        document.querySelectorAll('.location-marker').forEach(marker => {
-            marker.addEventListener('click', function () {
-                const label = this.querySelector('.marker-label').textContent;
-                alert('Location Details:\n' + label);
-            });
-        });
-
-        // Add hover effect to table rows
-        const tableRows = document.querySelectorAll('#inventoryTableBody tr');
-        tableRows.forEach(row => {
-            row.addEventListener('click', function () {
-                const bloodType = this.querySelector('.blood-type-cell').textContent.trim();
-                const batch = this.dataset.batch;
-                const location = this.dataset.location;
-                const quantity = this.dataset.quantity;
-
-                alert(`Blood Inventory Details:\n\nType: ${bloodType}\nBatch: ${batch}\nLocation: ${location}\nQuantity: ${quantity} Units`);
-            });
-        });
-
-        // Incoming Batches - View All
-        document.querySelector('.view-all').addEventListener('click', function (e) {
-            e.preventDefault();
-            alert('Showing all incoming batches...\nThis would open a detailed view of all pending deliveries.');
-        });
-
-        // Full Report Link
-        document.querySelector('.full-report').addEventListener('click', function (e) {
-            e.preventDefault();
-            alert('Opening full report...\nThis would display a comprehensive inventory report with analytics.');
-        });
-
-        // Animate stats on load
-        window.addEventListener('load', function () {
-            const statNumbers = document.querySelectorAll('.stat-number');
-            statNumbers.forEach(stat => {
-                const text = stat.textContent;
-                stat.style.opacity = '0';
-                stat.style.transform = 'translateY(20px)';
-
-                setTimeout(() => {
-                    stat.style.transition = 'all 0.6s ease';
-                    stat.style.opacity = '1';
-                    stat.style.transform = 'translateY(0)';
-                }, 300);
-            });
-        });
-
-        // Real-time clock for dashboard
-        function updateTime() {
-            const now = new Date();
-            const timeString = now.toLocaleTimeString();
-            console.log('Dashboard Time:', timeString);
-        }
-
-        setInterval(updateTime, 1000);
-
-        // Notification bell click
-        document.querySelector('.user-info .fa-bell').addEventListener('click', function () {
-            alert('Notifications:\n\n• O- blood critically low at Sector 4\n• New donor registration: John Doe (A+)\n• Batch #88392-AX will expire in 24 days\n• Request fulfilled for AB+ at Metro Clinic');
-        });
-    </script>
+                <div class="request-item">
+                    <div class="request-info">
+                        <h4>Childbirth - A+ Required</h4>
+                        <div class="request-meta">North Wing • 1 unit</div>
+                    </div>
+                    <span class="request-urgency urgency-medium">Medium</span>
+                </div>
+            </div>
+        </div>
+    </main>
 </body>
 
 </html>

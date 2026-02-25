@@ -4,215 +4,1274 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LifeFlow - Blood Donation Dashboard</title>
-
+    <title>LifeFlow - Donor Dashboard</title>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Donor Dashboard Enhanced Styles */
+        :root {
+            --donor-primary: #e53e3e;
+            --donor-secondary: #c53030;
+            --donor-accent: #feb2b2;
+            --donor-gradient: linear-gradient(135deg, #e53e3e 0%, #c53030 100%);
+            --donor-success: #10b981;
+            --donor-warning: #f59e0b;
+            --donor-info: #3b82f6;
+        }
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            background: radial-gradient(circle at top left, #0a0f1e, #0d1a2a);
+            color: #fff;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            line-height: 1.6;
+        }
+
+        .donor-dashboard {
+            padding-top: calc(var(--header-height) + 2rem);
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-left: 2rem;
+            padding-right: 2rem;
+            padding-bottom: 4rem;
+        }
+
+        /* Header Styles */
+        .info-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background: rgba(10, 15, 30, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(229, 62, 62, 0.2);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            height: var(--header-height);
+        }
+
+        .header-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .header-logo img {
+            width: 40px;
+            height: 40px;
+        }
+
+        .header-logo span {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #fff, var(--donor-accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: var(--donor-primary);
+        }
+
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--donor-gradient);
+            border-radius: 2px;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .user-info i {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .user-info i:hover {
+            color: var(--donor-primary);
+        }
+
+        .user-avatar {
+            position: relative;
+        }
+
+        .user-avatar img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid var(--donor-primary);
+        }
+
+        .online-indicator {
+            position: absolute;
+            bottom: 2px;
+            right: 2px;
+            width: 10px;
+            height: 10px;
+            background: var(--donor-success);
+            border-radius: 50%;
+            border: 2px solid #0a0f1e;
+        }
+
+        /* Welcome Hero Section */
+        .donor-hero {
+            background: linear-gradient(135deg, rgba(229, 62, 62, 0.15) 0%, rgba(20, 30, 50, 0.8) 100%);
+            border-radius: 2rem;
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+            border: 1px solid rgba(229, 62, 62, 0.2);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .donor-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(229, 62, 62, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .hero-text h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            background: linear-gradient(135deg, #fff 0%, #feb2b2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-text p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 3rem;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 1.5rem 3rem;
+            border-radius: 1.5rem;
+            border: 1px solid rgba(229, 62, 62, 0.3);
+            backdrop-filter: blur(5px);
+        }
+
+        .hero-stat-item {
+            text-align: center;
+        }
+
+        .hero-stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--donor-primary);
+        }
+
+        .hero-stat-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Dashboard Grid */
+        .donor-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Blood Status Card */
+        .blood-status-card {
+            background: rgba(20, 30, 45, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(229, 62, 62, 0.2);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .blood-badge {
+            background: var(--donor-gradient);
+            padding: 0.75rem 1.5rem;
+            border-radius: 3rem;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: white;
+            box-shadow: 0 10px 20px rgba(229, 62, 62, 0.3);
+        }
+
+        .donor-id {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-family: monospace;
+        }
+
+        .eligibility-badge {
+            background: rgba(16, 185, 129, 0.15);
+            color: #10b981;
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .eligibility-badge i {
+            font-size: 1rem;
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .stat-box {
+            background: rgba(0, 0, 0, 0.25);
+            border: 1px solid var(--card-border);
+            border-radius: 1rem;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .stat-box .stat-icon {
+            font-size: 1.25rem;
+            color: var(--donor-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-box .stat-number {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .stat-box .stat-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .compatibility-info {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 1rem;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--card-border);
+        }
+
+        .compatibility-title {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .compatibility-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .compat-badge {
+            background: rgba(229, 62, 62, 0.15);
+            color: var(--donor-accent);
+            padding: 0.25rem 0.75rem;
+            border-radius: 2rem;
+            font-size: 0.85rem;
+            border: 1px solid rgba(229, 62, 62, 0.3);
+        }
+
+        .demand-alert {
+            background: linear-gradient(135deg, rgba(229, 62, 62, 0.2), rgba(197, 48, 48, 0.1));
+            border: 1px solid var(--donor-primary);
+            border-radius: 1rem;
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .demand-alert p {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--donor-accent);
+        }
+
+        .demand-alert i {
+            color: var(--donor-primary);
+        }
+
+        .urgent-badge {
+            background: var(--donor-primary);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 2rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .book-appointment-btn {
+            background: var(--donor-gradient);
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 3rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .book-appointment-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(229, 62, 62, 0.4);
+        }
+
+        /* Appointments Card */
+        .appointments-card {
+            background: rgba(20, 30, 45, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--card-border);
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+        }
+
+        .appointments-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .appointments-header h3 {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.2rem;
+        }
+
+        .appointments-header h3 i {
+            color: var(--donor-primary);
+        }
+
+        .view-all-link {
+            color: var(--donor-primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .view-all-link:hover {
+            color: var(--donor-secondary);
+        }
+
+        .appointment-item {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--card-border);
+            border-radius: 1rem;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .appointment-date {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .appointment-location {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 0.25rem;
+        }
+
+        .appointment-status {
+            background: rgba(16, 185, 129, 0.15);
+            color: #10b981;
+            padding: 0.25rem 0.75rem;
+            border-radius: 2rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .no-appointment-card {
+            background: rgba(0, 0, 0, 0.25);
+            border-left: 4px solid var(--donor-warning);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .no-appointment-card h4 {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+        }
+
+        .no-appointment-card p {
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .find-center-link {
+            color: var(--donor-primary);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: gap 0.3s ease;
+        }
+
+        .find-center-link:hover {
+            gap: 0.75rem;
+        }
+
+        .center-info {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 1rem;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+
+        .center-name {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .center-distance {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .center-hours {
+            font-size: 0.85rem;
+            color: var(--donor-success);
+            margin-top: 0.25rem;
+        }
+
+        /* Bottom Grid */
+        .donor-bottom-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .info-card {
+            background: rgba(20, 30, 45, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--card-border);
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .card-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .card-title span {
+            font-size: 1.1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .card-title a {
+            color: var(--donor-primary);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .card-title a:hover {
+            color: var(--donor-secondary);
+        }
+
+        /* History Timeline */
+        .history-timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 1rem;
+            position: relative;
+            padding-left: 1rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 24px;
+            bottom: -16px;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--donor-primary), transparent);
+        }
+
+        .timeline-item:last-child::before {
+            display: none;
+        }
+
+        .timeline-dot {
+            width: 12px;
+            height: 12px;
+            background: var(--donor-primary);
+            border-radius: 50%;
+            margin-top: 6px;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 0 10px var(--donor-primary);
+        }
+
+        .timeline-content h4 {
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .timeline-date {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 0.15rem;
+        }
+
+        .timeline-location {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .donation-certificate {
+            margin-top: 0.5rem;
+            font-size: 0.75rem;
+            color: var(--donor-primary);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        /* Health Metrics */
+        .health-metrics {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .metric-item {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--card-border);
+            border-radius: 1rem;
+            padding: 0.75rem;
+        }
+
+        .metric-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-header i {
+            color: var(--donor-primary);
+            font-size: 1rem;
+            width: 20px;
+        }
+
+        .metric-header span {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .metric-value {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .metric-trend {
+            font-size: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .metric-trend.positive {
+            color: #10b981;
+        }
+
+        .metric-trend.neutral {
+            color: #f59e0b;
+        }
+
+        .last-checked {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+            text-align: right;
+        }
+
+        /* Achievements */
+        .tier-info {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(229, 62, 62, 0.1);
+            padding: 0.5rem 0.75rem;
+            border-radius: 2rem;
+            font-size: 0.8rem;
+        }
+
+        .progress-section {
+            margin-bottom: 1.25rem;
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .progress-bar-custom {
+            height: 8px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 1rem;
+            overflow: hidden;
+            margin-bottom: 0.5rem;
+        }
+
+        .progress-fill-custom {
+            height: 100%;
+            width: 80%;
+            background: var(--donor-gradient);
+            border-radius: 1rem;
+            position: relative;
+        }
+
+        .next-tier {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-align: right;
+        }
+
+        .badges-grid-custom {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.75rem;
+            margin: 1.25rem 0;
+        }
+
+        .badge-item-custom {
+            padding: 0.75rem;
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--card-border);
+            border-radius: 1rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .badge-item-custom:hover {
+            border-color: var(--donor-primary);
+            transform: translateY(-3px);
+        }
+
+        .badge-icon-custom {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .badge-icon-custom.bronze {
+            background: rgba(205, 127, 50, 0.2);
+            color: #cd7f32;
+            border: 2px solid #cd7f32;
+        }
+
+        .badge-icon-custom.silver {
+            background: rgba(192, 192, 192, 0.2);
+            color: #c0c0c0;
+            border: 2px solid #c0c0c0;
+        }
+
+        .badge-icon-custom.gold {
+            background: rgba(255, 215, 0, 0.2);
+            color: #ffd700;
+            border: 2px solid #ffd700;
+        }
+
+        .badge-label-custom {
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+        }
+
+        .milestone-text {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-align: center;
+            padding-top: 0.75rem;
+            border-top: 1px solid var(--card-border);
+        }
+
+        /* Notification Panel (hidden by default) */
+        .notification-panel {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            width: 350px;
+            background: rgba(20, 30, 45, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--card-border);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: none;
+            z-index: 1001;
+        }
+
+        .notification-panel.show {
+            display: block;
+        }
+
+        .notification-item {
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .notification-item:last-child {
+            border-bottom: none;
+        }
+
+        .notification-title {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .notification-time {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .stats-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .donor-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .donor-bottom-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .donor-dashboard {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-stats {
+                width: 100%;
+                justify-content: center;
+                padding: 1rem;
+                gap: 1.5rem;
+            }
+
+            .hero-stat-value {
+                font-size: 1.5rem;
+            }
+
+            .stats-container {
+                grid-template-columns: 1fr;
+            }
+
+            .donor-bottom-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-stats {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .card-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .blood-badge {
+                font-size: 1.2rem;
+                padding: 0.5rem 1rem;
+            }
+        }
+    </style>
 </head>
 
 <body>
-
     <header class="info-header">
         <div class="header-logo">
             <img src="../img/blood.png" alt="Lifeline Logo">
-            <span>Lifeline</span>
+            <span>LifeFlow</span>
         </div>
         <nav>
-            <a href="donor.html">Dashboard</a>
-            <a href="donor_page/info.html">Info</a>
-            <a href="donor_page/services.html">Services</a>
+            <a href="donor.html" class="active">Dashboard</a>
+            <a href="donor_page/info.html">Donation Info</a>
+            <a href="donor_page/services.html">Find Centers</a>
+            <a href="donor_page/history.html">My History</a>
             <a href="setting.html?role=donor">Settings</a>
         </nav>
         <div class="user-info">
-            <i class="fa-solid fa-bell"></i>
-            <img src="../img/user.png" alt="User" style="width: 40px; height: 40px;">
-            <span>Ghost Girl</span>
+            <i class="fa-solid fa-bell" id="notificationBell"></i>
+            <div class="user-avatar">
+                <img src="../img/user.png" alt="User">
+                <span class="online-indicator"></span>
+            </div>
+            <span>Alex Morgan</span>
         </div>
     </header>
 
-    <div class="donor-container">
-        <div class="donor-wrapper">
-            <div class="welcome-section">
-                <div class="welcome-intro">
-                    <h1>Welcome back, Alex</h1>
-                    <p>Your generous contributions have saved <span class="lives-saved">12 lives</span> so far.</p>
+    <!-- Notification Panel (Hidden by default) -->
+    <div class="notification-panel" id="notificationPanel">
+        <h4 style="margin-bottom: 1rem;">Notifications</h4>
+        <div class="notification-item">
+            <div class="notification-title">Blood drive this weekend</div>
+            <div class="notification-time">2 hours ago</div>
+        </div>
+        <div class="notification-item">
+            <div class="notification-title">Your blood type is in high demand</div>
+            <div class="notification-time">Yesterday</div>
+        </div>
+        <div class="notification-item">
+            <div class="notification-title">Appointment reminder: May 15</div>
+            <div class="notification-time">2 days ago</div>
+        </div>
+    </div>
+
+    <main class="donor-dashboard">
+        <!-- Hero Section -->
+        <section class="donor-hero">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Welcome back, Alex 👋</h1>
+                    <p>
+                        <i class="fas fa-heart" style="color: var(--donor-primary);"></i>
+                        Member since <strong>March 2022</strong> • Donor ID: <strong>#LF-2245-78</strong>
+                    </p>
                 </div>
-                <button class="share-stats">
-                    <i class="fas fa-share-alt"></i>
-                    <span>Share Stats</span>
+                <div class="hero-stats">
+                    <div class="hero-stat-item">
+                        <div class="hero-stat-value">15</div>
+                        <div class="hero-stat-label">Donations</div>
+                    </div>
+                    <div class="hero-stat-item">
+                        <div class="hero-stat-value">6.75L</div>
+                        <div class="hero-stat-label">Total Volume</div>
+                    </div>
+                    <div class="hero-stat-item">
+                        <div class="hero-stat-value">45</div>
+                        <div class="hero-stat-label">Lives Saved</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Grid -->
+        <div class="donor-grid">
+            <!-- Blood Status Card -->
+            <div class="blood-status-card">
+                <div class="card-header">
+                    <div>
+                        <div class="blood-badge">A+</div>
+                        <div class="donor-id" style="margin-top: 0.5rem;">Universal Platelet Donor</div>
+                    </div>
+                    <div class="eligibility-badge">
+                        <i class="fas fa-check-circle"></i>
+                        Eligible to Donate
+                    </div>
+                </div>
+
+                <div class="stats-container">
+                    <div class="stat-box">
+                        <div class="stat-icon">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <div class="stat-number">15</div>
+                        <div class="stat-label">Total</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-number">90</div>
+                        <div class="stat-label">Days Since Last</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <div class="stat-number">May 15</div>
+                        <div class="stat-label">Next Eligible</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-icon">
+                            <i class="fas fa-tint"></i>
+                        </div>
+                        <div class="stat-number">4</div>
+                        <div class="stat-label">This Year</div>
+                    </div>
+                </div>
+
+                <div class="compatibility-info">
+                    <div class="compatibility-title">You can donate to:</div>
+                    <div class="compatibility-badges">
+                        <span class="compat-badge">A+</span>
+                        <span class="compat-badge">AB+</span>
+                        <span class="compat-badge">A-</span>
+                        <span class="compat-badge">AB-</span>
+                    </div>
+                </div>
+
+                <div class="demand-alert">
+                    <p>
+                        <i class="fas fa-exclamation-circle"></i>
+                        <strong>Urgent:</strong> A+ needed at 3 centers near you
+                    </p>
+                    <span class="urgent-badge">HIGH DEMAND</span>
+                </div>
+
+                <button class="book-appointment-btn">
+                    <i class="fas fa-calendar-plus"></i>
+                    Schedule Next Donation
                 </button>
             </div>
 
-            <div class="main-grid">
-                <div class="card blood-type-card">
-                    <div class="blood-type-header">
-                        <span class="active-donor-badge">ACTIVE DONOR</span>
-                        <h2>Blood Type: A+</h2>
-
-                        <p class="demand-text">Your specific blood type is currently in high demand at local centers.
-                        </p>
-
-                        <div class="donation-stats">
-                            <div class="donation-stats-content">
-                                <div class="stat-item">
-                                    <h4>Total Donations</h4>
-                                    <div class="stat-number">15</div>
-                                </div>
-                                <div class="stat-item">
-                                    <h4>Next Eligible</h4>
-                                    <div class="available-status">Available<br>Now</div>
-                                </div>
-                            </div>
-                            <button class="book-btn">Book Appointment</button>
-                        </div>
-                    </div>
-
-                    <div class="blood-drop">
-
-                        <img src="../img/blood.png" alt="Blood Drop">
-                    </div>
-                </div>
-
-                <div class="card upcoming-card">
+            <!-- Appointments Card -->
+            <div class="appointments-card">
+                <div class="appointments-header">
                     <h3>
-                        <i class="far fa-calendar"></i>
-                        <span>Upcoming</span>
+                        <i class="fas fa-calendar-alt"></i>
+                        Upcoming Appointments
                     </h3>
+                    <a href="#" class="view-all-link">View Calendar →</a>
+                </div>
 
-                    <div class="no-appointments">
-                        <h4>NO UPCOMING APPOINTMENTS</h4>
-                        <p>You haven't scheduled your next donation yet.</p>
-                        <a href="#" class="find-center-link">Find a center near you →</a>
-                    </div>
+                <div class="no-appointment-card">
+                    <h4>NO SCHEDULED APPOINTMENTS</h4>
+                    <p>Your last donation was 90 days ago. You're eligible to donate now!</p>
+                    <a href="#" class="find-center-link">
+                        Find a center near you
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
 
-                    <div class="map-container-box">
-                        <h4>Nearest Center</h4>
-                        <div class="map">
-                            <iframe src="https://www.google.com/maps?q=blood+donation+center&output=embed" frameborder="0"></iframe>
-                        </div>
+                <div class="center-info">
+                    <div class="center-name">
+                        <i class="fas fa-map-marker-alt" style="color: var(--donor-primary); margin-right: 0.5rem;"></i>
+                        City General Hospital
                     </div>
+                    <div class="center-distance">2.5 miles away • Open until 8PM</div>
+                    <div class="center-hours">🕒 Walk-ins welcome today</div>
+                </div>
+
+                <div class="center-info">
+                    <div class="center-name">
+                        <i class="fas fa-map-marker-alt" style="color: var(--donor-primary); margin-right: 0.5rem;"></i>
+                        Downtown Blood Center
+                    </div>
+                    <div class="center-distance">3.8 miles away</div>
+                    <div class="center-hours">📅 Next available: Tomorrow 10AM</div>
                 </div>
             </div>
-
-            <div class="bottom-grid">
-                <div class="card history-card">
-                    <div class="bottom-grid-intro">
-                        <span>History</span>
-                        <a href="#" class="view-all">VIEW ALL</a>
-                    </div>
-
-                    <div class="history-item">
-                        <div class="history-icon">
-                            <i class="fas fa-tint"></i>
-                        </div>
-                        <div class="history-details">
-                            <h4>Whole Blood Donation</h4>
-                            <div class="date">July 12, 2023 • 450ml</div>
-                            <div class="location">City General Hospital</div>
-                        </div>
-                    </div>
-
-                    <div class="history-item">
-                        <div class="history-icon">
-                            <i class="fas fa-tint"></i>
-                        </div>
-                        <div class="history-details">
-                            <h4>Whole Blood Donation</h4>
-                            <div class="date">Mar 15, 2023 • 450ml</div>
-                            <div class="location">Downtown Clinic</div>
-                        </div>
-                    </div>
-
-                    <div class="history-item">
-                        <div class="history-icon">
-                            <i class="fas fa-tint"></i>
-                        </div>
-                        <div class="history-details">
-                            <h4>Whole Blood Donation</h4>
-                            <div class="date">Nov 02, 2022 • 450ml</div>
-                            <div class="location">Mobile Unit 4</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card vital-stats-card">
-                    <div class="vital-stats-card-intro">
-                        <span>Vital Stats</span>
-                        <span class="time-period">Last 6 Months</span>
-                    </div>
-
-                    <div class="chart">
-                        <div class="chart-bar" style="height: 40%;"></div>
-                        <div class="chart-bar" style="height: 55%;"></div>
-                        <div class="chart-bar" style="height: 70%;"></div>
-                        <div class="chart-bar active" style="height: 85%;">
-                            <span class="chart-value">15.0</span>
-                        </div>
-                    </div>
-
-                    <div class="vital-readings">
-                        <div class="vital-item">
-                            <div class="vital-label">
-                                <i class="fas fa-heartbeat"></i>
-                                <span>Hemoglobin</span>
-                            </div>
-                            <div class="vital-value">15.0 g/dL</div>
-                        </div>
-
-                        <div class="vital-item">
-                            <div class="vital-label">
-                                <i class="fas fa-heart"></i>
-                                <span>Pulse</span>
-                            </div>
-                            <div class="vital-value">72 bpm</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card achievements-card">
-                    <div class="achievements-card-intro">
-                        <span>Achievements</span>
-                        <span class="level-badge">Level 3</span>
-                    </div>
-
-                    <div class="progress-section">
-                        <div class="progress-header">
-                            <span>Progress to Gold Tier</span>
-                            <span class="progress-percent">80%</span>
-                        </div>
-                        <div class="progress-bar">
-                            <div class="progress-fill"></div>
-                        </div>
-                    </div>
-
-                    <div class="badges-grid">
-                        <div class="badge-item">
-                            <div class="badge-icon bronze">
-                                <i class="fas fa-trophy"></i>
-                            </div>
-                            <div class="badge-label">Bronze Donor</div>
-                        </div>
-
-                        <div class="badge-item">
-                            <div class="badge-icon silver">
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <div class="badge-label">Silver Star</div>
-                        </div>
-
-                        <div class="badge-item">
-                            <div class="badge-icon gold">
-                                <i class="fas fa-heart"></i>
-                            </div>
-                            <div class="badge-label">Life Saver</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
         </div>
-    </div>
+
+        <!-- Bottom Grid -->
+        <div class="donor-bottom-grid">
+            <!-- Donation History -->
+            <div class="info-card">
+                <div class="card-title">
+                    <span><i class="fas fa-history" style="color: var(--donor-primary);"></i>Recent Donations</span>
+                    <a href="#">VIEW ALL</a>
+                </div>
+                <div class="history-timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h4>Whole Blood Donation</h4>
+                            <div class="timeline-date">Feb 12, 2024 • 450ml</div>
+                            <div class="timeline-location">City General Hospital</div>
+                            <a href="#" class="donation-certificate">
+                                <i class="fas fa-download"></i> Certificate
+                            </a>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h4>Platelet Donation</h4>
+                            <div class="timeline-date">Jan 05, 2024 • 300ml</div>
+                            <div class="timeline-location">Downtown Clinic</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h4>Whole Blood Donation</h4>
+                            <div class="timeline-date">Nov 18, 2023 • 450ml</div>
+                            <div class="timeline-location">Mobile Blood Unit</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Health Metrics -->
+            <div class="info-card">
+                <div class="card-title">
+                    <span><i class="fas fa-heartbeat" style="color: var(--donor-primary);"></i>Health Overview</span>
+                    <span class="badge" style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.7rem;">Updated Mar 12</span>
+                </div>
+                <div class="health-metrics">
+                    <div class="metric-item">
+                        <div class="metric-header">
+                            <i class="fas fa-tint"></i>
+                            <span>Hemoglobin</span>
+                        </div>
+                        <div class="metric-value">15.0 g/dL</div>
+                        <div class="metric-trend positive">
+                            <i class="fas fa-arrow-up"></i>
+                            +0.5 from last check
+                        </div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-header">
+                            <i class="fas fa-heart"></i>
+                            <span>Blood Pressure</span>
+                        </div>
+                        <div class="metric-value">118/76 mmHg</div>
+                        <div class="metric-trend positive">
+                            <i class="fas fa-check-circle"></i>
+                            Optimal
+                        </div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-header">
+                            <i class="fas fa-heartbeat"></i>
+                            <span>Pulse</span>
+                        </div>
+                        <div class="metric-value">72 bpm</div>
+                        <div class="metric-trend neutral">
+                            <i class="fas fa-minus"></i>
+                            Normal range
+                        </div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-header">
+                            <i class="fas fa-weight"></i>
+                            <span>Weight</span>
+                        </div>
+                        <div class="metric-value">78 kg</div>
+                        <div class="metric-trend positive">
+                            <i class="fas fa-check-circle"></i>
+                            Eligible
+                        </div>
+                    </div>
+                </div>
+                <div class="last-checked">
+                    Last health screening: March 12, 2024
+                </div>
+            </div>
+
+            <!-- Achievements & Recognition -->
+            <div class="info-card">
+                <div class="card-title">
+                    <span><i class="fas fa-trophy" style="color: var(--donor-primary);"></i>Achievements</span>
+                    <div class="tier-info">
+                        <i class="fas fa-level-up-alt"></i>
+                        Level 3 Donor
+                    </div>
+                </div>
+                
+                <div class="progress-section">
+                    <div class="progress-header">
+                        <span>Silver → Gold Tier</span>
+                        <span style="color: var(--donor-primary); font-weight: 600;">80%</span>
+                    </div>
+                    <div class="progress-bar-custom">
+                        <div class="progress-fill-custom"></div>
+                    </div>
+                    <div class="next-tier">3 more donations to reach Gold</div>
+                </div>
+
+                <div class="badges-grid-custom">
+                    <div class="badge-item-custom">
+                        <div class="badge-icon-custom bronze">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <div class="badge-label-custom">First Time</div>
+                    </div>
+                    <div class="badge-item-custom">
+                        <div class="badge-icon-custom silver">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="badge-label-custom">5+ Donations</div>
+                    </div>
+                    <div class="badge-item-custom">
+                        <div class="badge-icon-custom gold">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <div class="badge-label-custom">Life Saver</div>
+                    </div>
+                </div>
+
+                <div class="badges-grid-custom">
+                    <div class="badge-item-custom">
+                        <div class="badge-icon-custom" style="background: rgba(59, 130, 246, 0.2); color: #3b82f6; border-color: #3b82f6;">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="badge-label-custom">2 Year Club</div>
+                    </div>
+                    <div class="badge-item-custom">
+                        <div class="badge-icon-custom" style="background: rgba(245, 158, 11, 0.2); color: #f59e0b; border-color: #f59e0b;">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <div class="badge-label-custom">Emergency</div>
+                    </div>
+                    <div class="badge-item-custom">
+                        <div class="badge-icon-custom" style="background: rgba(139, 92, 246, 0.2); color: #8b5cf6; border-color: #8b5cf6;">
+                            <i class="fas fa-droplet"></i>
+                        </div>
+                        <div class="badge-label-custom">Platelet</div>
+                    </div>
+                </div>
+
+                <div class="milestone-text">
+                    <i class="fas fa-gem" style="color: var(--donor-primary);"></i>
+                    Next milestone: 20 donations (Platinum Tier)
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Simple notification toggle (no external JS)
+        document.getElementById('notificationBell').addEventListener('click', function() {
+            const panel = document.getElementById('notificationPanel');
+            panel.classList.toggle('show');
+        });
+
+        // Close notification panel when clicking outside
+        document.addEventListener('click', function(event) {
+            const panel = document.getElementById('notificationPanel');
+            const bell = document.getElementById('notificationBell');
+            if (!panel.contains(event.target) && !bell.contains(event.target)) {
+                panel.classList.remove('show');
+            }
+        });
+    </script>
 </body>
 
 </html>
