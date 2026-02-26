@@ -14,3 +14,8 @@
 @import url('donor.css');
 @import url('admin.css');
 @import url('receiver.css');
+
+@import url('admin-req.css');
+@import url('admin-report.css');
+@import url('inventory.css');
+@import url('admin-donor.css');

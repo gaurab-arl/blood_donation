@@ -48,6 +48,21 @@
     --shadow-sm: 0 2px 8px rgba(0, 102, 204, 0.15);
     --shadow-md: 0 4px 16px rgba(0, 102, 204, 0.25);
     --shadow-lg: 0 8px 32px rgba(0, 102, 204, 0.35);
+
+     --admin-primary: #2563eb;
+    --admin-secondary: #1e40af;
+    --admin-success: #10b981;
+    --admin-warning: #f59e0b;
+    --admin-danger: #ef4444;
+    --admin-info: #3b82f6;
+    --admin-gradient: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+    --bg-dark: #0a0f1e;
+    --card-bg: rgba(20, 30, 45, 0.8);
+    --card-border: rgba(255, 255, 255, 0.1);
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.8);
+    --text-muted: rgba(255, 255, 255, 0.5);
+    --header-height: 80px;
 }
 
 /* ==================== Global Styles ==================== */

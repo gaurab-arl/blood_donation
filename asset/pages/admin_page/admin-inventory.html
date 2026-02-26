@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Inventory Management - Admin</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+ <link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+    <header class="admin-header">
+        <div class="header-logo">
+            <img src="../img/blood.png" alt="Logo">
+            <span>BloodLink</span>
+        </div>
+        <nav>
+            <a href="admin.html">Dashboard</a>
+            <a href="admin-inventory.html" class="active">Inventory</a>
+            <a href="admin-donors.html">Donors</a>
+            <a href="admin-requests.html">Requests</a>
+            <a href="admin-reports.html">Reports</a>
+            <a href="setting.html?role=admin">Settings</a>
+        </nav>
+        <div class="user-info">
+            <i class="fas fa-bell"></i>
+            <div class="user-avatar">
+                <img src="../img/user.png" alt="User">
+                <span class="admin-badge"></span>
+            </div>
+            <div class="user-text">
+                <div class="user-name">Dr. Sarah Cole</div>
+                <div class="user-role">Admin</div>
+            </div>
+        </div>
+    </header>
+
+    <main class="admin-container">
+        <!-- Page Header -->
+        <div class="page-header">
+            <h1>Blood Inventory Management</h1>
+            <div class="header-actions">
+                <button class="btn-outline">
+                    <i class="fas fa-download"></i>
+                    Export
+                </button>
+                <button class="btn-primary">
+                    <i class="fas fa-plus"></i>
+                    Add New Batch
+                </button>
+            </div>
+        </div>
+
+        <!-- Stats Cards -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-icon">
+                        <i class="fas fa-tint"></i>
+                    </div>
+                    <span class="stat-badge">+12 today</span>
+                </div>
+                <div class="stat-value">12,450</div>
+                <div class="stat-label">Total Units</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <span class="stat-badge warning">Urgent</span>
+                </div>
+                <div class="stat-value">342</div>
+                <div class="stat-label">Low Stock Items</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <span class="stat-badge warning">48</span>
+                </div>
+                <div class="stat-value">1,250</div>
+                <div class="stat-label">Expiring Soon</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <span class="stat-badge">Today</span>
+                </div>
+                <div class="stat-value">8</div>
+                <div class="stat-label">Incoming Batches</div>
+            </div>
+        </div>
+
+        <!-- Filter Section -->
+        <div class="filter-section">
+            <div class="filter-title">
+                <i class="fas fa-filter"></i>
+                Filter Inventory
+            </div>
+            <div class="filter-grid">
+                <div class="filter-group">
+                    <label>Search</label>
+                    <input type="text" placeholder="Batch ID, Location...">
+                </div>
+                <div class="filter-group">
+                    <label>Blood Type</label>
+                    <select>
+                        <option>All Blood Types</option>
+                        <option>A+</option>
+                        <option>A-</option>
+                        <option>B+</option>
+                        <option>B-</option>
+                        <option>O+</option>
+                        <option>O-</option>
+                        <option>AB+</option>
+                        <option>AB-</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Location</label>
+                    <select>
+                        <option>All Centers</option>
+                        <option>Central Hospital</option>
+                        <option>Sector 4 Clinic</option>
+                        <option>West Wing Lab</option>
+                        <option>North Medical Center</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Status</label>
+                    <select>
+                        <option>All Status</option>
+                        <option>Available</option>
+                        <option>Low Stock</option>
+                        <option>Critical</option>
+                        <option>Reserved</option>
+                    </select>
+                </div>
+            </div>
+            <div class="blood-type-filters">
+                <button class="blood-filter-btn active">All</button>
+                <button class="blood-filter-btn">A+</button>
+                <button class="blood-filter-btn">A-</button>
+                <button class="blood-filter-btn">B+</button>
+                <button class="blood-filter-btn">B-</button>
+                <button class="blood-filter-btn">O+</button>
+                <button class="blood-filter-btn">O-</button>
+                <button class="blood-filter-btn">AB+</button>
+                <button class="blood-filter-btn">AB-</button>
+            </div>
+        </div>
+
+        <!-- Inventory Table -->
+        <div class="inventory-section">
+            <div class="section-header">
+                <h2>
+                    <i class="fas fa-boxes" style="color: var(--admin-primary);"></i>
+                    Current Inventory
+                </h2>
+                <span style="color: var(--text-muted);">Showing 24 of 156 batches</span>
+            </div>
+            <div class="table-container">
+                <table class="inventory-table">
+                    <thead>
+                        <tr>
+                            <th>Blood Type</th>
+                            <th>Batch ID</th>
+                            <th>Location</th>
+                            <th>Units</th>
+                            <th>Collection Date</th>
+                            <th>Expiry Date</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="blood-badge blood-a-positive">A+</span></td>
+                            <td>#BATCH-88392</td>
+                            <td>Central Hospital</td>
+                            <td><strong>45</strong></td>
+                            <td>2024-03-15</td>
+                            <td>2024-04-15</td>
+                            <td><span class="status-badge status-available">Available</span></td>
+                            <td>
+                                <button class="action-btn"><i class="fas fa-eye"></i></button>
+                                <button class="action-btn"><i class="fas fa-edit"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span class="blood-badge blood-o-negative">O-</span></td>
+                            <td>#BATCH-99210</td>
+                            <td>Sector 4 Clinic</td>
+                            <td><strong style="color: var(--admin-critical);">2</strong></td>
+                            <td>2024-03-10</td>
+                            <td>2024-04-10</td>
+                            <td><span class="status-badge status-critical">Critical</span></td>
+                            <td>
+                                <button class="action-btn"><i class="fas fa-eye"></i></button>
+                                <button class="action-btn"><i class="fas fa-edit"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span class="blood-badge blood-b-positive">B+</span></td>
+                            <td>#BATCH-77219</td>
+                            <td>West Wing Lab</td>
+                            <td><strong>120</strong></td>
+                            <td>2024-03-01</td>
+                            <td>2024-04-01</td>
+                            <td><span class="status-badge status-available">Available</span></td>
+                            <td>
+                                <button class="action-btn"><i class="fas fa-eye"></i></button>
+                                <button class="action-btn"><i class="fas fa-edit"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span class="blood-badge blood-ab-positive">AB+</span></td>
+                            <td>#BATCH-66120</td>
+                            <td>St. Mary's</td>
+                            <td><strong>15</strong></td>
+                            <td>2024-03-12</td>
+                            <td>2024-04-12</td>
+                            <td><span class="status-badge status-low">Low Stock</span></td>
+                            <td>
+                                <button class="action-btn"><i class="fas fa-eye"></i></button>
+                                <button class="action-btn"><i class="fas fa-edit"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span class="blood-badge blood-a-positive">A-</span></td>
+                            <td>#BATCH-55301</td>
+                            <td>North Medical</td>
+                            <td><strong>30</strong></td>
+                            <td>2024-03-14</td>
+                            <td>2024-04-14</td>
+                            <td><span class="status-badge status-available">Available</span></td>
+                            <td>
+                                <button class="action-btn"><i class="fas fa-eye"></i></button>
+                                <button class="action-btn"><i class="fas fa-edit"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span class="blood-badge blood-o-negative">O+</span></td>
+                            <td>#BATCH-44112</td>
+                            <td>City General</td>
+                            <td><strong>85</strong></td>
+                            <td>2024-03-05</td>
+                            <td>2024-04-05</td>
+                            <td><span class="status-badge status-reserved">Reserved</span></td>
+                            <td>
+                                <button class="action-btn"><i class="fas fa-eye"></i></button>
+                                <button class="action-btn"><i class="fas fa-edit"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="quick-actions">
+            <div class="action-card">
+                <div class="action-icon">
+                    <i class="fas fa-plus-circle"></i>
+                </div>
+                <div class="action-content">
+                    <h4>Add New Batch</h4>
+                    <p>Register incoming blood units</p>
+                </div>
+            </div>
+            <div class="action-card">
+                <div class="action-icon">
+                    <i class="fas fa-exchange-alt"></i>
+                </div>
+                <div class="action-content">
+                    <h4>Transfer Stock</h4>
+                    <p>Move units between centers</p>
+                </div>
+            </div>
+            <div class="action-card">
+                <div class="action-icon">
+                    <i class="fas fa-trash-alt"></i>
+                </div>
+                <div class="action-content">
+                    <h4>Dispose Expired</h4>
+                    <p>Remove expired batches</p>
+                </div>
+            </div>
+            <div class="action-card">
+                <div class="action-icon">
+                    <i class="fas fa-file-alt"></i>
+                </div>
+                <div class="action-content">
+                    <h4>Inventory Report</h4>
+                    <p>Generate detailed report</p>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donor Management - Admin</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+   
+</head>
+
+<body>
+    <header class="admin-header">
+        <div class="header-logo">
+            <img src="../img/blood.png" alt="Logo">
+            <span>BloodLink</span>
+        </div>
+        <nav>
+            <a href="admin.html">Dashboard</a>
+            <a href="admin-inventory.html">Inventory</a>
+            <a href="admin-donors.html" class="active">Donors</a>
+            <a href="admin-requests.html">Requests</a>
+            <a href="admin-reports.html">Reports</a>
+            <a href="setting.html?role=admin">Settings</a>
+        </nav>
+        <div class="user-info">
+            <i class="fas fa-bell"></i>
+            <div class="user-avatar">
+                <img src="../img/user.png" alt="User">
+                <span class="admin-badge"></span>
+            </div>
+            <div class="user-text">
+                <div class="user-name">Dr. Sarah Cole</div>
+                <div class="user-role">Admin</div>
+            </div>
+        </div>
+    </header>
+
+    <main class="admin-container">
+        <!-- Page Header -->
+        <div class="page-header">
+            <h1>Donor Management</h1>
+            <div class="header-actions">
+                <button class="btn-outline">
+                    <i class="fas fa-envelope"></i>
+                    Message All
+                </button>
+                <button class="btn-primary">
+                    <i class="fas fa-user-plus"></i>
+                    Add Donor
+                </button>
+            </div>
+        </div>
+
+        <!-- Donor Stats -->
+        <div class="donor-stats-grid">
+            <div class="donor-stat-card">
+                <div class="donor-stat-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="donor-stat-content">
+                    <h3>2,847</h3>
+                    <p>Total Donors</p>
+                </div>
+            </div>
+            <div class="donor-stat-card">
+                <div class="donor-stat-icon">
+                    <i class="fas fa-user-check"></i>
+                </div>
+                <div class="donor-stat-content">
+                    <h3>1,234</h3>
+                    <p>Active Donors</p>
+                </div>
+            </div>
+            <div class="donor-stat-card">
+                <div class="donor-stat-icon">
+                    <i class="fas fa-calendar-check"></i>
+                </div>
+                <div class="donor-stat-content">
+                    <h3>156</h3>
+                    <p>Donations This Month</p>
+                </div>
+            </div>
+            <div class="donor-stat-card">
+                <div class="donor-stat-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <div class="donor-stat-content">
+                    <h3>342</h3>
+                    <p>Eligible Now</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="filter-tabs">
+            <span class="filter-tab active">All Donors</span>
+            <span class="filter-tab">Active</span>
+            <span class="filter-tab">Inactive</span>
+            <span class="filter-tab">Eligible Now</span>
+            <span class="filter-tab">First Time</span>
+            <span class="filter-tab">Regular</span>
+        </div>
+
+        <!-- Search Section -->
+        <div class="search-section">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search by name, ID, email, phone...">
+            </div>
+            <select class="filter-dropdown">
+                <option>All Blood Types</option>
+                <option>A+</option>
+                <option>A-</option>
+                <option>B+</option>
+                <option>B-</option>
+                <option>O+</option>
+                <option>O-</option>
+                <option>AB+</option>
+                <option>AB-</option>
+            </select>
+            <select class="filter-dropdown">
+                <option>All Locations</option>
+                <option>Central</option>
+                <option>North</option>
+                <option>South</option>
+                <option>East</option>
+                <option>West</option>
+            </select>
+        </div>
+
+        <!-- Donors Grid -->
+        <div class="donors-grid">
+            <!-- Donor Card 1 -->
+            <div class="donor-card">
+                <span class="donor-status status-active">Active</span>
+                <div class="donor-header">
+                    <div class="donor-avatar">JD</div>
+                    <div class="donor-info">
+                        <h3>John Doe</h3>
+                        <div class="donor-id">ID: #DON-2024-001</div>
+                    </div>
+                </div>
+                <div class="donor-details">
+                    <div class="detail-item">
+                        <span class="detail-label">Blood Type</span>
+                        <span class="blood-group-badge">A+</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Last Donation</span>
+                        <span class="detail-value">Mar 12, 2024</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Total Donations</span>
+                        <span class="detail-value">15</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Status</span>
+                        <span class="detail-value status-eligible">Eligible</span>
+                    </div>
+                </div>
+                <div class="donor-footer">
+                    <div style="color: var(--text-muted); font-size: 0.85rem;">
+                        <i class="fas fa-map-marker-alt"></i> Central Hospital
+                    </div>
+                    <div class="donor-actions">
+                        <button class="donor-btn"><i class="fas fa-eye"></i></button>
+                        <button class="donor-btn"><i class="fas fa-envelope"></i></button>
+                        <button class="donor-btn"><i class="fas fa-phone"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Donor Card 2 -->
+            <div class="donor-card">
+                <span class="donor-status status-active">Active</span>
+                <div class="donor-header">
+                    <div class="donor-avatar">ES</div>
+                    <div class="donor-info">
+                        <h3>Emma Smith</h3>
+                        <div class="donor-id">ID: #DON-2024-002</div>
+                    </div>
+                </div>
+                <div class="donor-details">
+                    <div class="detail-item">
+                        <span class="detail-label">Blood Type</span>
+                        <span class="blood-group-badge">O-</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Last Donation</span>
+                        <span class="detail-value">Feb 28, 2024</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Total Donations</span>
+                        <span class="detail-value">8</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Status</span>
+                        <span class="detail-value">Not Eligible</span>
+                    </div>
+                </div>
+                <div class="donor-footer">
+                    <div style="color: var(--text-muted); font-size: 0.85rem;">
+                        <i class="fas fa-map-marker-alt"></i> North Wing
+                    </div>
+                    <div class="donor-actions">
+                        <button class="donor-btn"><i class="fas fa-eye"></i></button>
+                        <button class="donor-btn"><i class="fas fa-envelope"></i></button>
+                        <button class="donor-btn"><i class="fas fa-phone"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Donor Card 3 -->
+            <div class="donor-card">
+                <span class="donor-status status-active">Active</span>
+                <div class="donor-header">
+                    <div class="donor-avatar">MJ</div>
+                    <div class="donor-info">
+                        <h3>Michael Johnson</h3>
+                        <div class="donor-id">ID: #DON-2024-003</div>
+                    </div>
+                </div>
+                <div class="donor-details">
+                    <div class="detail-item">
+                        <span class="detail-label">Blood Type</span>
+                        <span class="blood-group-badge">B+</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Last Donation</span>
+                        <span class="detail-value">Mar 10, 2024</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Total Donations</span>
+                        <span class="detail-value">24</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Status</span>
+                        <span class="detail-value status-eligible">Eligible</span>
+                    </div>
+                </div>
+                <div class="donor-footer">
+                    <div style="color: var(--text-muted); font-size: 0.85rem;">
+                        <i class="fas fa-map-marker-alt"></i> Southside
+                    </div>
+                    <div class="donor-actions">
+                        <button class="donor-btn"><i class="fas fa-eye"></i></button>
+                        <button class="donor-btn"><i class="fas fa-envelope"></i></button>
+                        <button class="donor-btn"><i class="fas fa-phone"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Donor Card 4 -->
+            <div class="donor-card">
+                <span class="donor-status status-inactive">Inactive</span>
+                <div class="donor-header">
+                    <div class="donor-avatar">SW</div>
+                    <div class="donor-info">
+                        <h3>Sarah Wilson</h3>
+                        <div class="donor-id">ID: #DON-2024-004</div>
+                    </div>
+                </div>
+                <div class="donor-details">
+                    <div class="detail-item">
+                        <span class="detail-label">Blood Type</span>
+                        <span class="blood-group-badge">AB+</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Last Donation</span>
+                        <span class="detail-value">Jan 05, 2024</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Total Donations</span>
+                        <span class="detail-value">6</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Status</span>
+                        <span class="detail-value">Inactive</span>
+                    </div>
+                </div>
+                <div class="donor-footer">
+                    <div style="color: var(--text-muted); font-size: 0.85rem;">
+                        <i class="fas fa-map-marker-alt"></i> East Side
+                    </div>
+                    <div class="donor-actions">
+                        <button class="donor-btn"><i class="fas fa-eye"></i></button>
+                        <button class="donor-btn"><i class="fas fa-envelope"></i></button>
+                        <button class="donor-btn"><i class="fas fa-phone"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Donor Card 5 -->
+            <div class="donor-card">
+                <span class="donor-status status-active">Active</span>
+                <div class="donor-header">
+                    <div class="donor-avatar">RB</div>
+                    <div class="donor-info">
+                        <h3>Robert Brown</h3>
+                        <div class="donor-id">ID: #DON-2024-005</div>
+                    </div>
+                </div>
+                <div class="donor-details">
+                    <div class="detail-item">
+                        <span class="detail-label">Blood Type</span>
+                        <span class="blood-group-badge">A-</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Last Donation</span>
+                        <span class="detail-value">Mar 05, 2024</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Total Donations</span>
+                        <span class="detail-value">32</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Status</span>
+                        <span class="detail-value status-eligible">Eligible</span>
+                    </div>
+                </div>
+                <div class="donor-footer">
+                    <div style="color: var(--text-muted); font-size: 0.85rem;">
+                        <i class="fas fa-map-marker-alt"></i> West Wing
+                    </div>
+                    <div class="donor-actions">
+                        <button class="donor-btn"><i class="fas fa-eye"></i></button>
+                        <button class="donor-btn"><i class="fas fa-envelope"></i></button>
+                        <button class="donor-btn"><i class="fas fa-phone"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Donor Card 6 -->
+            <div class="donor-card">
+                <span class="donor-status status-active">Active</span>
+                <div class="donor-header">
+                    <div class="donor-avatar">LD</div>
+                    <div class="donor-info">
+                        <h3>Lisa Davis</h3>
+                        <div class="donor-id">ID: #DON-2024-006</div>
+                    </div>
+                </div>
+                <div class="donor-details">
+                    <div class="detail-item">
+                        <span class="detail-label">Blood Type</span>
+                        <span class="blood-group-badge">O+</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Last Donation</span>
+                        <span class="detail-value">Mar 14, 2024</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Total Donations</span>
+                        <span class="detail-value">12</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Status</span>
+                        <span class="detail-value">Not Eligible</span>
+                    </div>
+                </div>
+                <div class="donor-footer">
+                    <div style="color: var(--text-muted); font-size: 0.85rem;">
+                        <i class="fas fa-map-marker-alt"></i> Central
+                    </div>
+                    <div class="donor-actions">
+                        <button class="donor-btn"><i class="fas fa-eye"></i></button>
+                        <button class="donor-btn"><i class="fas fa-envelope"></i></button>
+                        <button class="donor-btn"><i class="fas fa-phone"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>a
+
+        <!-- Pagination -->
+        <div class="pagination">
+            <button class="page-btn"><i class="fas fa-chevron-left"></i></button>
+            <button class="page-btn active">1</button>
+            <button class="page-btn">2</button>
+            <button class="page-btn">3</button>
+            <button class="page-btn">4</button>
+            <button class="page-btn">5</button>
+            <button class="page-btn"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reports & Analytics - Admin</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../css/style.css">
+   
+</head>
+
+<body>
+    <header class="admin-header">
+        <div class="header-logo">
+            <img src="../img/blood.png" alt="Logo">
+            <span>BloodLink</span>
+        </div>
+        <nav>
+            <a href="admin.html">Dashboard</a>
+            <a href="admin-inventory.html">Inventory</a>
+            <a href="admin-donors.html">Donors</a>
+            <a href="admin-requests.html">Requests</a>
+            <a href="admin-reports.html" class="active">Reports</a>
+            <a href="setting.html?role=admin">Settings</a>
+        </nav>
+        <div class="user-info">
+            <i class="fas fa-bell"></i>
+            <div class="user-avatar">
+                <img src="../img/user.png" alt="User">
+                <span class="admin-badge"></span>
+            </div>
+            <div class="user-text">
+                <div class="user-name">Dr. Sarah Cole</div>
+                <div class="user-role">Admin</div>
+            </div>
+        </div>
+    </header>
+
+    <main class="admin-container">
+        <!-- Page Header -->
+        <div class="page-header">
+            <h1>Reports & Analytics</h1>
+            <div class="header-actions">
+                <button class="btn-outline">
+                    <i class="fas fa-calendar-alt"></i>
+                    Schedule Report
+                </button>
+                <button class="btn-primary">
+                    <i class="fas fa-download"></i>
+                    Download All
+                </button>
+            </div>
+        </div>
+
+        <!-- Date Range Selector -->
+        <div class="date-range">
+            <div class="range-selector">
+                <button class="range-btn active">Today</button>
+                <button class="range-btn">This Week</button>
+                <button class="range-btn">This Month</button>
+                <button class="range-btn">This Quarter</button>
+                <button class="range-btn">This Year</button>
+                <button class="range-btn">Custom</button>
+            </div>
+            <div class="date-inputs">
+                <div class="date-input">
+                    <i class="fas fa-calendar"></i>
+                    <input type="date" value="2024-03-01">
+                </div>
+                <span style="color: var(--text-muted);">to</span>
+                <div class="date-input">
+                    <i class="fas fa-calendar"></i>
+                    <input type="date" value="2024-03-15">
+                </div>
+            </div>
+        </div>
+
+        <!-- Key Metrics -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-icon">
+                        <i class="fas fa-tint"></i>
+                    </div>
+                    <span class="stat-change change-positive">+12.5%</span>
+                </div>
+                <div class="stat-value">1,245</div>
+                <div class="stat-label">Total Donations</div>
+                <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem;">
+                    vs 1,107 last period
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <span class="stat-change change-positive">+8.3%</span>
+                </div>
+                <div class="stat-value">856</div>
+                <div class="stat-label">New Donors</div>
+                <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem;">
+                    vs 790 last period
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <span class="stat-change change-positive">+5.2%</span>
+                </div>
+                <div class="stat-value">98.5%</div>
+                <div class="stat-label">Fulfillment Rate</div>
+                <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem;">
+                    vs 93.3% last period
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <span class="stat-change change-negative">-15%</span>
+                </div>
+                <div class="stat-value">342</div>
+                <div class="stat-label">Avg Response Time</div>
+                <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem;">
+                    45 min faster than last period
+                </div>
+            </div>
+        </div>
+
+        <!-- Charts Grid -->
+        <div class="charts-grid">
+            <!-- Donation Trends -->
+            <div class="chart-card">
+                <div class="chart-header">
+                    <h3>
+                        <i class="fas fa-chart-line" style="color: var(--admin-primary);"></i>
+                        Donation Trends (Last 30 Days)
+                    </h3>
+                    <div class="chart-legend">
+                        <span class="legend-item">
+                            <span class="legend-color color-blue"></span>
+                            Donations
+                        </span>
+                    </div>
+                </div>
+                <div class="bar-chart">
+                    <div class="bar-group">
+                        <div class="bars">
+                            <div class="bar blue" style="height: 120px;"></div>
+                        </div>
+                        <span class="bar-label">Week 1</span>
+                    </div>
+                    <div class="bar-group">
+                        <div class="bars">
+                            <div class="bar blue" style="height: 150px;"></div>
+                        </div>
+                        <span class="bar-label">Week 2</span>
+                    </div>
+                    <div class="bar-group">
+                        <div class="bars">
+                            <div class="bar blue" style="height: 135px;"></div>
+                        </div>
+                        <span class="bar-label">Week 3</span>
+                    </div>
+                    <div class="bar-group">
+                        <div class="bars">
+                            <div class="bar blue" style="height: 180px;"></div>
+                        </div>
+                        <span class="bar-label">Week 4</span>
+                    </div>
+                    <div class="bar-group">
+                        <div class="bars">
+                            <div class="bar blue" style="height: 165px;"></div>
+                        </div>
+                        <span class="bar-label">Week 5</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Blood Type Distribution -->
+            <div class="chart-card">
+                <div class="chart-header">
+                    <h3>
+                        <i class="fas fa-chart-pie" style="color: var(--admin-primary);"></i>
+                        Blood Type Distribution
+                    </h3>
+                </div>
+                <div class="pie-container">
+                    <div class="pie-chart"></div>
+                    <div class="pie-legend">
+                        <div class="pie-legend-item">
+                            <span class="pie-dot color-blue"></span>
+                            <span class="pie-label">O+</span>
+                            <span class="pie-value">45%</span>
+                        </div>
+                        <div class="pie-legend-item">
+                            <span class="pie-dot color-green"></span>
+                            <span class="pie-label">A+</span>
+                            <span class="pie-value">25%</span>
+                        </div>
+                        <div class="pie-legend-item">
+                            <span class="pie-dot color-yellow"></span>
+                            <span class="pie-label">B+</span>
+                            <span class="pie-value">15%</span>
+                        </div>
+                        <div class="pie-legend-item">
+                            <span class="pie-dot color-red"></span>
+                            <span class="pie-label">O-</span>
+                            <span class="pie-value">8%</span>
+                        </div>
+                        <div class="pie-legend-item">
+                            <span class="pie-dot" style="background: #8b5cf6;"></span>
+                            <span class="pie-label">Others</span>
+                            <span class="pie-value">7%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Donor Demographics -->
+        <div class="demographics-grid">
+            <div class="demographics-card">
+                <div class="demographics-header">
+                    <h3>
+                        <i class="fas fa-venus-mars" style="color: var(--admin-primary);"></i>
+                        Donors by Age Group
+                    </h3>
+                </div>
+                <div class="demographics-list">
+                    <div class="demographics-item">
+                        <span class="demographics-label">18-25</span>
+                        <div class="demographics-bar">
+                            <div class="demographics-fill" style="width: 25%;"></div>
+                        </div>
+                        <span class="demographics-percent">25%</span>
+                    </div>
+                    <div class="demographics-item">
+                        <span class="demographics-label">26-35</span>
+                        <div class="demographics-bar">
+                            <div class="demographics-fill" style="width: 35%;"></div>
+                        </div>
+                        <span class="demographics-percent">35%</span>
+                    </div>
+                    <div class="demographics-item">
+                        <span class="demographics-label">36-45</span>
+                        <div class="demographics-bar">
+                            <div class="demographics-fill" style="width: 22%;"></div>
+                        </div>
+                        <span class="demographics-percent">22%</span>
+                    </div>
+                    <div class="demographics-item">
+                        <span class="demographics-label">46-60</span>
+                        <div class="demographics-bar">
+                            <div class="demographics-fill" style="width: 15%;"></div>
+                        </div>
+                        <span class="demographics-percent">15%</span>
+                    </div>
+                    <div class="demographics-item">
+                        <span class="demographics-label">60+</span>
+                        <div class="demographics-bar">
+                            <div class="demographics-fill" style="width: 3%;"></div>
+                        </div>
+                        <span class="demographics-percent">3%</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="demographics-card">
+                <div class="demographics-header">
+                    <h3>
+                        <i class="fas fa-map-marker-alt" style="color: var(--admin-primary);"></i>
+                        Donations by Location
+                    </h3>
+                </div>
+                <div class="demographics-list">
+                    <div class="demographics-item">
+                        <span class="demographics-label">Central</span>
+                        <div class="demographics-bar">
+                            <div class="demographics-fill" style="width: 42%;"></div>
+                        </div>
+                        <span class="demographics-percent">42%</span>
+                    </div>
+                    <div class="demographics-item">
+                        <span class="demographics-label">North</span>
+                        <div class="demographics-bar">
+                            <div class="demographics-fill" style="width: 28%;"></div>
+                        </div>
+                        <span class="demographics-percent">28%</span>
+                    </div>
+                    <div class="demographics-item">
+                        <span class="demographics-label">South</span>
+                        <div class="demographics-bar">
+                            <div class="demographics-fill" style="width: 18%;"></div>
+                        </div>
+                        <span class="demographics-percent">18%</span>
+                    </div>
+                    <div class="demographics-item">
+                        <span class="demographics-label">East</span>
+                        <div class="demographics-bar">
+                            <div class="demographics-fill" style="width: 8%;"></div>
+                        </div>
+                        <span class="demographics-percent">8%</span>
+                    </div>
+                    <div class="demographics-item">
+                        <span class="demographics-label">West</span>
+                        <div class="demographics-bar">
+                            <div class="demographics-fill" style="width: 4%;"></div>
+                        </div>
+                        <span class="demographics-percent">4%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Top Donors -->
+        <div class="top-donors-section">
+            <div class="section-header">
+                <h2>
+                    <i class="fas fa-trophy" style="color: var(--admin-primary);"></i>
+                    Top Donors This Month
+                </h2>
+                <a href="#" style="color: var(--admin-primary); text-decoration: none;">View All →</a>
+            </div>
+            <table class="top-donors-table">
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Donor Name</th>
+                        <th>Blood Type</th>
+                        <th>Donations</th>
+                        <th>Volume</th>
+                        <th>Last Donation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="rank-badge rank-1">1</span></td>
+                        <td>Michael Johnson</td>
+                        <td><span class="blood-badge blood-a-positive">A+</span></td>
+                        <td>24</td>
+                        <td>10.8L</td>
+                        <td>Mar 12, 2024</td>
+                    </tr>
+                    <tr>
+                        <td><span class="rank-badge rank-2">2</span></td>
+                        <td>Sarah Williams</td>
+                        <td><span class="blood-badge blood-o-negative">O-</span></td>
+                        <td>18</td>
+                        <td>8.1L</td>
+                        <td>Mar 10, 2024</td>
+                    </tr>
+                    <tr>
+                        <td><span class="rank-badge rank-3">3</span></td>
+                        <td>David Chen</td>
+                        <td><span class="blood-badge blood-b-positive">B+</span></td>
+                        <td>15</td>
+                        <td>6.75L</td>
+                        <td>Mar 14, 2024</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Export Options -->
+        <div class="export-section">
+            <div class="export-card">
+                <div class="export-icon">
+                    <i class="fas fa-file-pdf"></i>
+                </div>
+                <div class="export-content">
+                    <h4>PDF Report</h4>
+                    <p>Complete analytics report</p>
+                </div>
+            </div>
+            <div class="export-card">
+                <div class="export-icon">
+                    <i class="fas fa-file-excel"></i>
+                </div>
+                <div class="export-content">
+                    <h4>Excel Export</h4>
+                    <p>Raw data with charts</p>
+                </div>
+            </div>
+            <div class="export-card">
+                <div class="export-icon">
+                    <i class="fas fa-file-csv"></i>
+                </div>
+                <div class="export-content">
+                    <h4>CSV Data</h4>
+                    <p>Download raw data</p>
+                </div>
+            </div>
+            <div class="export-card">
+                <div class="export-icon">
+                    <i class="fas fa-print"></i>
+                </div>
+                <div class="export-content">
+                    <h4>Print Report</h4>
+                    <p>Printable version</p>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>
