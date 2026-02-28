@@ -1,0 +1,262 @@
+/* Contact Section - Enhanced */
+.contact {
+    min-height: auto;
+    background: var(--section-medium);
+    padding: 80px 20px 100px;
+    position: relative;
+    overflow: hidden;
+}
+
+.contact::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+        radial-gradient(circle at 30% 40%, rgba(220, 38, 38, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 70% 80%, rgba(0, 102, 204, 0.08) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.contact-wrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.contact-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.contact-header h2 {
+    color: #fff;
+    font-size: 3.2rem;  /* Larger */
+    margin-bottom: 20px;
+    font-weight: 800;
+}
+
+.contact-header p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.contact-content {
+    display: grid;
+    grid-template-columns: 500px 1fr;  /* Wider form */
+    gap: 40px;
+    background: rgba(20, 30, 45, 0.7);
+    border: 1px solid rgba(0, 102, 204, 0.2);
+    border-radius: 40px;
+    padding: 50px;
+    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow-card);
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.form-group {
+    position: relative;
+}
+
+.form-group i {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--blood-red);  /* Red icons */
+    font-size: 18px;
+    z-index: 1;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 18px 20px 18px 50px;  /* More padding */
+    background: rgba(0, 0, 0, 0.4);
+    border: 2px solid rgba(0, 102, 204, 0.2);  /* Stronger border */
+    border-radius: 15px;
+    color: #fff;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--blood-red);  /* Red focus */
+    box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.15);
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.form-group input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.form-group select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 12 12'%3E%3Cpath fill='%23dc2626' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 20px center;
+    padding-right: 45px;
+}
+
+.form-group select option {
+    background: var(--section-dark);
+    color: #fff;
+    padding: 12px;
+}
+
+.form-group-label {
+    margin-top: 15px;
+}
+
+.form-group-label span {
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 25px;
+    border-radius: 20px;
+    border: 1px solid rgba(0, 102, 204, 0.15);
+}
+
+.radio-option {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    cursor: pointer;
+    position: relative;
+}
+
+.radio-option input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.radio-custom {
+    width: 24px;  /* Larger */
+    height: 24px; /* Larger */
+    border: 2px solid rgba(220, 38, 38, 0.4);  /* Red border */
+    border-radius: 50%;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.radio-option:hover .radio-custom {
+    border-color: var(--blood-red);
+}
+
+.radio-option input[type="radio"]:checked ~ .radio-custom {
+    border-color: var(--blood-red);
+    background: rgba(220, 38, 38, 0.1);
+}
+
+.radio-option input[type="radio"]:checked ~ .radio-custom::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 14px;
+    height: 14px;
+    background: var(--blood-red);
+    border-radius: 50%;
+}
+
+.radio-label {
+    color: white;
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.search-btn {
+    width: 100%;
+    padding: 20px 30px;  /* Larger button */
+    background: var(--blood-red);  /* Red button */
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 15px;
+    box-shadow: var(--shadow-blood);
+    letter-spacing: 0.5px;
+}
+
+.search-btn:hover {
+    background: var(--blood-red-hover);
+    box-shadow: var(--shadow-blood-hover);
+    transform: translateY(-3px);
+}
+
+/* Map Container - Balanced with form */
+.contact-map {
+    position: relative;
+    border-radius: 25px;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    border: 2px solid rgba(220, 38, 38, 0.2);  /* Red border */
+}
+
+.map-container {
+    width: 100%;
+    height: 100%;
+    min-height: 500px;
+    background: var(--section-dark);
+    position: relative;
+    overflow: hidden;
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 100%;
+    min-height: 500px;
+    border: none;
+    filter: grayscale(20%) brightness(0.9);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .contact-content {
+        grid-template-columns: 1fr;
+        padding: 40px;
+    }
+    
+    .contact-header h2 {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .contact-content {
+        padding: 30px;
+    }
+    
+    .contact-header h2 {
+        font-size: 2rem;
+    }
+    
+    .radio-group {
+        padding: 20px;
+    }
+}

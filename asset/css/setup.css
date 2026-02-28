@@ -1,16 +1,27 @@
 :root {
     /* ==================== Brand Colors ==================== */
     --primary-color: #0066CC;
-    /* Main Blue */
     --hover-color: #0052A3;
-    /* Darker Blue for hovers */
     --secondary-color: #003D82;
-    /* Deep Blue */
     --accent-color: #FF6B35;
-    /* Warm Orange */
     --accent-hover: #E85A2A;
-    /* Darker Orange */
-
+    
+    /* ==================== NEW: Blood Red for Medical Branding ==================== */
+    --blood-red: #DC2626;
+    --blood-red-hover: #B91C1C;
+    --blood-red-light: rgba(220, 38, 38, 0.15);
+    --blood-red-glow: 0 0 25px rgba(220, 38, 38, 0.3);
+    
+    /* ==================== NEW: Section Alternates ==================== */
+    --section-dark: #0a1929;
+    --section-medium: #0e1e2f;
+    --section-light: #122b44;  /* Slightly lighter for contrast */
+    
+    /* ==================== NEW: Trust Indicators ==================== */
+    --stat-bg: rgba(0, 102, 204, 0.15);
+    --stat-number: #ffffff;
+    --stat-label: rgba(255, 255, 255, 0.8);
+    
     /* ==================== Neutrals ==================== */
     --white: #FFFFFF;
     --gray-100: #F8F9FA;
@@ -29,7 +40,6 @@
     /* Status Colors */
     --success: #28a745;
     --danger: #dc2626;
-    /* Keeping red for critical issues */
     --warning: #ffc107;
     --info: #17a2b8;
 
@@ -48,8 +58,18 @@
     --shadow-sm: 0 2px 8px rgba(0, 102, 204, 0.15);
     --shadow-md: 0 4px 16px rgba(0, 102, 204, 0.25);
     --shadow-lg: 0 8px 32px rgba(0, 102, 204, 0.35);
+    
+    /* ==================== NEW: Enhanced Shadows ==================== */
+    --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(0, 102, 204, 0.2);
+    --shadow-card-hover: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(0, 102, 204, 0.4);
+    --shadow-button: 0 6px 15px rgba(0, 102, 204, 0.3);
+    --shadow-button-hover: 0 10px 25px rgba(0, 102, 204, 0.5);
+    
+    /* ==================== NEW: Blood Red Shadows ==================== */
+    --shadow-blood: 0 6px 15px rgba(220, 38, 38, 0.3);
+    --shadow-blood-hover: 0 10px 25px rgba(220, 38, 38, 0.5);
 
-     --admin-primary: #2563eb;
+    --admin-primary: #2563eb;
     --admin-secondary: #1e40af;
     --admin-success: #10b981;
     --admin-warning: #f59e0b;
@@ -59,57 +79,46 @@
     --bg-dark: #0a0f1e;
     --card-bg: rgba(20, 30, 45, 0.8);
     --card-border: rgba(255, 255, 255, 0.1);
-    --text-primary: #ffffff;
-    --text-secondary: rgba(255, 255, 255, 0.8);
-    --text-muted: rgba(255, 255, 255, 0.5);
-    --header-height: 80px;
 }
 
-/* ==================== Global Styles ==================== */
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* ==================== NEW: Trust Indicators Section ==================== */
+.trust-stats {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin: 60px 0 40px;
+    padding: 40px 20px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    border: 1px solid rgba(0, 102, 204, 0.2);
 }
 
-html,
-body {
-    height: 100%;
-    margin: 0;
+.stat-item {
+    text-align: center;
+    min-width: 180px;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    background-color: #1C0A0A;
+.stat-number {
+    font-size: 3.2rem;
+    font-weight: 800;
+    color: var(--primary-color);
+    line-height: 1.2;
+    text-shadow: var(--shadow-sm);
+    margin-bottom: 5px;
 }
 
-.active {
-    display: block;
+.stat-label {
+    font-size: 1rem;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
-h2 {
-    font-size: 1.5rem;
-    color: var(--accent-color);
-    font-weight: 600;
-    margin-bottom: 20px;
-}
-
-button {
-    background: transparent;
-    color: var(--secondary-color);
-    padding: 10px 30px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    border: 2px solid var(--primary-color);
-    border-radius: 50px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-button:hover {
-    background: var(--primary-color);
-    color: var(--text-color);
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(0, 102, 204, 0.2);
+/* ==================== NEW: Section Dividers ==================== */
+.section-divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0, 102, 204, 0.3), transparent);
+    margin: 20px 0;
 }

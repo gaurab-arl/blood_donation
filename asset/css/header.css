@@ -151,3 +151,133 @@ nav a:hover {
 .footer-social i:hover {
   color: var(--primary-color);
 }
+
+/* ==================== Footer - Enhanced ==================== */
+
+.site-footer {
+    background: linear-gradient(180deg, var(--section-dark), #050b14);
+    padding: 100px 8% 40px;  /* More padding */
+    color: #ddd;
+    box-shadow: 0 -20px 50px rgba(220, 38, 38, 0.1);  /* Red glow */
+    position: relative;
+}
+
+.site-footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--blood-red), var(--primary-color), transparent);
+}
+
+.footer-wrapper {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;  /* Wider brand column */
+    gap: 60px;
+    margin-bottom: 50px;
+}
+
+.footer-brand p {
+    margin-top: 20px;
+    font-size: 16px;  /* Larger */
+    color: #aaa;
+    line-height: 1.7;
+    max-width: 300px;  /* Controlled width */
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 28px;  /* Larger logo text */
+    font-weight: 700;
+    color: #fff;
+}
+
+.footer-logo img {
+    width: 50px;  /* Larger logo */
+    height: 50px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 10px rgba(220, 38, 38, 0.3));
+}
+
+.footer-links h4 {
+    color: #fff;
+    margin-bottom: 25px;
+    font-size: 18px;
+    font-weight: 600;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.footer-links h4::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--blood-red), var(--primary-color));
+    border-radius: 2px;
+}
+
+.footer-links a {
+    display: block;
+    text-decoration: none;
+    color: #aaa;
+    font-size: 15px;
+    margin-bottom: 15px;
+    transition: all 0.3s ease;
+    padding-left: 0;
+}
+
+.footer-links a:hover {
+    color: var(--blood-red);  /* Red hover */
+    padding-left: 8px;
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 15px;
+    color: #888;
+}
+
+.footer-social i {
+    margin-left: 20px;
+    color: #aaa;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 20px;  /* Larger icons */
+}
+
+.footer-social i:hover {
+    color: var(--blood-red);
+    transform: translateY(-3px);
+}
+
+@media (max-width: 768px) {
+    .footer-wrapper {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .footer-logo {
+        font-size: 24px;
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+    
+    .footer-social i {
+        margin: 0 10px;
+    }
+}
